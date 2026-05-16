@@ -211,4 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 807189af0b853d64695cefba27e84bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EelSegment
+  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
+  ElectrifiedColor: {r: 0.118725546, g: 0.46835175, b: 0.8679245, a: 1}
   _collider: {fileID: 7450446090917120523}
+  _spriteRenderer: {fileID: 7776572333185707719}

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EelController : MonoBehaviour
+public class EelController : MonoBehaviour, IElectrifiable
 {
     [SerializeField] float _moveSpeed = 5f, _retractSpeed = 7.5f;
     [SerializeField] Rigidbody2D _rigidBody;
@@ -12,6 +12,7 @@ public class EelController : MonoBehaviour
 
     Vector2 _currentDirection = Vector2.zero;
     bool _isRetracting = false;
+    bool _isElectrified = false;
 
     Vector2 _lastSegmentPosition;
     GameObject _tail;
@@ -95,10 +96,37 @@ public class EelController : MonoBehaviour
         _segments.Add(newSegement);
         _lastSegmentPosition = position;
 
+        if(_isElectrified)
+        {
+            newSegement.Electrify();
+        }
+
         if(Vector2.Distance(transform.position, _lastSegmentPosition) >= _segmentSize + _bufferSpace)
         {
             newSegement.SetColliderNotTrigger();
             TryPlaceSegment();
+        }
+    }
+
+    public void Electrify()
+    {
+        if(_isElectrified) { return; }
+
+        _isElectrified = true;
+
+        foreach(EelSegment segment in _segments)    // TODO: Coroutine to electrify each segment on a short delay?
+        {
+            segment.Electrify();
+        }
+    }
+
+    public void Delectrify()
+    {
+        _isElectrified = false;
+
+        foreach(EelSegment segment in _segments)    // TODO: Coroutine here as well?
+        {
+            segment.Delectrify();
         }
     }
 }
