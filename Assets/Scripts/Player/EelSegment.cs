@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class EelSegment : MonoBehaviour, IElectrifiable
+public class EelSegment : MonoBehaviour
 {
     public static event Action OnEelSegmentAttacked;
 
@@ -45,6 +45,8 @@ public class EelSegment : MonoBehaviour, IElectrifiable
 
     public void Electrify()
     {
+        if(_isElectrified) { return; }
+
         _isElectrified = true;
 
         if(_animator)
