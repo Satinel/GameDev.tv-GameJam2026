@@ -5,16 +5,11 @@ public class EelSegment : MonoBehaviour, IElectrifiable
 {
     public static event Action OnEelSegmentAttacked;
 
-    public Color DefaultColor, ElectrifiedColor;
-
     [SerializeField] Collider2D _collider;
-    [SerializeField] SpriteRenderer _spriteRenderer;
+    [SerializeField] Animator _animator;
     bool _isElectrified;
 
-    void Start()
-    {
-        DefaultColor = _spriteRenderer.color;
-    }
+    static readonly int ELEC_HASH = Animator.StringToHash("Electrified");
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -43,6 +38,8 @@ public class EelSegment : MonoBehaviour, IElectrifiable
 
     public void SetColliderNotTrigger()
     {
+        if(!_collider) { return; }
+
         _collider.isTrigger = false;
     }
 
@@ -50,9 +47,9 @@ public class EelSegment : MonoBehaviour, IElectrifiable
     {
         _isElectrified = true;
 
-        if(_spriteRenderer)
+        if(_animator)
         {
-            _spriteRenderer.color = ElectrifiedColor;
+            _animator.SetBool(ELEC_HASH, _isElectrified);
         }
     }
 
@@ -60,9 +57,9 @@ public class EelSegment : MonoBehaviour, IElectrifiable
     {
         _isElectrified = false;
 
-        if(_spriteRenderer)
+        if(_animator)
         {
-            _spriteRenderer.color = DefaultColor;
+            _animator.SetBool(ELEC_HASH, _isElectrified);
         }
     }
 }

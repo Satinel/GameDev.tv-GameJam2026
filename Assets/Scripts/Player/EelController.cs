@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,10 +6,13 @@ public class EelController : MonoBehaviour, IElectrifiable
 {
     [SerializeField] float _moveSpeed = 5f, _retractSpeed = 7.5f;
     [SerializeField] Rigidbody2D _rigidBody;
-    [SerializeField] EelSegment _segmentPrefab;
-    [SerializeField] GameObject _tailPrefab;
+    [SerializeField] EelSegment _segmentPrefab, _tailPrefab;
     [SerializeField] float _segmentSize = 1;
     [SerializeField] float _bufferSpace = 0.25f;
+    [SerializeField] Animator _animator;
+    [SerializeField] float _elecDelay = 0.1f;
+
+    WaitForSeconds _elecDelayWait = new(0.01f);
 
     Vector2 _currentDirection = Vector2.zero;
     bool _isRetracting = false;
@@ -16,8 +20,12 @@ public class EelController : MonoBehaviour, IElectrifiable
     bool _fullRetract = false;
 
     Vector2 _lastSegmentPosition;
-    GameObject _tail;
+    EelSegment _tail;
     List<EelSegment> _segments = new();
+    Coroutine _currentCoroutine;
+
+    static readonly int ELEC_HASH = Animator.StringToHash("Electrified");
+    static readonly int MOVE_HASH = Animator.StringToHash("Moving");
 
     void Awake()
     {
@@ -39,6 +47,7 @@ public class EelController : MonoBehaviour, IElectrifiable
     {
         _tail = Instantiate(_tailPrefab, transform.position, transform.rotation);
         _lastSegmentPosition = _tail.transform.position;
+        _elecDelayWait = new(_elecDelay);
     }
 
     void Update()
@@ -57,6 +66,27 @@ public class EelController : MonoBehaviour, IElectrifiable
     void GetMoveValue(Vector2 input)
     {
         _currentDirection = input;
+
+        if(input == Vector2.zero)
+        {
+            _animator.SetBool(MOVE_HASH, false);
+        }
+        else
+        {
+            _animator.SetBool(MOVE_HASH, true);
+            Rotate();
+        }
+    }
+
+    void Rotate()
+    {
+        Vector3 rotationDirection = _currentDirection;
+        rotationDirection.z = 0f;
+        if(rotationDirection.sqrMagnitude > 0.0001f)
+        {
+            float angle = Mathf.Atan2(rotationDirection.y, rotationDirection.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        }
     }
 
     void SetRetract(bool value)
@@ -66,6 +96,12 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     void HandleAttack()
     {
+        if(_currentCoroutine != null)
+        {
+            StopCoroutine(_currentCoroutine);
+        }
+        _currentCoroutine = null;
+
         _fullRetract = true;
     }
 
@@ -111,7 +147,16 @@ public class EelController : MonoBehaviour, IElectrifiable
 
         Vector2 direction = ((Vector2)transform.position - _lastSegmentPosition).normalized;
         Vector2 position = _lastSegmentPosition + direction * _segmentSize;
-        EelSegment newSegement = Instantiate(_segmentPrefab, position, transform.rotation);
+        EelSegment newSegement = Instantiate(_segmentPrefab, position, Quaternion.identity);
+
+        Vector3 rotationDirection = transform.position - newSegement.transform.position;
+        rotationDirection.z = 0f;
+        if(rotationDirection.sqrMagnitude > 0.0001f)
+        {
+            float angle = Mathf.Atan2(rotationDirection.y, rotationDirection.x) * Mathf.Rad2Deg;
+            newSegement.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        }
+
         _segments.Add(newSegement);
         _lastSegmentPosition = position;
 
@@ -132,20 +177,50 @@ public class EelController : MonoBehaviour, IElectrifiable
         if(_isElectrified) { return; }
 
         _isElectrified = true;
+        _animator.SetBool(ELEC_HASH, _isElectrified);
 
-        foreach(EelSegment segment in _segments)    // TODO: Coroutine to electrify each segment on a short delay?
+        if(_currentCoroutine != null)
         {
-            segment.Electrify();
+            StopCoroutine(_currentCoroutine);
         }
+
+        _currentCoroutine = StartCoroutine(ElectrifySegmentsRoutine());
+    }
+
+    IEnumerator ElectrifySegmentsRoutine()
+    {
+        for (int i = _segments.Count; i > 0; i--)
+        {
+            _segments[i - 1].Electrify();
+            yield return _elecDelayWait;
+        }
+
+        _tail.Electrify();
+        _currentCoroutine = null;
     }
 
     public void Delectrify()
     {
         _isElectrified = false;
+        _animator.SetBool(ELEC_HASH, _isElectrified);
 
-        foreach(EelSegment segment in _segments)    // TODO: Coroutine here as well?
+        if(_currentCoroutine != null)
         {
-            segment.Delectrify();
+            StopCoroutine(_currentCoroutine);
         }
+
+        _currentCoroutine = StartCoroutine(DelectrifySegmentsRoutine());
+    }
+
+    IEnumerator DelectrifySegmentsRoutine()
+    {
+        for (int i = _segments.Count; i > 0; i--)
+        {
+            _segments[i - 1].Delectrify();
+            yield return _elecDelayWait;
+        }
+
+        _tail.Delectrify();
+        _currentCoroutine = null;
     }
 }

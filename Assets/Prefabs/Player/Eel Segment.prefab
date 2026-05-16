@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 4006732631890818904}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5845819949105427278}
@@ -81,8 +81,8 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.8773585, g: 0.8232035, b: 0.11173906, a: 1}
+  m_Sprite: {fileID: -3678814127042363778, guid: 42e3bd8a7e5509441ae0ef2fc60e2906, type: 3}
+  m_Color: {r: 0.8773585, g: 0.8232035, b: 0.1117391, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,8 +100,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5845819949105427278}
-  - component: {fileID: 7450446090917120523}
+  - component: {fileID: 2122863479040022250}
   - component: {fileID: 2064621220910850019}
+  - component: {fileID: 9021287062725485651}
   - component: {fileID: -8100572391259280428}
   m_Layer: 6
   m_Name: Eel Segment
@@ -126,8 +127,8 @@ Transform:
   - {fileID: 8365119139708164614}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &7450446090917120523
-BoxCollider2D:
+--- !u!70 &2122863479040022250
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -160,18 +161,9 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.9, y: 0.9}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: 0.05}
+  m_Size: {x: 0.95, y: 0.7}
+  m_Direction: 1
 --- !u!50 &2064621220910850019
 Rigidbody2D:
   serializedVersion: 5
@@ -199,6 +191,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &9021287062725485651
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5337399244008438344}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bb74874048bde4749b07908a51fb94a8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &-8100572391259280428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 807189af0b853d64695cefba27e84bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EelSegment
-  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
+  DefaultColor: {r: 0.8784314, g: 0.8235294, b: 0.10980392, a: 1}
   ElectrifiedColor: {r: 0.118725546, g: 0.46835175, b: 0.8679245, a: 1}
-  _collider: {fileID: 7450446090917120523}
+  _collider: {fileID: 2122863479040022250}
   _spriteRenderer: {fileID: 7776572333185707719}
+  _animator: {fileID: 9021287062725485651}
