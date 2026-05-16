@@ -13,6 +13,7 @@ public class EelController : MonoBehaviour, IElectrifiable
     Vector2 _currentDirection = Vector2.zero;
     bool _isRetracting = false;
     bool _isElectrified = false;
+    bool _fullRetract = false;
 
     Vector2 _lastSegmentPosition;
     GameObject _tail;
@@ -22,12 +23,16 @@ public class EelController : MonoBehaviour, IElectrifiable
     {
         InputManager.OnMoveAction += GetMoveValue;
         InputManager.OnActAction += SetRetract;
+
+        EelSegment.OnEelSegmentAttacked += HandleAttack;
     }
 
     void OnDestroy()
     {
         InputManager.OnMoveAction -= GetMoveValue;
         InputManager.OnActAction -= SetRetract;
+
+        EelSegment.OnEelSegmentAttacked -= HandleAttack;
     }
 
     void Start()
@@ -41,6 +46,14 @@ public class EelController : MonoBehaviour, IElectrifiable
         Move();
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(collision.gameObject);
+        }
+    }
+
     void GetMoveValue(Vector2 input)
     {
         _currentDirection = input;
@@ -51,9 +64,14 @@ public class EelController : MonoBehaviour, IElectrifiable
         _isRetracting = value;
     }
 
+    void HandleAttack()
+    {
+        _fullRetract = true;
+    }
+
     void Move()
     {
-        if(_isRetracting)
+        if(_isRetracting || _fullRetract)
         {
             if(_segments.Count == 0)
             {
@@ -76,6 +94,7 @@ public class EelController : MonoBehaviour, IElectrifiable
                 else
                 {
                     _lastSegmentPosition = _tail.transform.position;
+                    _fullRetract = false;
                 }
             }
         }

@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class EelSegment : MonoBehaviour, IElectrifiable
 {
+    public static event Action OnEelSegmentAttacked;
+
     public Color DefaultColor, ElectrifiedColor;
 
     [SerializeField] Collider2D _collider;
@@ -13,13 +16,20 @@ public class EelSegment : MonoBehaviour, IElectrifiable
         DefaultColor = _spriteRenderer.color;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.GetComponent<EelController>()) { return; }
+        if(collision.gameObject.GetComponent<EelController>()) { return; }
 
-        if(_isElectrified)
+        if(collision.gameObject.CompareTag("Enemy"))
         {
-Debug.Log("ZAP!");
+            if(_isElectrified)
+            {
+                Destroy(collision.gameObject);
+            }
+            else
+            {
+                OnEelSegmentAttacked?.Invoke();
+            }
         }
     }
 
@@ -40,12 +50,19 @@ Debug.Log("ZAP!");
     {
         _isElectrified = true;
 
-        _spriteRenderer.color = ElectrifiedColor;
+        if(_spriteRenderer)
+        {
+            _spriteRenderer.color = ElectrifiedColor;
+        }
     }
 
     public void Delectrify()
     {
         _isElectrified = false;
-        _spriteRenderer.color = DefaultColor;
+
+        if(_spriteRenderer)
+        {
+            _spriteRenderer.color = DefaultColor;
+        }
     }
 }
