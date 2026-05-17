@@ -5,8 +5,9 @@ public class Enemy : MonoBehaviour
 {
     public static event Action<Enemy> OnEnemyDestroyed;
 
-    void OnDestroy()
+    public void DealDamage()
     {
         OnEnemyDestroyed?.Invoke(this);
+        Destroy(gameObject);
     }
 }

@@ -15,11 +15,11 @@ public class EelSegment : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<EelController>()) { return; }
 
-        if(collision.gameObject.CompareTag("Enemy"))
+        if(collision.gameObject.TryGetComponent(out Enemy enemy))
         {
             if(_isElectrified)
             {
-                Destroy(collision.gameObject);
+                enemy.DealDamage();
             }
             else
             {

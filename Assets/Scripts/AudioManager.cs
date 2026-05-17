@@ -9,12 +9,18 @@ public class AudioManager : MonoBehaviour
 
     void OnEnable()
     {
+        EelController.OnEelHurtSFX += PlaySound;
+        EelController.OnEelElectrifiedSFX += PlaySound;
+
         Collectable.OnAnyCollectableCollected += PlayCollectableSFX;
         Enemy.OnEnemyDestroyed += PlayEnemyDeathSFX;
     }
 
     void OnDisable()
     {
+        EelController.OnEelHurtSFX -= PlaySound;
+        EelController.OnEelElectrifiedSFX -= PlaySound;
+
         Collectable.OnAnyCollectableCollected -= PlayCollectableSFX;
         Enemy.OnEnemyDestroyed -= PlayEnemyDeathSFX;
     }

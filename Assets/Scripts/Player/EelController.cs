@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EelController : MonoBehaviour, IElectrifiable
 {
+    public static event Action<AudioClip, float> OnEelHurtSFX;
+    public static event Action<AudioClip, float> OnEelElectrifiedSFX;
+
     [SerializeField] float _moveSpeed = 5f, _retractSpeed = 7.5f;
     [SerializeField] Rigidbody2D _rigidBody;
     [SerializeField] EelSegment _segmentPrefab, _tailPrefab;
@@ -14,13 +18,13 @@ public class EelController : MonoBehaviour, IElectrifiable
     [SerializeField] AudioSource _audioSource;
     [SerializeField] AudioClip _hurtSFX, _elecSFX, _retractSFX;
     [SerializeField] float _hurtVol = 1f, _elecVol = 1f, _retractVol = 1f;
-    [SerializeField] float _retractStartPitch = 0.5f, _retractMaxPitch = 1.5f, _retractPitchIncrease = 0.1f;
+    [SerializeField] float _retractStartPitch = 0.5f, _relocateMaxPitch = 1.5f, _retractPitchIncrease = 0.1f;
 
     WaitForSeconds _elecDelayWait = new(0.01f);
 
     Vector2 _currentDirection = Vector2.zero;
     bool _isRetracting, _isElectrified, _fullRetract, _isRelocating;
-    bool _isPlayingRetractEffect;
+    bool _isPlayingRetractSFX, _isPlayingRelocateSFX;
 
     Vector2 _lastSegmentPosition;
     EelSegment _tail;
@@ -61,9 +65,9 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy"))
+        if(collision.gameObject.TryGetComponent(out Enemy enemy))
         {
-            Destroy(collision.gameObject);
+            enemy.DealDamage();
         }
     }
 
@@ -71,15 +75,36 @@ public class EelController : MonoBehaviour, IElectrifiable
     {
         if(collision.TryGetComponent(out EelHome eelHome))
         {
-            if(_isRetracting) { return; }
+            if(_isRetracting || _fullRetract) { return; }
 
             if(eelHome != _currentHome)
             {
                 _isRelocating = true;
                 _currentHome = eelHome;
                 transform.position = _currentHome.transform.position;
+
+                StartRelocateSFX();
             }
         }
+    }
+
+    void StartRelocateSFX()
+    {
+        if(_isPlayingRelocateSFX) { return; }
+
+        _isPlayingRelocateSFX = true;
+        _audioSource.clip = _retractSFX;
+        _audioSource.volume = _retractVol;
+        _audioSource.pitch = _relocateMaxPitch;
+        _audioSource.loop = true;
+        _audioSource.Play();
+    }
+
+    void StopRelocateSFX()
+    {
+        _audioSource.Stop();
+        _audioSource.pitch = 1f;
+        _isPlayingRelocateSFX = false;
     }
 
     void GetMoveValue(Vector2 input)
@@ -112,9 +137,9 @@ public class EelController : MonoBehaviour, IElectrifiable
     {
         _isRetracting = value;
 
-        if(_isRetracting && !_isPlayingRetractEffect)
+        if(_isRetracting && !_isPlayingRetractSFX && _segments.Count > 0)
         {
-            _isPlayingRetractEffect = true;
+            _isPlayingRetractSFX = true;
             _audioSource.clip = _retractSFX;
             _audioSource.volume = _retractVol;
             _audioSource.pitch = _retractStartPitch;
@@ -122,17 +147,17 @@ public class EelController : MonoBehaviour, IElectrifiable
             _audioSource.Play();
         }
 
-        if(!_isRetracting && _isPlayingRetractEffect)
+        if((!_isRetracting || _segments.Count == 0) && _isPlayingRetractSFX)
         {
             _audioSource.Stop();
             _audioSource.pitch = 1f;
-            _isPlayingRetractEffect = false;
+            _isPlayingRetractSFX = false;
         }
     }
 
     void HandleAttack()
     {
-        if(_isRelocating) { return; }
+        if(_isRelocating || _fullRetract) { return; }
 
         if(_currentCoroutine != null)
         {
@@ -144,7 +169,7 @@ public class EelController : MonoBehaviour, IElectrifiable
 
         if(_hurtSFX)
         {
-            _audioSource.PlayOneShot(_hurtSFX, _hurtVol);
+            OnEelHurtSFX?.Invoke(_hurtSFX, _hurtVol);
         }
     }
 
@@ -157,6 +182,7 @@ public class EelController : MonoBehaviour, IElectrifiable
                 _tail.transform.SetPositionAndRotation(_currentHome.transform.position, _currentHome.transform.rotation);
                 _lastSegmentPosition = _tail.transform.position;
                 _isRelocating = false;
+                StopRelocateSFX();
                 return;
             }
 
@@ -173,11 +199,14 @@ public class EelController : MonoBehaviour, IElectrifiable
                     _tail.transform.SetPositionAndRotation(_currentHome.transform.position, _currentHome.transform.rotation);
                     _lastSegmentPosition = _tail.transform.position;
                     _isRelocating = false;
+                    StopRelocateSFX();
                     return;
                 }
                 else
                 {
                     _tail.transform.rotation = _segments[0].transform.rotation;
+
+                    _audioSource.pitch -= _retractPitchIncrease;
                 }
             }
         }
@@ -201,10 +230,8 @@ public class EelController : MonoBehaviour, IElectrifiable
                 if(_segments.Count > 0)
                 {
                     _lastSegmentPosition = _segments[^1].transform.position;
-                    if(_audioSource.pitch < _retractMaxPitch)
-                    {
-                        _audioSource.pitch += _retractPitchIncrease;
-                    }
+
+                    _audioSource.pitch += _retractPitchIncrease;
                 }
                 else
                 {
@@ -268,7 +295,7 @@ public class EelController : MonoBehaviour, IElectrifiable
 
         if(_elecSFX)
         {
-            _audioSource.PlayOneShot(_elecSFX, _elecVol);
+            OnEelElectrifiedSFX?.Invoke(_elecSFX, _elecVol);
         }
 
         _currentCoroutine = StartCoroutine(ElectrifySegmentsRoutine());
@@ -281,7 +308,7 @@ public class EelController : MonoBehaviour, IElectrifiable
             _segments[i - 1].Electrify();
             if(_elecSFX)
             {
-                _audioSource.PlayOneShot(_elecSFX, _elecVol);
+                OnEelElectrifiedSFX?.Invoke(_elecSFX, _elecVol);
             }
             yield return _elecDelayWait;
         }
@@ -290,7 +317,7 @@ public class EelController : MonoBehaviour, IElectrifiable
 
         if(_elecSFX)
         {
-            _audioSource.PlayOneShot(_elecSFX, _elecVol);
+            OnEelElectrifiedSFX?.Invoke(_elecSFX, _elecVol);
         }
 
         _tail.Electrify();

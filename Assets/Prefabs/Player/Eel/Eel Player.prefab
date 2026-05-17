@@ -248,9 +248,9 @@ MonoBehaviour:
   _hurtVol: 1
   _elecVol: 1
   _retractVol: 1
-  _retractStartPitch: 0.5
-  _retractMaxPitch: 1.5
-  _retractPitchIncrease: 0.1
+  _retractStartPitch: 0.9
+  _relocateMaxPitch: 1.5
+  _retractPitchIncrease: 0.02
 --- !u!1 &7331619430725805726
 GameObject:
   m_ObjectHideFlags: 0
