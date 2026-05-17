@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] float _spawnRate =  7.5f;
-    [SerializeField] float _maxRandomStart = 12.5f;
+    [SerializeField] float _maxRandomStart = 6.5f, _maxRandomRespawn = 12.5f;
     [SerializeField] Enemy _enemyPrefab;
 
     Enemy _currentEnemy;
@@ -48,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemy()
     {
         _currentEnemy = Instantiate(_enemyPrefab, transform.position, transform.rotation);
-        _timer -= _spawnRate + Random.Range(0, _maxRandomStart);
+        _timer -= _spawnRate + Random.Range(0, _maxRandomRespawn);
     }
 
     void CheckCurrentEnemy(Enemy enemy)
