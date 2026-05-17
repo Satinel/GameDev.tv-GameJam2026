@@ -11,11 +11,16 @@ public class EelController : MonoBehaviour, IElectrifiable
     [SerializeField] float _bufferSpace = 0.25f;
     [SerializeField] Animator _animator;
     [SerializeField] float _elecDelay = 0.1f;
+    [SerializeField] AudioSource _audioSource;
+    [SerializeField] AudioClip _hurtSFX, _elecSFX, _retractSFX;
+    [SerializeField] float _hurtVol = 1f, _elecVol = 1f, _retractVol = 1f;
+    [SerializeField] float _retractStartPitch = 0.5f, _retractMaxPitch = 1.5f, _retractPitchIncrease = 0.1f;
 
     WaitForSeconds _elecDelayWait = new(0.01f);
 
     Vector2 _currentDirection = Vector2.zero;
     bool _isRetracting, _isElectrified, _fullRetract, _isRelocating;
+    bool _isPlayingRetractEffect;
 
     Vector2 _lastSegmentPosition;
     EelSegment _tail;
@@ -106,6 +111,23 @@ public class EelController : MonoBehaviour, IElectrifiable
     void SetRetract(bool value)
     {
         _isRetracting = value;
+
+        if(_isRetracting && !_isPlayingRetractEffect)
+        {
+            _isPlayingRetractEffect = true;
+            _audioSource.clip = _retractSFX;
+            _audioSource.volume = _retractVol;
+            _audioSource.pitch = _retractStartPitch;
+            _audioSource.loop = true;
+            _audioSource.Play();
+        }
+
+        if(!_isRetracting && _isPlayingRetractEffect)
+        {
+            _audioSource.Stop();
+            _audioSource.pitch = 1f;
+            _isPlayingRetractEffect = false;
+        }
     }
 
     void HandleAttack()
@@ -119,6 +141,11 @@ public class EelController : MonoBehaviour, IElectrifiable
         _currentCoroutine = null;
 
         _fullRetract = true;
+
+        if(_hurtSFX)
+        {
+            _audioSource.PlayOneShot(_hurtSFX, _hurtVol);
+        }
     }
 
     void Move()
@@ -174,12 +201,17 @@ public class EelController : MonoBehaviour, IElectrifiable
                 if(_segments.Count > 0)
                 {
                     _lastSegmentPosition = _segments[^1].transform.position;
+                    if(_audioSource.pitch < _retractMaxPitch)
+                    {
+                        _audioSource.pitch += _retractPitchIncrease;
+                    }
                 }
                 else
                 {
                     _lastSegmentPosition = _tail.transform.position;
                     transform.position = _currentHome.transform.position;
                     _fullRetract = false;
+                    _audioSource.pitch = 1f;
                 }
             }
         }
@@ -234,6 +266,11 @@ public class EelController : MonoBehaviour, IElectrifiable
             StopCoroutine(_currentCoroutine);
         }
 
+        if(_elecSFX)
+        {
+            _audioSource.PlayOneShot(_elecSFX, _elecVol);
+        }
+
         _currentCoroutine = StartCoroutine(ElectrifySegmentsRoutine());
     }
 
@@ -242,10 +279,20 @@ public class EelController : MonoBehaviour, IElectrifiable
         for (int i = _segments.Count; i > 0; i--)
         {
             _segments[i - 1].Electrify();
+            if(_elecSFX)
+            {
+                _audioSource.PlayOneShot(_elecSFX, _elecVol);
+            }
             yield return _elecDelayWait;
         }
 
         yield return _elecDelayWait;
+
+        if(_elecSFX)
+        {
+            _audioSource.PlayOneShot(_elecSFX, _elecVol);
+        }
+
         _tail.Electrify();
         if(_currentHome)
         {
