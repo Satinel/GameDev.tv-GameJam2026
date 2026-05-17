@@ -15,14 +15,13 @@ public class EelController : MonoBehaviour, IElectrifiable
     WaitForSeconds _elecDelayWait = new(0.01f);
 
     Vector2 _currentDirection = Vector2.zero;
-    bool _isRetracting = false;
-    bool _isElectrified = false;
-    bool _fullRetract = false;
+    bool _isRetracting, _isElectrified, _fullRetract, _isRelocating;
 
     Vector2 _lastSegmentPosition;
     EelSegment _tail;
     List<EelSegment> _segments = new();
     Coroutine _currentCoroutine;
+    EelHome _currentHome;
 
     static readonly int ELEC_HASH = Animator.StringToHash("Electrified");
     static readonly int MOVE_HASH = Animator.StringToHash("Moving");
@@ -63,6 +62,21 @@ public class EelController : MonoBehaviour, IElectrifiable
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.TryGetComponent(out EelHome eelHome))
+        {
+            if(_isRetracting) { return; }
+
+            if(eelHome != _currentHome)
+            {
+                _isRelocating = true;
+                _currentHome = eelHome;
+                transform.position = _currentHome.transform.position;
+            }
+        }
+    }
+
     void GetMoveValue(Vector2 input)
     {
         _currentDirection = input;
@@ -96,6 +110,8 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     void HandleAttack()
     {
+        if(_isRelocating) { return; }
+
         if(_currentCoroutine != null)
         {
             StopCoroutine(_currentCoroutine);
@@ -107,11 +123,43 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     void Move()
     {
-        if(_isRetracting || _fullRetract)
+        if(_isRelocating)
         {
             if(_segments.Count == 0)
             {
-                transform.position = _tail.transform.position;
+                _tail.transform.SetPositionAndRotation(_currentHome.transform.position, _currentHome.transform.rotation);
+                _lastSegmentPosition = _tail.transform.position;
+                _isRelocating = false;
+                return;
+            }
+
+            _rigidBody.linearVelocity = Vector2.zero;
+            _tail.transform.position = Vector2.MoveTowards(_tail.transform.position, _segments[0].transform.position, _retractSpeed * Time.deltaTime);
+            if(Vector2.Distance(_tail.transform.position, _segments[0].transform.position) <= Mathf.Epsilon)
+            {
+                _tail.transform.position = _segments[0].transform.position;
+                GameObject discardedSegment = _segments[0].gameObject;
+                _segments.Remove(_segments[0]);
+                Destroy(discardedSegment);
+                if(_segments.Count == 0)
+                {
+                    _tail.transform.SetPositionAndRotation(_currentHome.transform.position, _currentHome.transform.rotation);
+                    _lastSegmentPosition = _tail.transform.position;
+                    _isRelocating = false;
+                    return;
+                }
+                else
+                {
+                    _tail.transform.rotation = _segments[0].transform.rotation;
+                }
+            }
+        }
+        else if(_isRetracting || _fullRetract)
+        {
+            if(_segments.Count == 0)
+            {
+                transform.position = _currentHome.transform.position;
+                _fullRetract = false;
                 return;
             }
 
@@ -130,6 +178,7 @@ public class EelController : MonoBehaviour, IElectrifiable
                 else
                 {
                     _lastSegmentPosition = _tail.transform.position;
+                    transform.position = _currentHome.transform.position;
                     _fullRetract = false;
                 }
             }
@@ -174,6 +223,7 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     public void Electrify()
     {
+        if(!gameObject.activeInHierarchy) { return; }
         if(_isElectrified) { return; }
 
         _isElectrified = true;
@@ -195,12 +245,15 @@ public class EelController : MonoBehaviour, IElectrifiable
             yield return _elecDelayWait;
         }
 
+        yield return _elecDelayWait;
         _tail.Electrify();
         _currentCoroutine = null;
     }
 
     public void Delectrify()
     {
+        if(!gameObject.activeInHierarchy) { return; }   // I feel like this is only an issue because I'm using an interface but I'd rather not focus on dissecting that during a game jam
+
         _isElectrified = false;
         _animator.SetBool(ELEC_HASH, _isElectrified);
 
@@ -220,6 +273,7 @@ public class EelController : MonoBehaviour, IElectrifiable
             yield return _elecDelayWait;
         }
 
+        yield return _elecDelayWait;
         _tail.Delectrify();
         _currentCoroutine = null;
     }
