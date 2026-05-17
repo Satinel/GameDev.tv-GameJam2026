@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EelHome : MonoBehaviour, IElectrifiable
 {
-    [SerializeField] GameObject _switch;
+    [SerializeField] Switch _switch;
 
     bool _isElectrified;
 
@@ -11,12 +11,12 @@ public class EelHome : MonoBehaviour, IElectrifiable
         if(_isElectrified) { return; }
 
         _isElectrified = true;
-        _switch.SetActive(false);
+        _switch.Electrify();
     }
 
     public void Delectrify()
     {
         _isElectrified = false;
-        _switch.SetActive(true);
+        _switch.Delectrify();
     }
 }
