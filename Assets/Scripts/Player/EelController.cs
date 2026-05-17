@@ -247,6 +247,10 @@ public class EelController : MonoBehaviour, IElectrifiable
 
         yield return _elecDelayWait;
         _tail.Electrify();
+        if(_currentHome)
+        {
+            _currentHome.Electrify();
+        }
         _currentCoroutine = null;
     }
 
@@ -275,6 +279,10 @@ public class EelController : MonoBehaviour, IElectrifiable
 
         yield return _elecDelayWait;
         _tail.Delectrify();
+        if(_currentHome)
+        {
+            _currentHome.Delectrify();
+        }
         _currentCoroutine = null;
     }
 }
