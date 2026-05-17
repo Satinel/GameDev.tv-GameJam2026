@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 11fe666e43404de438d4aff70bd1abad
+guid: c2230b8d9cbd5da489f809e0a823f8a8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7528523532313944530
-    second: EelHead-Sheet_0
+      213: -4195896666139037166
+    second: EelHeadMouth-Sheet_0
   - first:
-      213: -4498379237334423345
-    second: EelHead-Sheet_1
+      213: 3063874503936854840
+    second: EelHeadMouth-Sheet_1
   - first:
-      213: -8327106618883542048
-    second: EelHead-Sheet_2
+      213: 6301698941177716791
+    second: EelHeadMouth-Sheet_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -132,7 +132,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EelHead-Sheet_0
+      name: EelHeadMouth-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -147,14 +147,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d1edbac340ba7860800000000000000
-      internalID: 7528523532313944530
+      spriteID: 2127984863e25c5c0800000000000000
+      internalID: -4195896666139037166
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EelHead-Sheet_1
+      name: EelHeadMouth-Sheet_1
       rect:
         serializedVersion: 2
         x: 128
@@ -169,14 +169,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fc860b5caeb8291c0800000000000000
-      internalID: -4498379237334423345
+      spriteID: 83b4883d0a1158a20800000000000000
+      internalID: 3063874503936854840
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EelHead-Sheet_2
+      name: EelHeadMouth-Sheet_2
       rect:
         serializedVersion: 2
         x: 256
@@ -191,14 +191,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0e374a626ac207c80800000000000000
-      internalID: -8327106618883542048
+      spriteID: 7306a569cc1247750800000000000000
+      internalID: 6301698941177716791
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EelHead-Sheet_3
+      name: EelHeadMouth-Sheet_3
       rect:
         serializedVersion: 2
         x: 384
@@ -213,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8470066177e893946ba73c69687a4a4b
-      internalID: 673792039
+      spriteID: d8af22de3caa2ef499aa24d6227a1685
+      internalID: 1507392029
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EelHead-Sheet_4
+      name: EelHeadMouth-Sheet_4
       rect:
         serializedVersion: 2
         x: 512
@@ -235,14 +235,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91ac820f895e5924c9c77fa8fe26e582
-      internalID: 1911185934
+      spriteID: d03ea53b514f96d4f98212c1cf253e95
+      internalID: -2114537205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EelHead-Sheet_5
+      name: EelHeadMouth-Sheet_5
       rect:
         serializedVersion: 2
         x: 640
@@ -257,8 +257,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afc7991a712246a46988102e05522541
-      internalID: -37904933
+      spriteID: 3bce896d9860c29439ccf4bd6f377418
+      internalID: -255933849
       vertices: []
       indices: 
       edges: []
@@ -267,7 +267,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e9e2fd184e8eb3c439cdfe115362ac7e
+    spriteID: 13c58ae9ef2576b4ab77918a1f77b00b
     internalID: 0
     vertices: []
     indices: 
@@ -279,12 +279,12 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      EelHead-Sheet_0: 7528523532313944530
-      EelHead-Sheet_1: -4498379237334423345
-      EelHead-Sheet_2: -8327106618883542048
-      EelHead-Sheet_3: 673792039
-      EelHead-Sheet_4: 1911185934
-      EelHead-Sheet_5: -37904933
+      EelHeadMouth-Sheet_0: -4195896666139037166
+      EelHeadMouth-Sheet_1: 3063874503936854840
+      EelHeadMouth-Sheet_2: 6301698941177716791
+      EelHeadMouth-Sheet_3: 1507392029
+      EelHeadMouth-Sheet_4: -2114537205
+      EelHeadMouth-Sheet_5: -255933849
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
