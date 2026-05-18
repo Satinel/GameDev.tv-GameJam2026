@@ -14,6 +14,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Transform[] _rendererParents;
     [SerializeField] float _startWait = 0.25f;
 
+    [SerializeField] AudioSource _audioSource;
+    [SerializeField] float _minPitch = 0.5f, _maxPitch = 1.5f, _pitchIncrease = 0.1f;
+
     WaitForSeconds _startWaitDelay = new(0.1f);
 
     void Awake()
@@ -55,6 +58,8 @@ public class LevelManager : MonoBehaviour
             }
         }
 
+        PlayAudioSource();
+
         for(int i = 0; i < maxIndex; i++)
         {
             foreach(List<SpriteRenderer> list in itemsToEnable)
@@ -64,13 +69,30 @@ public class LevelManager : MonoBehaviour
                     list[i].enabled = true;
                 }
             }
+            _audioSource.pitch += _pitchIncrease;
             yield return _startWaitDelay;
         }
 
+        StopAudioSource();
         yield return null;
 
         LevelReady();
     }
+
+    void PlayAudioSource()
+    {
+        if(_audioSource.isPlaying) { return; }
+
+        _audioSource.pitch = _minPitch;
+        _audioSource.Play();
+    }
+
+    void StopAudioSource()
+    {
+        _audioSource.Stop();
+        _audioSource.pitch = _minPitch;
+    }
+
 
     void LevelReady()
     {

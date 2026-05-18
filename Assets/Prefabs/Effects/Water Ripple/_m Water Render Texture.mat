@@ -54,7 +54,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _NoiseScale: 3
-    - _RefractionStrength: 0.3
+    - _RefractionStrength: -0.15
     - _WaterSpeed: 0.1
     m_Colors:
     - White: {r: 1, g: 1, b: 1, a: 1}

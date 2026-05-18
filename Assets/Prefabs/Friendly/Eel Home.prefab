@@ -116,7 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95adf6d19106d784b8fd9f4d033dc73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EelHome
-  _switch: {fileID: 4691224720600162576}
+  _switchesArray:
+  - {fileID: 4691224720600162576}
 --- !u!1 &3452746420660866950
 GameObject:
   m_ObjectHideFlags: 0
