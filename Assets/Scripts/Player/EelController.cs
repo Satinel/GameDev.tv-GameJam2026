@@ -25,6 +25,7 @@ public class EelController : MonoBehaviour, IElectrifiable
     Vector2 _currentDirection = Vector2.zero;
     bool _isRetracting, _isElectrified, _fullRetract, _isRelocating;
     bool _isPlayingRetractSFX, _isPlayingRelocateSFX;
+    bool _isLevelStarted;
 
     Vector2 _lastSegmentPosition;
     EelSegment _tail;
@@ -41,6 +42,9 @@ public class EelController : MonoBehaviour, IElectrifiable
         InputManager.OnActAction += SetRetract;
 
         EelSegment.OnEelSegmentAttacked += HandleAttack;
+
+        LevelManager.OnLevelStarted += SetLevelStarted;
+        LevelManager.OnLevelFinished += SetLevelFinished;
     }
 
     void OnDestroy()
@@ -49,6 +53,9 @@ public class EelController : MonoBehaviour, IElectrifiable
         InputManager.OnActAction -= SetRetract;
 
         EelSegment.OnEelSegmentAttacked -= HandleAttack;
+
+        LevelManager.OnLevelStarted -= SetLevelStarted;
+        LevelManager.OnLevelFinished -= SetLevelFinished;
     }
 
     void Start()
@@ -60,6 +67,8 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     void Update()
     {
+        if(!_isLevelStarted) { return; }
+
         Move();
     }
 
@@ -111,6 +120,8 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     void GetMoveValue(Vector2 input)
     {
+        if(!_isLevelStarted) { return; }
+
         _currentDirection = input;
 
         if(input == Vector2.zero)
@@ -137,6 +148,8 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     void SetRetract(bool value)
     {
+        if(!_isLevelStarted) { return; }
+
         _isRetracting = value;
 
         if(_isRetracting && !_isPlayingRetractSFX && _segments.Count > 0)
@@ -159,7 +172,7 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     void HandleAttack()
     {
-        if(_isRelocating || _fullRetract) { return; }
+        if(!_isLevelStarted || _isRelocating || _fullRetract) { return; }
 
         if(_currentCoroutine != null)
         {
@@ -173,6 +186,16 @@ public class EelController : MonoBehaviour, IElectrifiable
         {
             OnEelHurtSFX?.Invoke(_hurtSFX, _hurtVol);
         }
+    }
+
+    void SetLevelStarted()
+    {
+        _isLevelStarted = true;
+    }
+
+    void SetLevelFinished()
+    {
+        _isLevelStarted = false;
     }
 
     void Move()

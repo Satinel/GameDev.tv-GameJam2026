@@ -5564,6 +5564,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3033112896239022005, guid: 2d2a75a82f069fa468d1dab062794da8, type: 3}
   m_PrefabInstance: {fileID: 489791702}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &491958779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 491958781}
+  - component: {fileID: 491958780}
+  m_Layer: 0
+  m_Name: Level Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &491958780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491958779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3110d8306a4d6b4aaa61aab3ca276fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
+  _startUI: {fileID: 0}
+  _successUI: {fileID: 0}
+--- !u!4 &491958781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491958779}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &506366716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22576,7 +22622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7456259758628309311, guid: 718228f3ed2120e4995039066c03fa24, type: 3}
       propertyPath: m_Name
-      value: AudioManager
+      value: Audio Manager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22590,7 +22636,6 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 7293870161593459189}
-  - {fileID: 762712090154438206}
   - {fileID: 5239017409271639067}
   - {fileID: 356184326}
   - {fileID: 300124382}
@@ -22600,5 +22645,7 @@ SceneRoots:
   - {fileID: 1249033774}
   - {fileID: 1302202503098852970}
   - {fileID: 5675432623739209239}
-  - {fileID: 8520693974706147517}
   - {fileID: 1409986161}
+  - {fileID: 491958781}
+  - {fileID: 762712090154438206}
+  - {fileID: 8520693974706147517}

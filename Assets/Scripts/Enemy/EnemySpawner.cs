@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     Enemy _currentEnemy;
 
     float _timer;
+    bool _isLevelStarted;
 
     void Awake()
     {
@@ -25,17 +26,21 @@ public class EnemySpawner : MonoBehaviour
 
     void OnEnable()
     {
+        LevelManager.OnLevelStarted += SetLevelStarted;
         Enemy.OnEnemyDestroyed += CheckCurrentEnemy;
+        LevelManager.OnLevelFinished += SetLevelFinished;
     }
 
     void OnDisable()
     {
+        LevelManager.OnLevelStarted -= SetLevelStarted;
         Enemy.OnEnemyDestroyed -= CheckCurrentEnemy;
+        LevelManager.OnLevelFinished -= SetLevelFinished;
     }
 
     void Update()
     {
-        if(_currentEnemy) { return; }
+        if(!_isLevelStarted || _currentEnemy) { return; }
 
         _timer += Time.deltaTime;
 
@@ -49,6 +54,16 @@ public class EnemySpawner : MonoBehaviour
     {
         _currentEnemy = Instantiate(_enemyPrefab, transform.position, transform.rotation);
         _timer -= _spawnRate + Random.Range(0, _maxRandomRespawn);
+    }
+
+    void SetLevelStarted()
+    {
+        _isLevelStarted = true;
+    }
+
+    void SetLevelFinished()
+    {
+        _isLevelStarted = false;
     }
 
     void CheckCurrentEnemy(Enemy enemy)

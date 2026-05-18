@@ -4,8 +4,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] AudioSource _audioSource;
-    [SerializeField] AudioClip _collectableSFX, _enemyDeathSFX;
-    [SerializeField] float _collectableVol = 1f, _enemyDeathVol = 1f;
+    [SerializeField] AudioClip _collectableSFX, _enemyDeathSFX, _goalJingleSFX;
+    [SerializeField] float _collectableVol = 1f, _enemyDeathVol = 1f, _goalJingleVol = 1f;
 
     void OnEnable()
     {
@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
 
         Collectable.OnAnyCollectableCollected += PlayCollectableSFX;
         Enemy.OnEnemyDestroyed += PlayEnemyDeathSFX;
+
+        Goal.OnGoalAchieved += PlayGoalJingleSFX;
     }
 
     void OnDisable()
@@ -23,6 +25,8 @@ public class AudioManager : MonoBehaviour
 
         Collectable.OnAnyCollectableCollected -= PlayCollectableSFX;
         Enemy.OnEnemyDestroyed -= PlayEnemyDeathSFX;
+
+        Goal.OnGoalAchieved -= PlayGoalJingleSFX;
     }
 
     void PlaySound(AudioClip clip, float volume)
@@ -41,5 +45,10 @@ public class AudioManager : MonoBehaviour
     void PlayEnemyDeathSFX(Enemy _)
     {
         PlaySound(_enemyDeathSFX, _enemyDeathVol);
+    }
+
+    void PlayGoalJingleSFX()
+    {
+        PlaySound(_goalJingleSFX, _goalJingleVol);
     }
 }
