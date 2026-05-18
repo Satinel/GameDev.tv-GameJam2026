@@ -55,7 +55,7 @@ TagManager:
   - name: Foreground
     uniqueID: 3474335723
     locked: 0
-  - name: RenderTexture
+  - name: WorldUI
     uniqueID: 924787095
     locked: 0
   m_RenderingLayers:

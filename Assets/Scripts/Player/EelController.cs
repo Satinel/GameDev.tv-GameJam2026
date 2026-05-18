@@ -101,6 +101,7 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     void StartRelocateSFX()
     {
+        if(!_isLevelStarted) { return; }
         if(_isPlayingRelocateSFX) { return; }
 
         _isPlayingRelocateSFX = true;
@@ -196,6 +197,9 @@ public class EelController : MonoBehaviour, IElectrifiable
     void SetLevelFinished()
     {
         _isLevelStarted = false;
+        _currentDirection = Vector2.zero;
+        _rigidBody.linearVelocity = Vector2.zero;
+        _audioSource.Stop();
     }
 
     void Move()

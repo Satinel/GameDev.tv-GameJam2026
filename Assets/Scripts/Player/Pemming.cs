@@ -49,5 +49,6 @@ public class Pemming : MonoBehaviour
     void SetLevelFinished()
     {
         _isLevelStarted = false;
+        _animator.SetBool(MOVE_HASH, false);
     }
 }
