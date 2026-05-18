@@ -126,6 +126,17 @@ MonoBehaviour:
   _winCanvas: {fileID: 5654658109583805552}
   _startButton: {fileID: 7162158853253881393}
   _nextLevelButton: {fileID: 9137236380426499109}
+  _rendererParents:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _startWait: 0.075
 --- !u!1 &1982941387504746395
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,7 +534,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5010425440204560727}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 5958193065156883908}

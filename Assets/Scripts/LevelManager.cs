@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -9,6 +11,15 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] Canvas _startCanvas, _winCanvas;
     [SerializeField] GameObject _startButton, _nextLevelButton;
+    [SerializeField] Transform[] _rendererParents;
+    [SerializeField] float _startWait = 0.25f;
+
+    WaitForSeconds _startWaitDelay = new(0.1f);
+
+    void Awake()
+    {
+        _startWaitDelay = new(_startWait);
+    }
 
     void OnEnable()
     {
@@ -20,8 +31,50 @@ public class LevelManager : MonoBehaviour
         Goal.OnGoalAchieved -= Goal_OnGoalAchieved;
     }
 
-    void Start()
+    IEnumerator Start()
     {
+        List<SpriteRenderer>[] itemsToEnable = new List<SpriteRenderer>[_rendererParents.Length];
+
+        for(int i = 0; i < _rendererParents.Length; i++)
+        {
+            var sprites = _rendererParents[i].GetComponentsInChildren<SpriteRenderer>(true);
+            itemsToEnable[i] = new List<SpriteRenderer>(sprites);
+            foreach(SpriteRenderer renderer in sprites)
+            {
+                renderer.enabled = false;
+            }
+        }
+
+        int maxIndex = 0;
+
+        foreach(var item in itemsToEnable)
+        {
+            if(item.Count > maxIndex)
+            {
+                maxIndex = item.Count;
+            }
+        }
+
+        for(int i = 0; i < maxIndex; i++)
+        {
+            foreach(List<SpriteRenderer> list in itemsToEnable)
+            {
+                if(list.Count > i)
+                {
+                    list[i].enabled = true;
+                }
+            }
+            yield return _startWaitDelay;
+        }
+
+        yield return null;
+
+        LevelReady();
+    }
+
+    void LevelReady()
+    {
+        _startCanvas.enabled = true;
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(_startButton);
     }
