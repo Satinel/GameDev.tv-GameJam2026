@@ -65,6 +65,8 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if(_fullRetract) { return; }
+
         if(collision.gameObject.TryGetComponent(out Enemy enemy))
         {
             enemy.DealDamage();
@@ -73,10 +75,10 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if(_isRetracting || _fullRetract) { return; }
+
         if(collision.TryGetComponent(out EelHome eelHome))
         {
-            if(_isRetracting || _fullRetract) { return; }
-
             if(eelHome != _currentHome)
             {
                 _isRelocating = true;
