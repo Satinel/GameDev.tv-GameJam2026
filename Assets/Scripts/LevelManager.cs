@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -13,7 +12,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject _startButton, _nextLevelButton;
     [SerializeField] Transform[] _rendererParents;
     [SerializeField] float _startWait = 0.25f;
-
+    [SerializeField] SceneTransitions _sceneTransitions;
     [SerializeField] AudioSource _audioSource;
     [SerializeField] float _minPitch = 0.5f, _pitchIncrease = 0.1f;
 
@@ -122,11 +121,13 @@ public class LevelManager : MonoBehaviour
 
     public void NextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        _winCanvas.enabled = false;
+        _sceneTransitions.RequestNextLevel();
     }
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        _winCanvas.enabled = false;
+        _sceneTransitions.RequestRestartLevel();
     }
 }

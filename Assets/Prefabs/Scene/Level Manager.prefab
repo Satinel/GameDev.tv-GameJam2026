@@ -84,8 +84,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7721289468389542562}
-  - component: {fileID: 5662108834224875254}
   - component: {fileID: 5057320171230352859}
+  - component: {fileID: 5662108834224875254}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -107,41 +107,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 132827727495827126}
+  - {fileID: 6012976905746709758}
   - {fileID: 3700540520035063598}
   - {fileID: 6796698037147173301}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5662108834224875254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1671785385668943807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3110d8306a4d6b4aaa61aab3ca276fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  _startCanvas: {fileID: 2662748082037353773}
-  _winCanvas: {fileID: 5654658109583805552}
-  _startButton: {fileID: 7162158853253881393}
-  _nextLevelButton: {fileID: 9137236380426499109}
-  _rendererParents:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _startWait: 0.075
-  _audioSource: {fileID: 5057320171230352859}
-  _minPitch: 0.5
-  _maxPitch: 5
-  _pitchIncrease: 0.02
 --- !u!82 &5057320171230352859
 AudioSource:
   m_ObjectHideFlags: 0
@@ -239,6 +209,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5662108834224875254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671785385668943807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3110d8306a4d6b4aaa61aab3ca276fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
+  _startCanvas: {fileID: 2662748082037353773}
+  _winCanvas: {fileID: 5654658109583805552}
+  _startButton: {fileID: 7162158853253881393}
+  _nextLevelButton: {fileID: 9137236380426499109}
+  _rendererParents:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _startWait: 0.075
+  _sceneTransitions: {fileID: 2323617771891182850}
+  _audioSource: {fileID: 5057320171230352859}
+  _minPitch: 0.5
+  _pitchIncrease: 0.02
 --- !u!1 &1982941387504746395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,4 +1340,81 @@ RectTransform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1819693030246582469, guid: 5c055c8642f31a34da87cd5078337225, type: 3}
   m_PrefabInstance: {fileID: 8801652894903817972}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8878254148852654133
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7721289468389542562}
+    m_Modifications:
+    - target: {fileID: 2902437740306554059, guid: 461ac7fbc4f8990478922dc073fc7d57, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902437740306554059, guid: 461ac7fbc4f8990478922dc073fc7d57, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902437740306554059, guid: 461ac7fbc4f8990478922dc073fc7d57, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902437740306554059, guid: 461ac7fbc4f8990478922dc073fc7d57, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902437740306554059, guid: 461ac7fbc4f8990478922dc073fc7d57, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902437740306554059, guid: 461ac7fbc4f8990478922dc073fc7d57, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902437740306554059, guid: 461ac7fbc4f8990478922dc073fc7d57, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902437740306554059, guid: 461ac7fbc4f8990478922dc073fc7d57, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902437740306554059, guid: 461ac7fbc4f8990478922dc073fc7d57, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902437740306554059, guid: 461ac7fbc4f8990478922dc073fc7d57, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7845627561976887303, guid: 461ac7fbc4f8990478922dc073fc7d57, type: 3}
+      propertyPath: m_Name
+      value: SceneTransitions
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948452421718949584, guid: 461ac7fbc4f8990478922dc073fc7d57, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 5958193065156883908}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 461ac7fbc4f8990478922dc073fc7d57, type: 3}
+--- !u!114 &2323617771891182850 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6560270286868704567, guid: 461ac7fbc4f8990478922dc073fc7d57, type: 3}
+  m_PrefabInstance: {fileID: 8878254148852654133}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68ae0053dae3b945bb884ef929d6c5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneTransitions
+--- !u!4 &6012976905746709758 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2902437740306554059, guid: 461ac7fbc4f8990478922dc073fc7d57, type: 3}
+  m_PrefabInstance: {fileID: 8878254148852654133}
   m_PrefabAsset: {fileID: 0}
