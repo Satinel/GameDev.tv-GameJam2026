@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class VolumeControl : MonoBehaviour
 {
     public static event Action<bool> OnPauseStateChanged;
+    public static event Action OnUnpausedWithStoryActive;
 
     public AudioMixer _audioMixer;
     [SerializeField] GameObject _mainMenuButton, _quitPromptParent, _cancelQuitButton, _quitButton;
@@ -16,7 +17,7 @@ public class VolumeControl : MonoBehaviour
     [SerializeField] Slider _sfxVolumeSlider;
     [SerializeField] Toggle _mainMuteToggle, _musicMuteToggle, _sfxMuteToggle;
 
-    bool _isLevelReady;
+    bool _isLevelReady, _isStoryActive;
 
     void Awake()
     {
@@ -30,6 +31,9 @@ public class VolumeControl : MonoBehaviour
         InputManager.OnOptionsAction += ToggleAudioCanvas;
 
         LevelManager.OnLevelReady += OnLevelReady;
+
+        StoryTeller.OnStoryStarted += OnStoryStarted;
+        StoryTeller.OnStoryCanvasClosed += OnStoryClosed;
     }
 
     void OnDisable()
@@ -37,6 +41,9 @@ public class VolumeControl : MonoBehaviour
         InputManager.OnOptionsAction -= ToggleAudioCanvas;
 
         LevelManager.OnLevelReady -= OnLevelReady;
+
+        StoryTeller.OnStoryStarted -= OnStoryStarted;
+        StoryTeller.OnStoryCanvasClosed -= OnStoryClosed;
     }
 
     void Start()
@@ -143,16 +150,44 @@ public class VolumeControl : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(null);
         _audioCanvas.enabled = false;
-        Time.timeScale = 1;
-        OnPauseStateChanged?.Invoke(false);
+        UnpauseGame();
     }
 
     void EnableAudioCanvas() // TODO? Setting Time.timeScale here (and in DisableAudioCanvas) isn't ideal
     {
-        OnPauseStateChanged?.Invoke(true);
-        Time.timeScale = 0;
+        PauseGame();
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(_mainMenuButton);
+    }
+
+    void OnStoryStarted()
+    {
+        _isStoryActive = true;
+        PauseGame();
+    }
+
+    void OnStoryClosed()
+    {
+        _isStoryActive = false;
+        UnpauseGame();
+    }
+
+    void PauseGame()
+    {
+        OnPauseStateChanged?.Invoke(true);
+        Time.timeScale = 0;
+    }
+
+    void UnpauseGame()
+    {
+        if(_isStoryActive)
+        {
+            OnUnpausedWithStoryActive?.Invoke();
+            return;
+        }
+
+        Time.timeScale = 1;
+        OnPauseStateChanged?.Invoke(false);
     }
 
     void OnLevelReady()

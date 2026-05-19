@@ -107,7 +107,7 @@ public class LevelManager : MonoBehaviour
     {
         if(_storyTeller.CheckForStory())
         {
-            _storyTeller.BeginStory();
+            _storyTeller.BeginStory(true);
         }
         else
         {
