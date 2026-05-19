@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4188526044558592083}
   - component: {fileID: 3294044740247035273}
   - component: {fileID: 2856828011963402439}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Goal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -78,7 +78,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &2856828011963402439
 MonoBehaviour:
@@ -102,13 +102,13 @@ GameObject:
   m_Component:
   - component: {fileID: 214920034133761225}
   - component: {fileID: 9081033855419241316}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &214920034133761225
 Transform:
   m_ObjectHideFlags: 0

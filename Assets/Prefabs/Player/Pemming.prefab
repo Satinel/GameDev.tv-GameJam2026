@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1737141713811224528}
   - component: {fileID: 122842955190682660}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 1333292755709909686}
   - component: {fileID: 5923839759176240441}
   - component: {fileID: 1664842621243004175}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Pemming
   m_TagString: Player
   m_Icon: {fileID: 0}
