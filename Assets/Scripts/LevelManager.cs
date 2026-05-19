@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] float _startWait = 0.25f;
 
     [SerializeField] AudioSource _audioSource;
-    [SerializeField] float _minPitch = 0.5f, _maxPitch = 1.5f, _pitchIncrease = 0.1f;
+    [SerializeField] float _minPitch = 0.5f, _pitchIncrease = 0.1f;
 
     WaitForSeconds _startWaitDelay = new(0.1f);
 
@@ -67,6 +67,10 @@ public class LevelManager : MonoBehaviour
                 if(list.Count > i)
                 {
                     list[i].enabled = true;
+                    if(list[i].transform.parent.TryGetComponent(out Collectable collectable))
+                    {
+                        collectable.SetAppearTrigger();
+                    }
                 }
             }
             _audioSource.pitch += _pitchIncrease;

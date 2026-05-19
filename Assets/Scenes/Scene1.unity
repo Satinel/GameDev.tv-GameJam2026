@@ -11933,6 +11933,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5927643946580165241, guid: 33171d7f350859f4eb43988b5e438bc8, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7111697104008156253, guid: 33171d7f350859f4eb43988b5e438bc8, type: 3}
       propertyPath: m_Name
       value: Collectable (11)
@@ -21951,6 +21955,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2047070561359018885, guid: 4904df61e71a3f640b4e6b1c4f2dabb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2586724444836966797, guid: 4904df61e71a3f640b4e6b1c4f2dabb3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.75
@@ -21994,6 +22002,10 @@ PrefabInstance:
     - target: {fileID: 4371628827141823093, guid: 4904df61e71a3f640b4e6b1c4f2dabb3, type: 3}
       propertyPath: m_Name
       value: Pemming
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371628827141823093, guid: 4904df61e71a3f640b4e6b1c4f2dabb3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22305,9 +22317,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goal
       objectReference: {fileID: 0}
+    - target: {fileID: 1119429735865850990, guid: fac0c2738968435429d1f77f73ae3a60, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4188526044558592083, guid: fac0c2738968435429d1f77f73ae3a60, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.75
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4188526044558592083, guid: fac0c2738968435429d1f77f73ae3a60, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22344,6 +22360,10 @@ PrefabInstance:
     - target: {fileID: 4188526044558592083, guid: fac0c2738968435429d1f77f73ae3a60, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672883447941376635, guid: fac0c2738968435429d1f77f73ae3a60, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
