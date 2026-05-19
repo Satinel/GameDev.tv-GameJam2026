@@ -28,10 +28,6 @@ PrefabInstance:
       propertyPath: m_margin.z
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 1232208474550702247, guid: 94ac9cbd76c97444395f1cfd3faf5c14, type: 3}
-      propertyPath: m_fontSizeMin
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2660276963859648424, guid: 94ac9cbd76c97444395f1cfd3faf5c14, type: 3}
       propertyPath: m_Type
       value: 0

@@ -15,8 +15,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] SceneTransitions _sceneTransitions;
     [SerializeField] AudioSource _audioSource;
     [SerializeField] float _minPitch = 0.5f, _pitchIncrease = 0.1f;
+    [SerializeField] StoryTeller _storyTeller;
 
     WaitForSeconds _startWaitDelay = new(0.1f);
+    bool _isLevelStarted, _isLevelFinished;
 
     void Awake()
     {
@@ -27,12 +29,14 @@ public class LevelManager : MonoBehaviour
     {
         VolumeControl.OnPauseStateChanged += OnPauseStateChanged;
         Goal.OnGoalAchieved += Goal_OnGoalAchieved;
+        StoryTeller.OnStoryCanvasClosed += OnStoryClosed;
     }
 
     void OnDisable()
     {
         VolumeControl.OnPauseStateChanged -= OnPauseStateChanged;
         Goal.OnGoalAchieved -= Goal_OnGoalAchieved;
+        StoryTeller.OnStoryCanvasClosed -= OnStoryClosed;
     }
 
     IEnumerator Start()
@@ -101,9 +105,16 @@ public class LevelManager : MonoBehaviour
 
     void LevelReady()
     {
-        _startCanvas.enabled = true;
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(_startButton);
+        if(_storyTeller.CheckForStory())
+        {
+            _storyTeller.BeginStory();
+        }
+        else
+        {
+            _startCanvas.enabled = true;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(_startButton);
+        }
         OnLevelReady?.Invoke();
     }
 
@@ -126,16 +137,36 @@ public class LevelManager : MonoBehaviour
 
     void Goal_OnGoalAchieved()
     {
+        _isLevelFinished = true;
         OnLevelFinished?.Invoke();
         _winCanvas.enabled = true;
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(_nextLevelButton);
     }
 
+    void OnStoryClosed()
+    {
+        if(!_isLevelStarted)
+        {
+            _startCanvas.enabled = true;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(_startButton);
+        }
+        else if(_isLevelFinished)
+        {
+            _winCanvas.enabled = true;
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(_nextLevelButton);
+        }
+    }
+
+    // -------------------------------------------- UI BUTTONS -------------------------------------------- \\
+
     public void StartLevel()
     {
         EventSystem.current.SetSelectedGameObject(null);
         _startCanvas.enabled = false;
+        _isLevelStarted = true;
         OnLevelStarted?.Invoke();
     }
 
