@@ -21,6 +21,7 @@ public class FloatingText : MonoBehaviour
 
     public void SetTextFromInt(int value)
     {
+        _text.color = Random.ColorHSV(0, 1, 0.75f, 0.8f, 0.75f, 0.8f);
         _text.text = $"{value}";
     }
 

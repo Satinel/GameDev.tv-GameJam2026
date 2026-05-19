@@ -2,11 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class VolumeControl : MonoBehaviour
 {
+    public static event Action<bool> OnPauseStateChanged;
+
     public AudioMixer _audioMixer;
     [SerializeField] GameObject _mainMenuButton;
     [SerializeField] Canvas _audioCanvas;
@@ -14,20 +15,22 @@ public class VolumeControl : MonoBehaviour
     [SerializeField] Slider _musicVolumeSlider;
     [SerializeField] Slider _sfxVolumeSlider;
     [SerializeField] Toggle _mainMuteToggle, _musicMuteToggle, _sfxMuteToggle;
-    // [SerializeField] OptionsMenu _optionsMenu;
 
-    InputAction _toggleOptions;
+    bool _isLevelStarted;
 
-    // void Awake()
-    // {
-    //     _toggleOptions = InputSystem.actions.FindAction("Options"); // TODO Implement this stuff
-    //     _toggleOptions.performed += ToggleAudioCanvas;
-    // }
+    void OnEnable()
+    {
+        InputManager.OnOptionsAction += ToggleAudioCanvas;
 
-    // void OnDestroy()
-    // {
-    //     _toggleOptions.performed -= ToggleAudioCanvas;
-    // }
+        LevelManager.OnLevelStarted += OnLevelStarted;
+    }
+
+    void OnDisable()
+    {
+        InputManager.OnOptionsAction -= ToggleAudioCanvas;
+
+        LevelManager.OnLevelStarted -= OnLevelStarted;
+    }
 
     void Start()
     {
@@ -54,16 +57,6 @@ public class VolumeControl : MonoBehaviour
         _audioMixer.SetFloat("MainVolume", Mathf.Log10(sliderValue) * 20);
     }
 
-    // public void IncreaseMainVolumeLevel()
-    // {
-    //     SetMainVolumeLevel(_mainVolumeSlider.value + 10f);
-    // }
-
-    // public void DecreaseMainVolumeLevel()
-    // {
-    //     SetMainVolumeLevel(_mainVolumeSlider.value - 10f);
-    // }
-
     public void ToggleMuteMainVolume()
     {
         if(_mainMuteToggle.isOn)
@@ -86,16 +79,6 @@ public class VolumeControl : MonoBehaviour
 
         _audioMixer.SetFloat("MusicVolume", Mathf.Log10(sliderValue) * 20);
     }
-
-    // public void IncreaseMusicVolumeLevel()
-    // {
-    //     SetMusicVolume(_musicVolumeSlider.value + 0.1f);
-    // }
-
-    // public void DecreaseMusicVolumeLevel()
-    // {
-    //     SetMusicVolume(_musicVolumeSlider.value - 0.1f);
-    // }
 
     public void ToggleMuteMusicVolume()
     {
@@ -120,16 +103,6 @@ public class VolumeControl : MonoBehaviour
         _audioMixer.SetFloat("SFXVolume", Mathf.Log10(sliderValue) * 20);
     }
 
-    // public void IncreaseSFXVolumeLevel()
-    // {
-    //     SetSFXVolume(_sfxVolumeSlider.value + 0.1f);
-    // }
-
-    // public void DecreaseSFXVolumeLevel()
-    // {
-    //     SetSFXVolume(_sfxVolumeSlider.value - 0.1f);
-    // }
-
     public void ToggleMuteSFXVolume()
     {
         if(_sfxMuteToggle.isOn)
@@ -144,8 +117,10 @@ public class VolumeControl : MonoBehaviour
         }
     }
 
-    void ToggleAudioCanvas(InputAction.CallbackContext _)
+    void ToggleAudioCanvas()
     {
+        if(!_isLevelStarted) { return; }
+
         _audioCanvas.enabled = !_audioCanvas.enabled;
         if(_audioCanvas.enabled)
         {
@@ -159,16 +134,22 @@ public class VolumeControl : MonoBehaviour
 
     public void DisableAudioCanvas()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         _audioCanvas.enabled = false;
         Time.timeScale = 1;
-
-        // _optionsMenu.EnableOptionsCanvas();
+        OnPauseStateChanged?.Invoke(false);
     }
 
     void EnableAudioCanvas() // TODO? Setting Time.timeScale here (and in DisableAudioCanvas) isn't ideal
     {
+        OnPauseStateChanged?.Invoke(true);
         Time.timeScale = 0;
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(_mainMenuButton);        
+    }
+
+    void OnLevelStarted()
+    {
+        _isLevelStarted = true;
     }
 }

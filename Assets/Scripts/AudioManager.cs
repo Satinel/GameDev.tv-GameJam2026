@@ -7,8 +7,12 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip _collectableSFX, _enemyDeathSFX, _goalJingleSFX;
     [SerializeField] float _collectableVol = 1f, _enemyDeathVol = 1f, _goalJingleVol = 1f;
 
+    bool _isGamePaused;
+
     void OnEnable()
     {
+        VolumeControl.OnPauseStateChanged += TogglePausedState;
+
         EelController.OnEelHurtSFX += PlaySound;
         EelController.OnEelElectrifiedSFX += PlaySound;
 
@@ -20,6 +24,8 @@ public class AudioManager : MonoBehaviour
 
     void OnDisable()
     {
+        VolumeControl.OnPauseStateChanged -= TogglePausedState;
+
         EelController.OnEelHurtSFX -= PlaySound;
         EelController.OnEelElectrifiedSFX -= PlaySound;
 
@@ -29,8 +35,15 @@ public class AudioManager : MonoBehaviour
         Goal.OnGoalAchieved -= PlayGoalJingleSFX;
     }
 
+    void TogglePausedState(bool state)
+    {
+        _isGamePaused = state;
+    }
+
     void PlaySound(AudioClip clip, float volume)
     {
+        if(_isGamePaused) { return; }
+
         if(clip)
         {
             _audioSource.PlayOneShot(clip, volume);

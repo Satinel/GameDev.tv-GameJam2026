@@ -6,13 +6,15 @@ public class InputManager : MonoBehaviour
 {
     public static event Action<Vector2> OnMoveAction;
     public static event Action<bool> OnActAction;
+    public static event Action OnOptionsAction;
 
-    InputAction _moveAction, _actAction;
+    InputAction _moveAction, _actAction, _optionsAction;
 
     void Awake()
     {
         _moveAction = InputSystem.actions.FindAction("Move");
         _actAction = InputSystem.actions.FindAction("Act");
+        _optionsAction = InputSystem.actions.FindAction("Options");
     }
 
     // Update is called once per frame
@@ -21,5 +23,10 @@ public class InputManager : MonoBehaviour
         OnMoveAction?.Invoke(_moveAction.ReadValue<Vector2>());
 
         OnActAction?.Invoke(_actAction.IsPressed());
+
+        if(_optionsAction.WasPerformedThisFrame())
+        {
+            OnOptionsAction?.Invoke();
+        }
     }
 }

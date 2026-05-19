@@ -27,7 +27,7 @@ public class EelController : MonoBehaviour, IElectrifiable
     Vector2 _currentDirection = Vector2.zero;
     bool _isRetracting, _isElectrified, _fullRetract, _isRelocating;
     bool _isPlayingRetractSFX, _isPlayingRelocateSFX;
-    bool _isLevelStarted;
+    bool _isLevelStarted, _isGamePaused;
 
     Vector2 _lastSegmentPosition;
     EelSegment _tail;
@@ -43,6 +43,8 @@ public class EelController : MonoBehaviour, IElectrifiable
         InputManager.OnMoveAction += GetMoveValue;
         InputManager.OnActAction += SetRetract;
 
+        VolumeControl.OnPauseStateChanged += TogglePausedState;
+
         EelSegment.OnEelSegmentAttacked += HandleAttack;
 
         LevelManager.OnLevelStarted += SetLevelStarted;
@@ -53,6 +55,8 @@ public class EelController : MonoBehaviour, IElectrifiable
     {
         InputManager.OnMoveAction -= GetMoveValue;
         InputManager.OnActAction -= SetRetract;
+
+        VolumeControl.OnPauseStateChanged -= TogglePausedState;
 
         EelSegment.OnEelSegmentAttacked -= HandleAttack;
 
@@ -69,7 +73,7 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     void Update()
     {
-        if(!_isLevelStarted) { return; }
+        if(!_isLevelStarted || _isGamePaused) { return; }
 
         Move();
     }
@@ -102,6 +106,20 @@ public class EelController : MonoBehaviour, IElectrifiable
         }
     }
 
+    void TogglePausedState(bool state)
+    {
+        _isGamePaused = state;
+
+        if(_isGamePaused)
+        {
+            _audioSource.Pause();
+        }
+        else
+        {
+            _audioSource.UnPause();
+        }
+    }
+
     void StartRelocateSFX()
     {
         if(!_isLevelStarted) { return; }
@@ -124,7 +142,7 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     void GetMoveValue(Vector2 input)
     {
-        if(!_isLevelStarted) { return; }
+        if(!_isLevelStarted || _isGamePaused) { return; }
 
         _currentDirection = input;
 
@@ -152,7 +170,7 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     void SetRetract(bool value)
     {
-        if(!_isLevelStarted) { return; }
+        if(!_isLevelStarted || _isGamePaused) { return; }
 
         _isRetracting = value;
 
