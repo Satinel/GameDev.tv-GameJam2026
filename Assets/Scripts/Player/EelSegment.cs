@@ -7,6 +7,8 @@ public class EelSegment : MonoBehaviour
 
     [SerializeField] Collider2D _collider;
     [SerializeField] Animator _animator;
+    [SerializeField] IntReferenceSO _totalFishElectrified;
+
     bool _isElectrified;
 
     static readonly int ELEC_HASH = Animator.StringToHash("Electrified");
@@ -20,6 +22,7 @@ public class EelSegment : MonoBehaviour
             if(_isElectrified)
             {
                 enemy.DealDamage();
+                _totalFishElectrified.AddToValue(1);
             }
             else
             {

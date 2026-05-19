@@ -225,8 +225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 807189af0b853d64695cefba27e84bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EelSegment
-  DefaultColor: {r: 0.8784314, g: 0.8235294, b: 0.10980392, a: 1}
-  ElectrifiedColor: {r: 0.118725546, g: 0.46835175, b: 0.8679245, a: 1}
   _collider: {fileID: 2122863479040022250}
-  _spriteRenderer: {fileID: 7776572333185707719}
   _animator: {fileID: 9021287062725485651}
+  _totalFishElectrified: {fileID: 11400000, guid: c123fa080269b4c4f882d4b3de8055ac, type: 2}

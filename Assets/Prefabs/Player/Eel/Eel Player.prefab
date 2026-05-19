@@ -251,6 +251,7 @@ MonoBehaviour:
   _retractStartPitch: 0.9
   _relocateMaxPitch: 1.5
   _retractPitchIncrease: 0.02
+  _totalFishEaten: {fileID: 11400000, guid: 9467892ebe0969e46aec52b93bd451b7, type: 2}
 --- !u!1 &7331619430725805726
 GameObject:
   m_ObjectHideFlags: 0

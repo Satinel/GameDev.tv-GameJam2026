@@ -20,6 +20,8 @@ public class EelController : MonoBehaviour, IElectrifiable
     [SerializeField] float _hurtVol = 1f, _elecVol = 1f, _retractVol = 1f;
     [SerializeField] float _retractStartPitch = 0.5f, _relocateMaxPitch = 1.5f, _retractPitchIncrease = 0.1f;
 
+    [SerializeField] IntReferenceSO _totalFishEaten;
+
     WaitForSeconds _elecDelayWait = new(0.01f);
 
     Vector2 _currentDirection = Vector2.zero;
@@ -79,6 +81,7 @@ public class EelController : MonoBehaviour, IElectrifiable
         if(collision.gameObject.TryGetComponent(out Enemy enemy))
         {
             enemy.DealDamage();
+            _totalFishEaten.AddToValue(1);
         }
     }
 
