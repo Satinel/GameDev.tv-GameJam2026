@@ -37,9 +37,9 @@ public class MusicPlayer : MonoBehaviour
         }
     }
 
-    void OnPauseStateChanged(bool state)
+    void OnPauseStateChanged(bool isPaused)
     {
-        if(state)
+        if(isPaused)
         {
             _audioSource.Pause();
         }

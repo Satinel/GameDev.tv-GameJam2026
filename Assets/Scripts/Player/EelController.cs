@@ -106,9 +106,9 @@ public class EelController : MonoBehaviour, IElectrifiable
         }
     }
 
-    void TogglePausedState(bool state)
+    void TogglePausedState(bool isPaused)
     {
-        _isGamePaused = state;
+        _isGamePaused = isPaused;
 
         if(_isGamePaused)
         {

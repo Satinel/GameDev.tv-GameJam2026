@@ -9,27 +9,34 @@ public class VolumeControl : MonoBehaviour
     public static event Action<bool> OnPauseStateChanged;
 
     public AudioMixer _audioMixer;
-    [SerializeField] GameObject _mainMenuButton;
+    [SerializeField] GameObject _mainMenuButton, _quitPromptParent, _cancelQuitButton, _quitButton;
     [SerializeField] Canvas _audioCanvas;
     [SerializeField] Slider _mainVolumeSlider;
     [SerializeField] Slider _musicVolumeSlider;
     [SerializeField] Slider _sfxVolumeSlider;
     [SerializeField] Toggle _mainMuteToggle, _musicMuteToggle, _sfxMuteToggle;
 
-    bool _isLevelStarted;
+    bool _isLevelReady;
+
+    void Awake()
+    {
+#if UNITY_WEBGL
+        _quitButton.SetActive(false);
+#endif
+    }
 
     void OnEnable()
     {
         InputManager.OnOptionsAction += ToggleAudioCanvas;
 
-        LevelManager.OnLevelStarted += OnLevelStarted;
+        LevelManager.OnLevelReady += OnLevelReady;
     }
 
     void OnDisable()
     {
         InputManager.OnOptionsAction -= ToggleAudioCanvas;
 
-        LevelManager.OnLevelStarted -= OnLevelStarted;
+        LevelManager.OnLevelReady -= OnLevelReady;
     }
 
     void Start()
@@ -119,7 +126,7 @@ public class VolumeControl : MonoBehaviour
 
     void ToggleAudioCanvas()
     {
-        if(!_isLevelStarted) { return; }
+        if(!_isLevelReady) { return; }
 
         _audioCanvas.enabled = !_audioCanvas.enabled;
         if(_audioCanvas.enabled)
@@ -145,11 +152,30 @@ public class VolumeControl : MonoBehaviour
         OnPauseStateChanged?.Invoke(true);
         Time.timeScale = 0;
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(_mainMenuButton);        
+        EventSystem.current.SetSelectedGameObject(_mainMenuButton);
     }
 
-    void OnLevelStarted()
+    void OnLevelReady()
     {
-        _isLevelStarted = true;
+        _isLevelReady = true;
+    }
+
+    public void PromptQuit()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        _quitPromptParent.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(_cancelQuitButton);
+    }
+
+    public void CancelQuit()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        _quitPromptParent.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(_mainMenuButton);
+    }
+
+    public void ConfirmQuitGame()
+    {
+        Application.Quit();
     }
 }

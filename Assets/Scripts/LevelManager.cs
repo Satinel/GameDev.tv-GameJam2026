@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class LevelManager : MonoBehaviour
 {
-    public static event Action OnLevelStarted, OnLevelFinished;
+    public static event Action OnLevelReady, OnLevelStarted, OnLevelFinished;
 
     [SerializeField] Canvas _startCanvas, _winCanvas;
     [SerializeField] GameObject _startButton, _nextLevelButton;
@@ -25,11 +25,13 @@ public class LevelManager : MonoBehaviour
 
     void OnEnable()
     {
+        VolumeControl.OnPauseStateChanged += OnPauseStateChanged;
         Goal.OnGoalAchieved += Goal_OnGoalAchieved;
     }
 
     void OnDisable()
     {
+        VolumeControl.OnPauseStateChanged -= OnPauseStateChanged;
         Goal.OnGoalAchieved -= Goal_OnGoalAchieved;
     }
 
@@ -102,6 +104,24 @@ public class LevelManager : MonoBehaviour
         _startCanvas.enabled = true;
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(_startButton);
+        OnLevelReady?.Invoke();
+    }
+
+    void OnPauseStateChanged(bool isPaused)
+    {
+        if(!isPaused)
+        {
+            if(_startCanvas.isActiveAndEnabled)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(_startButton);
+            }
+            else if(_winCanvas.isActiveAndEnabled)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(_nextLevelButton);
+            }
+        }
     }
 
     void Goal_OnGoalAchieved()

@@ -31,9 +31,9 @@ public class AudioManager : MonoBehaviour
         Enemy.OnEnemyDestroyed -= PlayEnemyDeathSFX;
     }
 
-    void TogglePausedState(bool state)
+    void TogglePausedState(bool isPaused)
     {
-        _isGamePaused = state;
+        _isGamePaused = isPaused;
     }
 
     void PlaySound(AudioClip clip, float volume)
