@@ -7,6 +7,7 @@ public class Collectable : MonoBehaviour
 
     [SerializeField] int _value;
     [SerializeField] Animator _animator;
+    [SerializeField] FloatingText _floatingTextPrefab;
 
     float _timer;
     bool _hasAppeared;
@@ -32,6 +33,8 @@ public class Collectable : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             OnAnyCollectableCollected?.Invoke(_value);
+            FloatingText floatingText = Instantiate(_floatingTextPrefab, transform.position, Quaternion.identity);
+            floatingText.SetTextFromInt(_value);
             Destroy(gameObject);
         }
     }

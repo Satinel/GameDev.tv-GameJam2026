@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Collectable
   _value: 10
   _animator: {fileID: 5680806981418601895}
+  _floatingTextPrefab: {fileID: 950319026533510253, guid: 9928b776633e6f344b2af03b72b3b86e, type: 3}
 --- !u!1 &7637257738938058561
 GameObject:
   m_ObjectHideFlags: 0

@@ -202,3 +202,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa51d90b36120d44bdbeff2eece6d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  <ScoreValue>k__BackingField: 100
+  _floatingTextPrefab: {fileID: 950319026533510253, guid: 9928b776633e6f344b2af03b72b3b86e, type: 3}
