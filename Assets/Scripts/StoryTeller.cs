@@ -13,7 +13,7 @@ public class StoryTeller : MonoBehaviour
 
     [SerializeField] Canvas _canvas;
     [SerializeField] GameObject _continueButton;
-    [SerializeField] Image _leftCharacter, _leftCharacterAlt, _rightCharacter, _rightCharacterAlt;
+    [SerializeField] Image _leftCharacter, _rightCharacter;
     [SerializeField] TextMeshProUGUI _text, _leftNameText, _rightNameText;
     [SerializeField] GameObject _leftNamePlate, _rightNamePlate;
     [SerializeField] TextAsset[] _dialogues;
@@ -118,8 +118,6 @@ public class StoryTeller : MonoBehaviour
             _fullLine = _story.Continue();
             HandleTags();
             _typingRoutine = StartCoroutine(TextDisplayRoutine());
-
-            // _text.text = _story.Continue();
         }
         else
         {

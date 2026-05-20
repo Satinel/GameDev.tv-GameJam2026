@@ -5,6 +5,7 @@ public class Switch : MonoBehaviour, IElectrifiable
 {
     [SerializeField] Vector2 _moveDirection = new(0, 2f);
     [SerializeField] float _totalDuration = 1.2f;
+    [SerializeField] Transform _wiresParent;
 
     Coroutine _activeRoutine;
     Vector2 _startPosition, _targetPosition;
@@ -23,6 +24,14 @@ public class Switch : MonoBehaviour, IElectrifiable
 
         _isElectrified = true;
 
+        if(_wiresParent)
+        {
+            foreach(WireColor wire in _wiresParent.GetComponentsInChildren<WireColor>())
+            {
+                wire.Electrify();
+            }
+        }
+
         if(_activeRoutine != null)
         {
             StopCoroutine(_activeRoutine);
@@ -35,6 +44,14 @@ public class Switch : MonoBehaviour, IElectrifiable
     {
         if(!gameObject.activeInHierarchy) { return; }
         _isElectrified = false;
+
+        if(_wiresParent)
+        {
+            foreach(WireColor wire in _wiresParent.GetComponentsInChildren<WireColor>())
+            {
+                wire.Delectrify();
+            }
+        }
 
         if(_activeRoutine != null)
         {

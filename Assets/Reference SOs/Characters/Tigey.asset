@@ -17,4 +17,5 @@ MonoBehaviour:
   - {fileID: -1470188990101654612, guid: df6bdf0b1ea6d3d4a9f34d18b8177eeb, type: 3}
   <RightSprites>k__BackingField:
   - {fileID: -1470188990101654612, guid: df6bdf0b1ea6d3d4a9f34d18b8177eeb, type: 3}
-  <SoundFX>k__BackingField: {fileID: 0}
+  <SoundFX>k__BackingField: {fileID: 8300000, guid: 99db675bb1f871248916f3565460a907, type: 3}
+  <SoundVol>k__BackingField: 1

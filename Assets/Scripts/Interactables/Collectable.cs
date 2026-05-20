@@ -30,6 +30,8 @@ public class Collectable : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if(!_hasAppeared) { return; }
+
         if(collision.CompareTag("Player"))
         {
             OnAnyCollectableCollected?.Invoke(_value);
