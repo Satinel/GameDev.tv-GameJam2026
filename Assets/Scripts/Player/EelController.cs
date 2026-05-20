@@ -356,19 +356,19 @@ public class EelController : MonoBehaviour, IElectrifiable
         for (int i = _segments.Count; i > 0; i--)
         {
             _segments[i - 1].Electrify();
-            if(_elecSFX)
-            {
-                OnEelElectrifiedSFX?.Invoke(_elecSFX, _elecVol);
-            }
+            // if(_elecSFX)
+            // {
+            //     OnEelElectrifiedSFX?.Invoke(_elecSFX, _elecVol);
+            // }
             yield return _elecDelayWait;
         }
 
         yield return _elecDelayWait;
 
-        if(_elecSFX)
-        {
-            OnEelElectrifiedSFX?.Invoke(_elecSFX, _elecVol);
-        }
+        // if(_elecSFX)
+        // {
+        //     OnEelElectrifiedSFX?.Invoke(_elecSFX, _elecVol);
+        // }
 
         _tail.Electrify();
         if(_currentHome)

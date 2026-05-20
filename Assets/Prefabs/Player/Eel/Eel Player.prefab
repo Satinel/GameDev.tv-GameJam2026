@@ -243,7 +243,7 @@ MonoBehaviour:
   _elecDelay: 0.01
   _audioSource: {fileID: 654577819168850378}
   _hurtSFX: {fileID: 8300000, guid: 99454b95a92ac204fa32526e7ff2b319, type: 3}
-  _elecSFX: {fileID: 8300000, guid: ef543b91af630c843939cd7891f4c5c2, type: 3}
+  _elecSFX: {fileID: 8300000, guid: 3a62dc0ac0fee174e979d87eced01099, type: 3}
   _retractSFX: {fileID: 8300000, guid: 9106418623f6fa24a8c9c79a281ce497, type: 3}
   _hurtVol: 1
   _elecVol: 1
