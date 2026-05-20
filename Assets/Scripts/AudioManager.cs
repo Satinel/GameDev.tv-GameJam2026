@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] AudioSource _audioSource;
+    [SerializeField] AudioSource _audioSource, _pitchedAudioSource;
     [SerializeField] AudioClip _collectableSFX, _enemyDeathSFX;
     [SerializeField] float _collectableVol = 1f, _enemyDeathVol = 1f;
+    [SerializeField] float _collectableBasePitch = 1f, _collectablePitchIncrease = 0.1f, _collectableMaxPitch = 2.5f, _resetPitchLimit = 1.25f;
 
-    bool _isGamePaused;
+    bool _isGamePaused, _isTimerStarted;
+    float _pitchTimer;
 
     void OnEnable()
     {
@@ -31,6 +33,20 @@ public class AudioManager : MonoBehaviour
         Enemy.OnEnemyDestroyed -= PlayEnemyDeathSFX;
     }
 
+    void Update()
+    {
+        if(!_isTimerStarted) { return; }
+
+        _pitchTimer += Time.deltaTime;
+
+        if(_pitchTimer >= _resetPitchLimit)
+        {
+            _pitchedAudioSource.pitch = _collectableBasePitch;
+            _pitchTimer = 0;
+            _isTimerStarted = false;
+        }
+    }
+
     void TogglePausedState(bool isPaused)
     {
         _isGamePaused = isPaused;
@@ -38,17 +54,31 @@ public class AudioManager : MonoBehaviour
 
     void PlaySound(AudioClip clip, float volume)
     {
+        if(!clip) { return; }
         if(_isGamePaused) { return; }
 
-        if(clip)
-        {
-            _audioSource.PlayOneShot(clip, volume);
-        }
+        _audioSource.PlayOneShot(clip, volume);
+    }
+
+    void PlaySoundWithPitch(AudioClip clip, float volume)
+    {
+        if(!clip) { return; }
+        if(_isGamePaused) { return; }
+
+        _pitchedAudioSource.PlayOneShot(clip, volume);
     }
 
     void PlayCollectableSFX(int _)
     {
-        PlaySound(_collectableSFX, _collectableVol);
+        if(!_isTimerStarted)
+        {
+            _isTimerStarted = true;
+            _pitchedAudioSource.pitch = _collectableBasePitch;
+        }
+        _pitchTimer = 0;
+
+        PlaySoundWithPitch(_collectableSFX, _collectableVol);
+        _pitchedAudioSource.pitch = Mathf.Min(_pitchedAudioSource.pitch + _collectablePitchIncrease, _collectableMaxPitch);
     }
 
     void PlayEnemyDeathSFX(Enemy _)
