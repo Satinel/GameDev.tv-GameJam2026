@@ -7,5 +7,6 @@ public class CharacterSO : ScriptableObject
     [field:SerializeField] public Sprite[] LeftSprites { get; private set; }
     [field:SerializeField] public Sprite[] RightSprites { get; private set; }
     [field:SerializeField] public AudioClip SoundFX { get; private set; }
+    [field:SerializeField] public float SoundVol { get; private set; } = 1f;
 
 }

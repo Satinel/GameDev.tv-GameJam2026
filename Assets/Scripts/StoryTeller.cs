@@ -17,7 +17,8 @@ public class StoryTeller : MonoBehaviour
     [SerializeField] TextMeshProUGUI _text, _leftNameText, _rightNameText;
     [SerializeField] GameObject _leftNamePlate, _rightNamePlate;
     [SerializeField] TextAsset[] _dialogues;
-    [SerializeField] float _textDelay = 0.25f;
+    [SerializeField] AudioSource _audioSource;
+    [SerializeField] float _textDelay = 0.25f, _pitchChange = 0.1f;
     [SerializeField] char _linebreakSymbol = '~', _pauseSymbol = '^';
     WaitForSecondsRealtime _textDelayWait = new(0.05f), _textDelayDecaWait = new(0.5f);
     Story _story;
@@ -114,9 +115,11 @@ public class StoryTeller : MonoBehaviour
 
         if(_story.canContinue)
         {
-            _typingRoutine = StartCoroutine(TextDisplayRoutine(_story.Continue()));
-            // _text.text = _story.Continue();
+            _fullLine = _story.Continue();
             HandleTags();
+            _typingRoutine = StartCoroutine(TextDisplayRoutine());
+
+            // _text.text = _story.Continue();
         }
         else
         {
@@ -127,16 +130,19 @@ public class StoryTeller : MonoBehaviour
         }
     }
 
-    IEnumerator TextDisplayRoutine(string story)
+    IEnumerator TextDisplayRoutine()
     {
         _text.text = string.Empty;
         _spriteIndex = 0;
-        _fullLine = story;
+
+        HandleCharacterTalking();
+
         foreach(char letter in _fullLine.ToCharArray())
         {
             if(letter == _linebreakSymbol)
             {
                 _text.text += "\n";
+                HandleCharacterTalking();
             }
             else if(letter == _pauseSymbol)
             {
@@ -144,26 +150,47 @@ public class StoryTeller : MonoBehaviour
             }
             else
             {
-                HandleCharacterTalking();
                 _text.text += letter;
+                if(letter == ' ')
+                {
+                    HandleCharacterTalking();
+                }
                 yield return _textDelayWait;
             }
         }
 
         _typingRoutine = null;
+
+        if(_isLeftAligned)
+        {
+            _leftCharacter.sprite = _currentCharacter.LeftSprites[0];
+        }
+        else
+        {
+            _rightCharacter.sprite = _currentCharacter.RightSprites[0];
+        }
     }
 
     void HandleCharacterTalking()
     {
         if(_isLeftAligned)
         {
-            _spriteIndex = _currentCharacter.LeftSprites.Length > _spriteIndex ? _spriteIndex++ : 0;
+            _spriteIndex = _currentCharacter.LeftSprites.Length - 1 > _spriteIndex ? _spriteIndex + 1 : 0;  // _spriteIndex++ doesn't work but ++_spriteIndex does
             _leftCharacter.sprite = _currentCharacter.LeftSprites[_spriteIndex];
         }
         else
         {
-            _spriteIndex = _currentCharacter.RightSprites.Length > _spriteIndex ? _spriteIndex++ : 0;
+            _spriteIndex = _currentCharacter.RightSprites.Length - 1 > _spriteIndex ? _spriteIndex + 1 : 0;
             _rightCharacter.sprite = _currentCharacter.RightSprites[_spriteIndex];
+        }
+
+        if(!_audioSource.isPlaying)
+        {
+            if(_currentCharacter.SoundFX)
+            {
+                _audioSource.pitch = UnityEngine.Random.Range(1f - _pitchChange, 1f + _pitchChange);
+                _audioSource.PlayOneShot(_currentCharacter.SoundFX, _currentCharacter.SoundVol);
+            }
         }
     }
 
