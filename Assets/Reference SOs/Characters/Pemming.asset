@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8a23eaf850d66428331cb6db01982b, type: 3}
+  m_Name: Pemming
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterSO
+  <CharacterName>k__BackingField: Pemmey
+  <LeftSprites>k__BackingField:
+  - {fileID: 6881055417954741004, guid: cfa39f5383e9d594b964a12dee6569ff, type: 3}
+  - {fileID: 5208279717950926440, guid: cfa39f5383e9d594b964a12dee6569ff, type: 3}
+  - {fileID: -3243453916544631746, guid: cfa39f5383e9d594b964a12dee6569ff, type: 3}
+  <RightSprites>k__BackingField:
+  - {fileID: 5410997738522461396, guid: b96d3e863b82bcd42b3ead3fd8ee81f0, type: 3}
+  - {fileID: -7392222234827475642, guid: b96d3e863b82bcd42b3ead3fd8ee81f0, type: 3}
+  - {fileID: -865707734607976793, guid: b96d3e863b82bcd42b3ead3fd8ee81f0, type: 3}
+  <SoundFX>k__BackingField: {fileID: 0}

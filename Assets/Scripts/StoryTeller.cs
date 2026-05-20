@@ -19,11 +19,11 @@ public class StoryTeller : MonoBehaviour
     Story _story;
     int _dialogueIndex;
 
-    [SerializeField] Sprite[] _portraitSprites; // This is an awful way to do things but given the time constraints of a game jam I'm excusing it
+    [SerializeField] CharacterSO _emptyChar, _pemmingChar, _eelChar, _fishChar, _tigeyChar, _redChar;
 
     const string _noContentString = "NO CONTENT FOUND!";
-    const string SPEAKER_TAG = "speaker", PORTRAIT_TAG = "portrait", LAYOUT_TAG = "layout", OPPOSITE_TAG = "opposite";
-    const string PEMMING_NAME = "Pemmy", EEL_NAME = "Electra", FISH_NAME = "Bitey", TIGEY_NAME = "Tigey";//, MOLE_NAME = "something..."
+    const string CHARACTER_TAG = "character", LAYOUT_TAG = "layout", OPPOSITE_TAG = "opposite";
+    const string PEMMING_NAME = "Pemming", EEL_NAME = "Eel", FISH_NAME = "Fish", TIGEY_NAME = "Tigey", RED_NAME = "Red";//, MOLE_NAME = "something..."
 
     void OnEnable()
     {
@@ -113,7 +113,7 @@ public class StoryTeller : MonoBehaviour
         List<string> currentTags = _story.currentTags;
 
         bool isLeftAligned = true;
-        string speakerName = "???";
+        CharacterSO character = _emptyChar;
         bool oppositeSpeaker = false;
 
         foreach(string tag in currentTags)
@@ -128,9 +128,17 @@ public class StoryTeller : MonoBehaviour
                 isLeftAligned = tagValue == "left";
             }
 
-            if(tagKey == SPEAKER_TAG)
+            if(tagKey == CHARACTER_TAG)
             {
-                speakerName = tagValue;
+                character = tagValue switch
+                {
+                    PEMMING_NAME => _pemmingChar,
+                    EEL_NAME => _eelChar,
+                    FISH_NAME => _fishChar,
+                    TIGEY_NAME => _tigeyChar,
+                    RED_NAME => _redChar,
+                    _ => _emptyChar,
+                };
             }
 
             if(tagKey == OPPOSITE_TAG)
@@ -139,63 +147,34 @@ public class StoryTeller : MonoBehaviour
             }
         }
 
-        SetNamePlate(isLeftAligned, speakerName, oppositeSpeaker);
+        SetNamePlate(isLeftAligned, character, oppositeSpeaker);
     }
 
-    void SetNamePlate(bool isLeftAligned, string speakerName, bool oppositeSpeaker)
+    void SetNamePlate(bool isLeftAligned, CharacterSO character, bool oppositeSpeaker)
     {
-        GetSprites(speakerName, out Sprite sprite0, out Sprite sprite1);
-
         if(isLeftAligned)
         {
             _rightNamePlate.SetActive(false);
             _rightCharacter.enabled = oppositeSpeaker;
             _rightCharacter.color = Color.gray3;
-            _leftNameText.text = speakerName;
+            _leftNameText.text = character.CharacterName;
             _leftNamePlate.SetActive(true);
             _leftCharacter.color = Color.white;
             _leftCharacter.enabled = true;
-            _leftCharacter.sprite = sprite0;
-            _leftCharacterAlt.sprite = sprite1;
+            _leftCharacter.sprite = character.LeftSprites[0];
+            // _leftCharacterAlt.sprite = sprite1;
         }
         else
         {
             _leftNamePlate.SetActive(false);
             _leftCharacter.enabled = oppositeSpeaker;
             _leftCharacter.color = Color.gray3;
-            _rightNameText.text = speakerName;
+            _rightNameText.text = character.CharacterName;
             _rightNamePlate.SetActive(true);
             _rightCharacter.color = Color.white;
             _rightCharacter.enabled = true;
-            _rightCharacter.sprite = sprite0;
-            _rightCharacterAlt.sprite = sprite1;
-        }
-    }
-
-    void GetSprites(string value, out Sprite sprite1, out Sprite sprite2)
-    {
-        switch(value)
-        {
-            case PEMMING_NAME:
-                sprite1 = _portraitSprites[0];
-                sprite2 = _portraitSprites[1];
-                break;
-            case EEL_NAME:
-                sprite1 = _portraitSprites[2];
-                sprite2 = _portraitSprites[3];
-                break;
-            case FISH_NAME:
-                sprite1 = _portraitSprites[4];
-                sprite2 = _portraitSprites[4];
-                break;
-            case TIGEY_NAME:
-                sprite1 = _portraitSprites[5];
-                sprite2 = _portraitSprites[5];
-                break;
-            default:
-                sprite1 = _portraitSprites[0];
-                sprite2 = _portraitSprites[1];
-                break;
+            _rightCharacter.sprite = character.RightSprites[0];
+            // _rightCharacterAlt.sprite = sprite1;
         }
     }
 }
