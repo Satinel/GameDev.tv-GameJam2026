@@ -218,7 +218,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b><color=red>Move</b></color> : WASD / Arrows | <b><color=red>Hide</color></b>:
+  m_text: '<b><color=red>Move</b></color> : WASD / Arrows | <b><color=red>Retract</color></b>:
     Q / Left Mouse'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -935,8 +935,7 @@ MonoBehaviour:
   _rightNameText: {fileID: 2621519556997259418}
   _leftNamePlate: {fileID: 943408338042157593}
   _rightNamePlate: {fileID: 9036979938139485330}
-  _dialogues:
-  - {fileID: 4900000, guid: 025c21eb20312e942a4230eb327f6b5b, type: 3}
+  _dialogues: []
   _audioSource: {fileID: 4716451150121268739}
   _textDelay: 0.025
   _pitchChange: 0.1

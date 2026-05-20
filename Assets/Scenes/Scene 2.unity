@@ -23301,9 +23301,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2195026495540515064, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: _dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195026495540515064, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: '_dialogues.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4900000, guid: 025c21eb20312e942a4230eb327f6b5b, type: 3}
     - target: {fileID: 3783658256089979505, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662108834224875254, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: _rendererParents.Array.size
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5662108834224875254, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
       propertyPath: '_rendererParents.Array.data[0]'
@@ -23329,6 +23341,18 @@ PrefabInstance:
       propertyPath: '_rendererParents.Array.data[5]'
       value: 
       objectReference: {fileID: 560761360}
+    - target: {fileID: 5662108834224875254, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: '_rendererParents.Array.data[6]'
+      value: 
+      objectReference: {fileID: 524435876}
+    - target: {fileID: 5662108834224875254, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: '_rendererParents.Array.data[7]'
+      value: 
+      objectReference: {fileID: 333164933}
+    - target: {fileID: 5662108834224875254, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: '_rendererParents.Array.data[8]'
+      value: 
+      objectReference: {fileID: 1554872435}
     - target: {fileID: 7721289468389542562, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
