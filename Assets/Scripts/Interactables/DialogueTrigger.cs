@@ -5,6 +5,8 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] StoryTeller _storyTeller;
     [SerializeField] TextAsset _story;
 
+    bool _storyPlayed;
+
     void Start()
     {
         if(!_storyTeller)
@@ -19,8 +21,9 @@ public class DialogueTrigger : MonoBehaviour
 
         if(collision.CompareTag("Player"))
         {
-            if(_story)
+            if(_story && !_storyPlayed)
             {
+                _storyPlayed = true;
                 _storyTeller.StartSideStory(_story);
             }
             else if(_storyTeller.CheckForStory())
