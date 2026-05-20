@@ -211,6 +211,15 @@ public class StoryTeller : MonoBehaviour
                 _text.text += letter;
             }
         }
+
+        if(_isLeftAligned)
+        {
+            _leftCharacter.sprite = _currentCharacter.LeftSprites[0];
+        }
+        else
+        {
+            _rightCharacter.sprite = _currentCharacter.RightSprites[0];
+        }
     }
 
     void HandleTags()
