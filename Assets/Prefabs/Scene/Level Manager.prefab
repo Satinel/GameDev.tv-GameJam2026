@@ -601,6 +601,9 @@ MonoBehaviour:
   _rightNamePlate: {fileID: 9036979938139485330}
   _dialogues:
   - {fileID: 4900000, guid: 4dfe01187df1e6a4c8e408b49a69ffc3, type: 3}
+  _textDelay: 0.025
+  _linebreakSymbol: 126
+  _pauseSymbol: 94
   _emptyChar: {fileID: 11400000, guid: 5ce5d865d65fb9d4ea7c1eca055df8c4, type: 2}
   _pemmingChar: {fileID: 11400000, guid: 5fab30efd8721524b9c587062482a261, type: 2}
   _eelChar: {fileID: 11400000, guid: a33244db0fcf79840bb5b9ec7950bf62, type: 2}
@@ -1385,14 +1388,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1
-  m_fontSizeBase: 1
+  m_fontSize: 1.25
+  m_fontSizeBase: 1.25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0.05
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_fontStyle: 1
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2664,7 +2667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8024075950435089369, guid: 5c055c8642f31a34da87cd5078337225, type: 3}
       propertyPath: m_text
-      value: <Next>
+      value: Next ->
       objectReference: {fileID: 0}
     - target: {fileID: 8024075950435089369, guid: 5c055c8642f31a34da87cd5078337225, type: 3}
       propertyPath: m_fontSize
