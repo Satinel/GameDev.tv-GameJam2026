@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4371628827141823093, guid: 4904df61e71a3f640b4e6b1c4f2dabb3, type: 3}
       propertyPath: m_TagString
-      value: Obstacle
+      value: Hazard
       objectReference: {fileID: 0}
     - target: {fileID: 5923839759176240441, guid: 4904df61e71a3f640b4e6b1c4f2dabb3, type: 3}
       propertyPath: m_Controller

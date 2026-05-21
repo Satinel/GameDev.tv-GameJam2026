@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Pemming : MonoBehaviour
 {
+    public static event Action OnPemmingDefeat;
+
     [SerializeField] float _moveSpeed =  3f;
     [SerializeField] Rigidbody2D _rigidbody2D;
     [SerializeField] Animator _animator;
@@ -9,7 +12,7 @@ public class Pemming : MonoBehaviour
     [SerializeField] LayerMask _obstacleLayer;
     [SerializeField] Vector2 _boxSize = Vector2.one;
 
-    bool _isLevelStarted;
+    bool _isLevelStarted, _isDefeated;
 
     static readonly int MOVE_HASH = Animator.StringToHash("IsMoving");
 
@@ -23,6 +26,14 @@ public class Pemming : MonoBehaviour
     {
         LevelManager.OnLevelStarted -= SetLevelStarted;
         LevelManager.OnLevelFinished -= SetLevelFinished;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Hazard"))
+        {
+            HandleDefeat();
+        }
     }
 
     void Update()
@@ -39,6 +50,14 @@ public class Pemming : MonoBehaviour
         {
             _animator.SetBool(MOVE_HASH, false);
         }
+    }
+
+    void HandleDefeat()
+    {
+        if(_isDefeated) { return; }
+
+        _isDefeated = true;
+        OnPemmingDefeat?.Invoke();
     }
 
     void SetLevelStarted()

@@ -49,6 +49,7 @@ public class EelController : MonoBehaviour, IElectrifiable
         VolumeControl.OnPauseStateChanged += TogglePausedState;
 
         EelSegment.OnEelSegmentAttacked += HandleAttack;
+        Pemming.OnPemmingDefeat += HandleDefeat;
 
         LevelManager.OnLevelStarted += SetLevelStarted;
         LevelManager.OnLevelFinished += SetLevelFinished;
@@ -62,6 +63,7 @@ public class EelController : MonoBehaviour, IElectrifiable
         VolumeControl.OnPauseStateChanged -= TogglePausedState;
 
         EelSegment.OnEelSegmentAttacked -= HandleAttack;
+        Pemming.OnPemmingDefeat -= HandleDefeat;
 
         LevelManager.OnLevelStarted -= SetLevelStarted;
         LevelManager.OnLevelFinished -= SetLevelFinished;
