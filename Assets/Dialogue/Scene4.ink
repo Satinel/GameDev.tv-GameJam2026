@@ -4,4 +4,5 @@ We have^...^ NOTHING in common! #layout:left #character:Pemming #opposite:true
 Don't opposites attract? #layout:right #character:Fish #opposite:true
 It doesn't matter.~Electra is the one I want to meet. #layout:left #character:Pemming #opposite:true
 I'm walking to the right,~and any red pemmings~had better stay out of my way! #layout:left #character:Pemming #opposite:true
-I'm sure I can help with that. #layout:right #character:Eel #opposite:true
+You know what?~I feel exactly the same,~^but in reverse. #layout:right #character:Red #opposite:true
+I'm sure I can help sort this out. #layout:left #character:Eel #opposite:true
