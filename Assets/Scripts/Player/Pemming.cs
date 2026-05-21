@@ -25,11 +25,11 @@ public class Pemming : MonoBehaviour
         LevelManager.OnLevelFinished -= SetLevelFinished;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if(!_isLevelStarted) { return; }
 
-        _rigidbody2D.linearVelocity = _moveSpeed * transform.right;
+        _rigidbody2D.linearVelocity = new(_moveSpeed, _rigidbody2D.linearVelocityY);
 
         if(!Physics2D.BoxCast(transform.position, _boxSize, transform.rotation.z, transform.right, _castCheckDistance, _obstacleLayer))
         {

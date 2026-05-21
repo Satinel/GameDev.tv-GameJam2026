@@ -13,6 +13,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -5744578328638034682, guid: c02ed5eb15c37e545990faa6eed0435b, type: 3}
     - target: {fileID: 1664842621243004175, guid: 4904df61e71a3f640b4e6b1c4f2dabb3, type: 3}
+      propertyPath: _moveSpeed
+      value: -1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664842621243004175, guid: 4904df61e71a3f640b4e6b1c4f2dabb3, type: 3}
       propertyPath: _obstacleLayer.m_Bits
       value: 768
       objectReference: {fileID: 0}
