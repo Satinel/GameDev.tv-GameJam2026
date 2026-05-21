@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8a23eaf850d66428331cb6db01982b, type: 3}
+  m_Name: Swordly
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterSO
+  <CharacterName>k__BackingField: Swordly
+  <LeftSprites>k__BackingField:
+  - {fileID: -6162583781824936182, guid: cf5c21449a08bd04e88dfd369f36a7be, type: 3}
+  - {fileID: -3802462114239086597, guid: cf5c21449a08bd04e88dfd369f36a7be, type: 3}
+  - {fileID: 473494732, guid: cf5c21449a08bd04e88dfd369f36a7be, type: 3}
+  - {fileID: -297590479, guid: cf5c21449a08bd04e88dfd369f36a7be, type: 3}
+  - {fileID: 350067054, guid: cf5c21449a08bd04e88dfd369f36a7be, type: 3}
+  - {fileID: 195193228, guid: cf5c21449a08bd04e88dfd369f36a7be, type: 3}
+  - {fileID: -1414932320, guid: cf5c21449a08bd04e88dfd369f36a7be, type: 3}
+  - {fileID: -1263976870, guid: cf5c21449a08bd04e88dfd369f36a7be, type: 3}
+  <RightSprites>k__BackingField:
+  - {fileID: 403509398, guid: cf5c21449a08bd04e88dfd369f36a7be, type: 3}
+  - {fileID: -1400491803, guid: cf5c21449a08bd04e88dfd369f36a7be, type: 3}
+  - {fileID: -1992710378, guid: cf5c21449a08bd04e88dfd369f36a7be, type: 3}
+  - {fileID: -466430111, guid: cf5c21449a08bd04e88dfd369f36a7be, type: 3}
+  - {fileID: 1841360140, guid: cf5c21449a08bd04e88dfd369f36a7be, type: 3}
+  - {fileID: 1250656614, guid: cf5c21449a08bd04e88dfd369f36a7be, type: 3}
+  - {fileID: 69759498, guid: cf5c21449a08bd04e88dfd369f36a7be, type: 3}
+  - {fileID: 12952825, guid: cf5c21449a08bd04e88dfd369f36a7be, type: 3}
+  <SoundFX>k__BackingField: {fileID: 0}
+  <SoundVol>k__BackingField: 1
