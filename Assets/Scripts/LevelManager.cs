@@ -8,8 +8,8 @@ public class LevelManager : MonoBehaviour
 {
     public static event Action OnLevelReady, OnLevelStarted, OnLevelFinished;
 
-    [SerializeField] Canvas _startCanvas, _winCanvas;
-    [SerializeField] GameObject _startButton, _nextLevelButton;
+    [SerializeField] Canvas _startCanvas, _winCanvas, _defeatCanvas;
+    [SerializeField] GameObject _startButton, _nextLevelButton, _retryButton;
     [SerializeField] Transform[] _rendererParents;
     [SerializeField] float _startWait = 0.25f;
     [SerializeField] SceneTransitions _sceneTransitions;
@@ -29,6 +29,7 @@ public class LevelManager : MonoBehaviour
     {
         VolumeControl.OnPauseStateChanged += OnPauseStateChanged;
         Goal.OnGoalAchieved += Goal_OnGoalAchieved;
+        EelController.OnEelDefeat += PlayerDefeat;
         StoryTeller.OnStoryCanvasClosed += OnStoryClosed;
     }
 
@@ -36,6 +37,7 @@ public class LevelManager : MonoBehaviour
     {
         VolumeControl.OnPauseStateChanged -= OnPauseStateChanged;
         Goal.OnGoalAchieved -= Goal_OnGoalAchieved;
+        EelController.OnEelDefeat -= PlayerDefeat;
         StoryTeller.OnStoryCanvasClosed -= OnStoryClosed;
     }
 
@@ -132,6 +134,11 @@ public class LevelManager : MonoBehaviour
                 EventSystem.current.SetSelectedGameObject(null);
                 EventSystem.current.SetSelectedGameObject(_nextLevelButton);
             }
+            else if(_defeatCanvas.isActiveAndEnabled)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(_retryButton);
+            }
         }
     }
 
@@ -142,6 +149,13 @@ public class LevelManager : MonoBehaviour
         _winCanvas.enabled = true;
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(_nextLevelButton);
+    }
+
+    void PlayerDefeat()
+    {
+        _defeatCanvas.enabled = true;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(_retryButton);
     }
 
     void OnStoryClosed()

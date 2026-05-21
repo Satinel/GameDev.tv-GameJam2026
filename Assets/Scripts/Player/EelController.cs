@@ -7,7 +7,10 @@ public class EelController : MonoBehaviour, IElectrifiable
 {
     public static event Action<AudioClip, float> OnEelHurtSFX;
     public static event Action<AudioClip, float> OnEelElectrifiedSFX;
+    public static event Action<int> OnEelHealthChange;
+    public static event Action OnEelDefeat;
 
+    [SerializeField] int _health = 3;
     [SerializeField] float _moveSpeed = 5f, _retractSpeed = 7.5f;
     [SerializeField] Rigidbody2D _rigidBody;
     [SerializeField] EelSegment _segmentPrefab, _tailPrefab;
@@ -27,7 +30,7 @@ public class EelController : MonoBehaviour, IElectrifiable
     Vector2 _currentDirection = Vector2.zero;
     bool _isRetracting, _isElectrified, _fullRetract, _isRelocating;
     bool _isPlayingRetractSFX, _isPlayingRelocateSFX;
-    bool _isLevelStarted, _isGamePaused;
+    bool _isLevelStarted, _isGamePaused, _isDefeated;
 
     Vector2 _lastSegmentPosition;
     EelSegment _tail;
@@ -91,7 +94,7 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(_isRetracting || _fullRetract) { return; }
+        if(_fullRetract) { return; }
 
         if(collision.CompareTag("Hazard"))
         {
@@ -101,6 +104,8 @@ public class EelController : MonoBehaviour, IElectrifiable
                 return;
             }
         }
+
+        if(_isRetracting) { return; }
 
         if(collision.TryGetComponent(out EelHome eelHome))
         {
@@ -179,7 +184,7 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     void SetRetract(bool value)
     {
-        if(!_isLevelStarted || _isGamePaused) { return; }
+        if(!_isLevelStarted || _isGamePaused || _isDefeated) { return; }
 
         _isRetracting = value;
 
@@ -203,7 +208,7 @@ public class EelController : MonoBehaviour, IElectrifiable
 
     void HandleAttack()
     {
-        if(!_isLevelStarted || _isRelocating || _fullRetract) { return; }
+        if(!_isLevelStarted || _isRelocating || _fullRetract || _isDefeated) { return; }
 
         if(_currentCoroutine != null)
         {
@@ -211,12 +216,33 @@ public class EelController : MonoBehaviour, IElectrifiable
         }
         _currentCoroutine = null;
 
-        _fullRetract = true;
 
         if(_hurtSFX)
         {
             OnEelHurtSFX?.Invoke(_hurtSFX, _hurtVol);
         }
+
+        _health--;
+        OnEelHealthChange?.Invoke(_health);
+
+        if(_health <= 0)
+        {
+            HandleDefeat();
+            return;
+        }
+
+        _fullRetract = true;
+    }
+
+    void HandleDefeat()
+    {
+        if(_isDefeated) { return; }
+
+        _isDefeated = true;
+        StopAllCoroutines();
+        _audioSource.Stop();
+        OnEelDefeat?.Invoke();
+        enabled = false;
     }
 
     void SetLevelStarted()
