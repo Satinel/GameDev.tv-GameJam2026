@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EelSegment : MonoBehaviour
 {
-    public static event Action OnEelSegmentAttacked;
+    public static event Action<Vector2> OnEelSegmentAttacked;
 
     [SerializeField] Collider2D _collider;
     [SerializeField] Animator _animator;
@@ -26,7 +26,7 @@ public class EelSegment : MonoBehaviour
             }
             else
             {
-                OnEelSegmentAttacked?.Invoke();
+                OnEelSegmentAttacked?.Invoke(collision.transform.position);
             }
         }
     }
@@ -37,7 +37,7 @@ public class EelSegment : MonoBehaviour
         {
             if(!_isElectrified)
             {
-                OnEelSegmentAttacked?.Invoke();
+                OnEelSegmentAttacked?.Invoke(collision.transform.position);
             }
         }
     }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Pemming : MonoBehaviour
 {
-    public static event Action OnPemmingDefeat;
+    public static event Action<Vector2> OnPemmingDefeat;
 
     [SerializeField] float _moveSpeed =  3f;
     [SerializeField] Rigidbody2D _rigidbody2D;
@@ -57,7 +57,7 @@ public class Pemming : MonoBehaviour
         if(_isDefeated) { return; }
 
         _isDefeated = true;
-        OnPemmingDefeat?.Invoke();
+        OnPemmingDefeat?.Invoke(transform.position);
     }
 
     void SetLevelStarted()

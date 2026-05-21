@@ -4,8 +4,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] AudioSource _audioSource, _pitchedAudioSource;
-    [SerializeField] AudioClip _collectableSFX, _enemyBitSFX, _enemyZapSFX;
-    [SerializeField] float _collectableVol = 1f, _enemyBitVol = 1, _enemyZapVol = 1;
+    [SerializeField] AudioClip _collectableSFX, _enemyBitSFX, _enemyZapSFX, _pemmingDefeatSFX;
+    [SerializeField] float _collectableVol = 1f, _enemyBitVol = 1, _enemyZapVol = 1, _pemmingDefeatVol = 1;
     [SerializeField] float _collectableBasePitch = 1f, _collectablePitchIncrease = 0.1f, _collectableMaxPitch = 2.5f, _resetPitchLimit = 1.25f;
 
     bool _isGamePaused, _isTimerStarted;
@@ -21,6 +21,8 @@ public class AudioManager : MonoBehaviour
         Collectable.OnAnyCollectableCollected += PlayCollectableSFX;
         Enemy.OnEnemyBit += PlayEnemyBitSFX;
         Enemy.OnEnemyZapped += PlayEnemyZapSFX;
+
+        Pemming.OnPemmingDefeat += PlayPemmingDefeat;
     }
 
     void OnDisable()
@@ -33,6 +35,8 @@ public class AudioManager : MonoBehaviour
         Collectable.OnAnyCollectableCollected -= PlayCollectableSFX;
         Enemy.OnEnemyBit -= PlayEnemyBitSFX;
         Enemy.OnEnemyZapped -= PlayEnemyZapSFX;
+
+        Pemming.OnPemmingDefeat -= PlayPemmingDefeat;
     }
 
     void Update()
@@ -91,5 +95,10 @@ public class AudioManager : MonoBehaviour
     void PlayEnemyZapSFX()
     {
         PlaySound(_enemyZapSFX, _enemyZapVol);
+    }
+
+    void PlayPemmingDefeat(Vector2 _)
+    {
+        PlaySound(_pemmingDefeatSFX, _pemmingDefeatVol);
     }
 }

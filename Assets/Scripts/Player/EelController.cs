@@ -14,6 +14,7 @@ public class EelController : MonoBehaviour, IElectrifiable
     [SerializeField] float _moveSpeed = 5f, _retractSpeed = 7.5f;
     [SerializeField] Rigidbody2D _rigidBody;
     [SerializeField] EelSegment _segmentPrefab, _tailPrefab;
+    [SerializeField] GameObject _defeatMarkerPrefab;
     [SerializeField] float _segmentSize = 1;
     [SerializeField] float _bufferSpace = 0.25f;
     [SerializeField] Animator _animator;
@@ -102,7 +103,7 @@ public class EelController : MonoBehaviour, IElectrifiable
         {
             if(!_isElectrified)
             {
-                HandleAttack();
+                HandleAttack(collision.transform.position);
                 return;
             }
         }
@@ -208,7 +209,7 @@ public class EelController : MonoBehaviour, IElectrifiable
         }
     }
 
-    void HandleAttack()
+    void HandleAttack(Vector2 attackLocation)
     {
         if(!_isLevelStarted || _isRelocating || _fullRetract || _isDefeated) { return; }
 
@@ -229,17 +230,18 @@ public class EelController : MonoBehaviour, IElectrifiable
 
         if(_health <= 0)
         {
-            HandleDefeat();
+            HandleDefeat(attackLocation);
             return;
         }
 
         _fullRetract = true;
     }
 
-    void HandleDefeat()
+    void HandleDefeat(Vector2 position)
     {
         if(_isDefeated) { return; }
 
+        Instantiate(_defeatMarkerPrefab, position, Quaternion.identity);
         _isDefeated = true;
         StopAllCoroutines();
         _rigidBody.linearVelocity = Vector2.zero;

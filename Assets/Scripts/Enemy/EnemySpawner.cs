@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     Enemy _currentEnemy;
 
     float _timer;
-    bool _isLevelStarted;
+    bool _isTimerEnabled;
 
     void Awake()
     {
@@ -26,21 +26,23 @@ public class EnemySpawner : MonoBehaviour
 
     void OnEnable()
     {
-        LevelManager.OnLevelStarted += SetLevelStarted;
+        LevelManager.OnLevelStarted += EnableTimer;
         Enemy.OnEnemyDestroyed += CheckCurrentEnemy;
-        LevelManager.OnLevelFinished += SetLevelFinished;
+        LevelManager.OnLevelFinished += DisableTimer;
+        EelController.OnEelDefeat += DisableTimer;
     }
 
     void OnDisable()
     {
-        LevelManager.OnLevelStarted -= SetLevelStarted;
+        LevelManager.OnLevelStarted -= EnableTimer;
         Enemy.OnEnemyDestroyed -= CheckCurrentEnemy;
-        LevelManager.OnLevelFinished -= SetLevelFinished;
+        LevelManager.OnLevelFinished -= DisableTimer;
+        EelController.OnEelDefeat -= DisableTimer;
     }
 
     void Update()
     {
-        if(!_isLevelStarted || _currentEnemy) { return; }
+        if(!_isTimerEnabled || _currentEnemy) { return; }
 
         _timer += Time.deltaTime;
 
@@ -56,14 +58,14 @@ public class EnemySpawner : MonoBehaviour
         _timer -= _spawnRate + Random.Range(0, _maxRandomRespawn);
     }
 
-    void SetLevelStarted()
+    void EnableTimer()
     {
-        _isLevelStarted = true;
+        _isTimerEnabled = true;
     }
 
-    void SetLevelFinished()
+    void DisableTimer()
     {
-        _isLevelStarted = false;
+        _isTimerEnabled = false;
     }
 
     void CheckCurrentEnemy(Enemy enemy)

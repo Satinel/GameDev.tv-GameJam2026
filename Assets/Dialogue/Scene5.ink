@@ -1,0 +1,1 @@
+Alright, what kind of weirdo~are we going to meet this time?

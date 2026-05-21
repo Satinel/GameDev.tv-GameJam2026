@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Canvas _startCanvas, _winCanvas, _defeatCanvas;
     [SerializeField] GameObject _startButton, _nextLevelButton, _retryButton;
     [SerializeField] Transform[] _rendererParents;
-    [SerializeField] float _startWait = 0.25f;
+    [SerializeField] float _startWait = 0.25f, _defeatDisplayDelay = 0.45f;
     [SerializeField] SceneTransitions _sceneTransitions;
     [SerializeField] AudioSource _audioSource;
     [SerializeField] float _minPitch = 0.5f, _pitchIncrease = 0.1f;
@@ -152,6 +152,11 @@ public class LevelManager : MonoBehaviour
     }
 
     void PlayerDefeat()
+    {
+        Invoke(nameof(DisplayDefeat), _defeatDisplayDelay);
+    }
+
+    void DisplayDefeat()
     {
         _defeatCanvas.enabled = true;
         EventSystem.current.SetSelectedGameObject(null);
