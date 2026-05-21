@@ -231,5 +231,5 @@ MonoBehaviour:
   _castCheckDistance: 0.001
   _obstacleLayer:
     serializedVersion: 2
-    m_Bits: 512
-  _boxSize: {x: 1, y: 1}
+    m_Bits: 4608
+  _boxSize: {x: 1, y: 0.9}
