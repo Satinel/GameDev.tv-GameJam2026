@@ -10,12 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 165960405514018733, guid: 3bb14c8942d5fb44f874f8e885415e04, type: 3}
       propertyPath: m_FlipX
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 165960405514018733, guid: 3bb14c8942d5fb44f874f8e885415e04, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7ee55256b83b733468064b7182ae8b83, type: 3}
+      objectReference: {fileID: 9205275853199853978, guid: 11374f7f6a85cc4418351141af23a35c, type: 3}
     - target: {fileID: 165960405514018733, guid: 3bb14c8942d5fb44f874f8e885415e04, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -81,6 +81,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6538635510124641611, guid: 3bb14c8942d5fb44f874f8e885415e04, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 4727761534115730850}
+    - targetCorrespondingSourceObject: {fileID: 6538635510124641611, guid: 3bb14c8942d5fb44f874f8e885415e04, type: 3}
       insertIndex: -1
       addedObject: {fileID: -4200478996809788087}
   m_SourcePrefab: {fileID: 100100000, guid: 3bb14c8942d5fb44f874f8e885415e04, type: 3}
@@ -94,6 +97,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6538635510124641611, guid: 3bb14c8942d5fb44f874f8e885415e04, type: 3}
   m_PrefabInstance: {fileID: 7126628399389319105}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &4727761534115730850
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060901745620181642}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7f6a30ec5c6d81345a5ac06ae6c831f1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &-4200478996809788087
 MonoBehaviour:
   m_ObjectHideFlags: 0
