@@ -240,6 +240,7 @@ public class EelController : MonoBehaviour, IElectrifiable
 
         _isDefeated = true;
         StopAllCoroutines();
+        _rigidBody.linearVelocity = Vector2.zero;
         _audioSource.Stop();
         OnEelDefeat?.Invoke();
         enabled = false;
