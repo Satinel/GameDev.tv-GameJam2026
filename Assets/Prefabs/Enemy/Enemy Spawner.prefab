@@ -139,4 +139,5 @@ MonoBehaviour:
   _spawnRate: 10
   _maxRandomStart: 8
   _maxRandomRespawn: 15
-  _enemyPrefab: {fileID: 6410769440352627663, guid: 95d31d9b41981254daed6edaf708c813, type: 3}
+  _enemyPrefabs:
+  - {fileID: 6410769440352627663, guid: 95d31d9b41981254daed6edaf708c813, type: 3}

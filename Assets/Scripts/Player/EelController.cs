@@ -93,6 +93,15 @@ public class EelController : MonoBehaviour, IElectrifiable
     {
         if(_isRetracting || _fullRetract) { return; }
 
+        if(collision.CompareTag("Hazard"))
+        {
+            if(!_isElectrified)
+            {
+                HandleAttack();
+                return;
+            }
+        }
+
         if(collision.TryGetComponent(out EelHome eelHome))
         {
             if(eelHome != _currentHome)

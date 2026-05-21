@@ -15,7 +15,7 @@ public class EelSegment : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponent<EelController>()) { return; }
+        if(collision.gameObject.GetComponent<EelController>()) { return; }  // Why is this here? I'm sure I must have had a reason...
 
         if(collision.gameObject.TryGetComponent(out Enemy enemy))
         {
@@ -25,6 +25,17 @@ public class EelSegment : MonoBehaviour
                 _totalFishElectrified.AddToValue(1);
             }
             else
+            {
+                OnEelSegmentAttacked?.Invoke();
+            }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Hazard"))
+        {
+            if(!_isElectrified)
             {
                 OnEelSegmentAttacked?.Invoke();
             }

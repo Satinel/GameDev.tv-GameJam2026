@@ -945,6 +945,7 @@ MonoBehaviour:
   _pemmingChar: {fileID: 11400000, guid: 5fab30efd8721524b9c587062482a261, type: 2}
   _eelChar: {fileID: 11400000, guid: a33244db0fcf79840bb5b9ec7950bf62, type: 2}
   _fishChar: {fileID: 11400000, guid: a070830e640b3a04aa9ef4ec2c75d847, type: 2}
+  _swordChar: {fileID: 11400000, guid: 93ae73e45cde85143ad6b29a16317b65, type: 2}
   _tigeyChar: {fileID: 11400000, guid: cf68d0bb8f50a2c49be8b7562d4fd8b6, type: 2}
   _redChar: {fileID: 11400000, guid: 6836f12808140a6469fe6dbbce3137db, type: 2}
 --- !u!1 &1494852799152903064

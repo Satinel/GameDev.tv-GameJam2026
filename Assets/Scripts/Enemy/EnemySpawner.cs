@@ -4,7 +4,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] float _spawnRate =  7.5f;
     [SerializeField] float _maxRandomStart = 6.5f, _maxRandomRespawn = 12.5f;
-    [SerializeField] Enemy _enemyPrefab;
+    [SerializeField] Enemy[] _enemyPrefabs;
 
     Enemy _currentEnemy;
 
@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Awake()
     {
-        if(!_enemyPrefab)
+        if(_enemyPrefabs.Length < 1)
         {
             Destroy(gameObject);
         }
@@ -52,7 +52,7 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        _currentEnemy = Instantiate(_enemyPrefab, transform.position, transform.rotation);
+        _currentEnemy = Instantiate(_enemyPrefabs[Random.Range(0, _enemyPrefabs.Length)], transform.position, transform.rotation);
         _timer -= _spawnRate + Random.Range(0, _maxRandomRespawn);
     }
 
