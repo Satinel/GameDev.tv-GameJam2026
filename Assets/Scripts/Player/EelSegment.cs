@@ -21,7 +21,7 @@ public class EelSegment : MonoBehaviour
         {
             if(_isElectrified)
             {
-                enemy.DealDamage();
+                enemy.Zap();
                 _totalFishElectrified.AddToValue(1);
             }
             else

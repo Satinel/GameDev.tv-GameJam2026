@@ -4,8 +4,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] AudioSource _audioSource, _pitchedAudioSource;
-    [SerializeField] AudioClip _collectableSFX, _enemyDeathSFX;
-    [SerializeField] float _collectableVol = 1f, _enemyDeathVol = 1f;
+    [SerializeField] AudioClip _collectableSFX, _enemyBitSFX, _enemyZapSFX;
+    [SerializeField] float _collectableVol = 1f, _enemyBitVol = 1, _enemyZapVol = 1;
     [SerializeField] float _collectableBasePitch = 1f, _collectablePitchIncrease = 0.1f, _collectableMaxPitch = 2.5f, _resetPitchLimit = 1.25f;
 
     bool _isGamePaused, _isTimerStarted;
@@ -19,7 +19,8 @@ public class AudioManager : MonoBehaviour
         EelController.OnEelElectrifiedSFX += PlaySound;
 
         Collectable.OnAnyCollectableCollected += PlayCollectableSFX;
-        Enemy.OnEnemyDestroyed += PlayEnemyDeathSFX;
+        Enemy.OnEnemyBit += PlayEnemyBitSFX;
+        Enemy.OnEnemyZapped += PlayEnemyZapSFX;
     }
 
     void OnDisable()
@@ -30,7 +31,8 @@ public class AudioManager : MonoBehaviour
         EelController.OnEelElectrifiedSFX -= PlaySound;
 
         Collectable.OnAnyCollectableCollected -= PlayCollectableSFX;
-        Enemy.OnEnemyDestroyed -= PlayEnemyDeathSFX;
+        Enemy.OnEnemyBit -= PlayEnemyBitSFX;
+        Enemy.OnEnemyZapped -= PlayEnemyZapSFX;
     }
 
     void Update()
@@ -81,8 +83,13 @@ public class AudioManager : MonoBehaviour
         _pitchedAudioSource.pitch = Mathf.Min(_pitchedAudioSource.pitch + _collectablePitchIncrease, _collectableMaxPitch);
     }
 
-    void PlayEnemyDeathSFX(Enemy _)
+    void PlayEnemyBitSFX()
     {
-        PlaySound(_enemyDeathSFX, _enemyDeathVol);
+        PlaySound(_enemyBitSFX, _enemyBitVol);
+    }
+
+    void PlayEnemyZapSFX()
+    {
+        PlaySound(_enemyZapSFX, _enemyZapVol);
     }
 }

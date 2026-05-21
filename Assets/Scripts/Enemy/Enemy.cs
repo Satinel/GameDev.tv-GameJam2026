@@ -4,6 +4,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public static event Action<Enemy> OnEnemyDestroyed;
+    public static event Action OnEnemyBit, OnEnemyZapped;
 
     [field:SerializeField] public int ScoreValue { get; private set; } = 100;
     [SerializeField] FloatingText _floatingTextPrefab;
@@ -23,7 +24,19 @@ public class Enemy : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void DealDamage()
+    public void Zap()
+    {
+        OnEnemyZapped?.Invoke();
+        HandleDeath();
+    }
+
+    public void Bite()
+    {
+        OnEnemyBit?.Invoke();
+        HandleDeath();
+    }
+
+    void HandleDeath()
     {
         OnEnemyDestroyed?.Invoke(this);
         FloatingText floatingText = Instantiate(_floatingTextPrefab, transform.position, Quaternion.identity);

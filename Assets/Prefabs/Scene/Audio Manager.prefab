@@ -292,9 +292,11 @@ MonoBehaviour:
   _audioSource: {fileID: 2636838258141877936}
   _pitchedAudioSource: {fileID: 7606853798761730830}
   _collectableSFX: {fileID: 8300000, guid: 606702f70c679884896982b28aaa3e63, type: 3}
-  _enemyDeathSFX: {fileID: 8300000, guid: 1690fc8e9404b8742960637bf58a5c5c, type: 3}
+  _enemyBitSFX: {fileID: 8300000, guid: cf8be8d98ab87a743a351c72d84a538c, type: 3}
+  _enemyZapSFX: {fileID: 8300000, guid: fc09e7073095e5b47b59039a18520077, type: 3}
   _collectableVol: 1
-  _enemyDeathVol: 1
+  _enemyBitVol: 1
+  _enemyZapVol: 1
   _collectableBasePitch: 0.9
   _collectablePitchIncrease: 0.02
   _collectableMaxPitch: 3

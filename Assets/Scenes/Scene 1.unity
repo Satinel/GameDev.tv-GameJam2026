@@ -15758,10 +15758,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 551358251471142833, guid: 718228f3ed2120e4995039066c03fa24, type: 3}
-      propertyPath: _collectablePitchRange
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5805627952735663946, guid: 718228f3ed2120e4995039066c03fa24, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
