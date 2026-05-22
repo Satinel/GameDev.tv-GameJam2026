@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hunter Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 9009556885809882559, guid: 3bb14c8942d5fb44f874f8e885415e04, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -142,8 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd7f23fd3ceb88e428257414eacc2e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hunter
-  _moveSpeed: 1.5
-  _tangledSpeed: 0.85
+  _moveSpeed: 5
+  _tangledSpeed: 1.25
   _minDistance: 0.01
   _rigidbody2D: {fileID: 5743853052401599808}
   _sprite: {fileID: 3527373729977794386}

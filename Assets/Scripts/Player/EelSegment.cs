@@ -36,15 +36,8 @@ public class EelSegment : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent(out Hunter hunter))
         {
-            if(_isElectrified)
-            {
-                hunter.Zap();
-                _totalFishElectrified.AddToValue(1);
-            }
-            else
-            {
-                OnHunterContacted?.Invoke(hunter, this);
-            }
+            OnHunterContacted?.Invoke(hunter, this);
+            return;
         }
 
         if(collision.CompareTag("Hazard"))

@@ -142,6 +142,11 @@ public class EelController : MonoBehaviour, IElectrifiable
                 _currentHome = eelHome;
                 transform.position = _currentHome.transform.position;
 
+                if(_hunter)
+                {
+                    _hunter.Untangle();
+                }
+
                 StartRelocateSFX();
             }
         }
@@ -237,6 +242,15 @@ public class EelController : MonoBehaviour, IElectrifiable
     {
         // if(_hunters.Contains(newHunter)) { return; }
         // _hunters.Add(newHunter); // To remind myself: this is a game jam! I could do things smartly with lists but I KNOW there will only be one hunter at a time
+
+        if(_fullRetract || _isRelocating || _isDefeated) { return; }
+
+        if(_isElectrified)
+        {
+            newHunter.Zap();
+            _totalFishElectrified.AddToValue(1);
+            return;
+        }
 
         int index = 0;
 
