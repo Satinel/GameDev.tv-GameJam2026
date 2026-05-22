@@ -238,6 +238,7 @@ MonoBehaviour:
   _rigidBody: {fileID: 4814570107433176848}
   _segmentPrefab: {fileID: -8100572391259280428, guid: bd703f41c60bb204a878de03f42982d6, type: 3}
   _tailPrefab: {fileID: 4436604281742739670, guid: bdd6276accf6e4c4c9594d6f05042f77, type: 3}
+  _hurtmarkerPrefab: {fileID: 1026974997149515490, guid: e70ef643eca5c7b49bff4a0a71429152, type: 3}
   _defeatMarkerPrefab: {fileID: 1026974997149515490, guid: 4b007f66f810af546a911926b5b71a59, type: 3}
   _segmentSize: 1
   _bufferSpace: 0.075

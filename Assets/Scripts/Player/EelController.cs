@@ -14,7 +14,7 @@ public class EelController : MonoBehaviour, IElectrifiable
     [SerializeField] float _moveSpeed = 5f, _retractSpeed = 7.5f;
     [SerializeField] Rigidbody2D _rigidBody;
     [SerializeField] EelSegment _segmentPrefab, _tailPrefab;
-    [SerializeField] GameObject _defeatMarkerPrefab;
+    [SerializeField] GameObject _hurtmarkerPrefab, _defeatMarkerPrefab;
     [SerializeField] float _segmentSize = 1;
     [SerializeField] float _bufferSpace = 0.25f;
     [SerializeField] Animator _animator;
@@ -219,6 +219,7 @@ public class EelController : MonoBehaviour, IElectrifiable
         }
         _currentCoroutine = null;
 
+        Instantiate(_hurtmarkerPrefab, attackLocation, Quaternion.identity);
 
         if(_hurtSFX)
         {
