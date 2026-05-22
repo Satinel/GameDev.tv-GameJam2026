@@ -25,6 +25,8 @@ public class EelController : MonoBehaviour, IElectrifiable
     [SerializeField] float _retractStartPitch = 0.5f, _relocateMaxPitch = 1.5f, _retractPitchIncrease = 0.1f;
 
     [SerializeField] IntReferenceSO _totalFishEaten;
+    [SerializeField] IntReferenceSO _totalFishElectrified;
+
 
     WaitForSeconds _elecDelayWait = new(0.01f);
 
@@ -36,6 +38,8 @@ public class EelController : MonoBehaviour, IElectrifiable
     Vector2 _lastSegmentPosition;
     EelSegment _tail;
     List<EelSegment> _segments = new();
+    public List<EelSegment> Segments => _segments;
+    Hunter _hunter;
     Coroutine _currentCoroutine;
     EelHome _currentHome;
 
@@ -48,6 +52,9 @@ public class EelController : MonoBehaviour, IElectrifiable
         InputManager.OnActAction += SetRetract;
 
         VolumeControl.OnPauseStateChanged += TogglePausedState;
+
+        Enemy.OnEnemyDestroyed += OnEnemyDestroyed;
+        EelSegment.OnHunterContacted += AddHunter;
 
         EelSegment.OnEelSegmentAttacked += HandleAttack;
         Pemming.OnPemmingDefeat += HandleDefeat;
@@ -62,6 +69,9 @@ public class EelController : MonoBehaviour, IElectrifiable
         InputManager.OnActAction -= SetRetract;
 
         VolumeControl.OnPauseStateChanged -= TogglePausedState;
+
+        Enemy.OnEnemyDestroyed -= OnEnemyDestroyed;
+        EelSegment.OnHunterContacted -= AddHunter;
 
         EelSegment.OnEelSegmentAttacked -= HandleAttack;
         Pemming.OnPemmingDefeat -= HandleDefeat;
@@ -98,6 +108,20 @@ public class EelController : MonoBehaviour, IElectrifiable
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(_fullRetract) { return; }
+
+        if(collision.gameObject.TryGetComponent(out Hunter hunter))
+        {
+            if(_isElectrified)
+            {
+                hunter.Zap();
+                _totalFishElectrified.AddToValue(1);
+            }
+            else
+            {
+                HandleAttack(hunter.transform.position);
+                return;
+            }
+        }
 
         if(collision.CompareTag("Hazard"))
         {
@@ -209,6 +233,34 @@ public class EelController : MonoBehaviour, IElectrifiable
         }
     }
 
+    void AddHunter(Hunter newHunter, EelSegment eelSegment)
+    {
+        // if(_hunters.Contains(newHunter)) { return; }
+        // _hunters.Add(newHunter); // To remind myself: this is a game jam! I could do things smartly with lists but I KNOW there will only be one hunter at a time
+
+        int index = 0;
+
+        for(int i = index; i < _segments.Count; i++)
+        {
+            if(_segments[i] == eelSegment)
+            {
+                index = i;
+                break;
+            }
+        }
+
+        _hunter = newHunter;
+        _hunter.Tangle(this, index);
+    }
+
+    void OnEnemyDestroyed(Enemy enemy)
+    {
+        if(_hunter && _hunter.Enemy == enemy)
+        {
+            _hunter = null;
+        }
+    }
+
     void HandleAttack(Vector2 attackLocation)
     {
         if(!_isLevelStarted || _isRelocating || _fullRetract || _isDefeated) { return; }
@@ -236,6 +288,11 @@ public class EelController : MonoBehaviour, IElectrifiable
         }
 
         _fullRetract = true;
+        if(_hunter)
+        {
+            _hunter.Untangle();
+            _hunter = null;
+        }
     }
 
     void HandleDefeat(Vector2 position)
@@ -390,6 +447,12 @@ public class EelController : MonoBehaviour, IElectrifiable
         }
 
         _currentCoroutine = StartCoroutine(ElectrifySegmentsRoutine());
+
+        if(_hunter)
+        {
+            _hunter.Zap();
+            _totalFishElectrified.AddToValue(1);
+        }
     }
 
     IEnumerator ElectrifySegmentsRoutine()

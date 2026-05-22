@@ -4,6 +4,7 @@ using UnityEngine;
 public class EelSegment : MonoBehaviour
 {
     public static event Action<Vector2> OnEelSegmentAttacked;
+    public static event Action<Hunter, EelSegment> OnHunterContacted;
 
     [SerializeField] Collider2D _collider;
     [SerializeField] Animator _animator;
@@ -33,6 +34,19 @@ public class EelSegment : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.TryGetComponent(out Hunter hunter))
+        {
+            if(_isElectrified)
+            {
+                hunter.Zap();
+                _totalFishElectrified.AddToValue(1);
+            }
+            else
+            {
+                OnHunterContacted?.Invoke(hunter, this);
+            }
+        }
+
         if(collision.CompareTag("Hazard"))
         {
             if(!_isElectrified)

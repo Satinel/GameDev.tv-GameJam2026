@@ -255,6 +255,7 @@ MonoBehaviour:
   _relocateMaxPitch: 1.5
   _retractPitchIncrease: 0.02
   _totalFishEaten: {fileID: 11400000, guid: 9467892ebe0969e46aec52b93bd451b7, type: 2}
+  _totalFishElectrified: {fileID: 11400000, guid: c123fa080269b4c4f882d4b3de8055ac, type: 2}
 --- !u!1 &7331619430725805726
 GameObject:
   m_ObjectHideFlags: 0
