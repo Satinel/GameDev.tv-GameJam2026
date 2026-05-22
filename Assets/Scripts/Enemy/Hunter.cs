@@ -49,7 +49,11 @@ public class Hunter : MonoBehaviour
 
     void Update()
     {
-        if(_isFinished) { return; }
+        if(_isFinished)
+        {
+            _rigidbody2D.linearVelocity = Vector2.zero;
+            return;
+        }
 
         if(_eelHead)
         {
