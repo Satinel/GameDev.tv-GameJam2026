@@ -145,6 +145,7 @@ public class EelController : MonoBehaviour, IElectrifiable
                 if(_hunter)
                 {
                     _hunter.Untangle();
+                    _hunter = null;
                 }
 
                 StartRelocateSFX();

@@ -1,18 +1,17 @@
 using System;
 using UnityEngine;
 
-public class Pemming : MonoBehaviour
+public class Yemmep : MonoBehaviour
 {
-    public static event Action<Vector2> OnPemmingDefeat;
-
     [SerializeField] float _moveSpeed =  3f;
     [SerializeField] Rigidbody2D _rigidbody2D;
     [SerializeField] Animator _animator;
+    [SerializeField] Enemy _enemyYemmepPrefab;
     [SerializeField] float _castCheckDistance = 0.2f;
     [SerializeField] LayerMask _obstacleLayer;
     [SerializeField] Vector2 _boxSize = Vector2.one;
 
-    bool _isLevelStarted, _isDefeated;
+    bool _isLevelStarted;
 
     static readonly int MOVE_HASH = Animator.StringToHash("IsMoving");
 
@@ -28,26 +27,18 @@ public class Pemming : MonoBehaviour
         LevelManager.OnLevelFinished -= SetLevelFinished;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.CompareTag("Hazard"))
-        {
-            HandleDefeat();
-        }
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Hazard"))
+        if(collision.CompareTag("Finish"))
         {
-            HandleDefeat();
+            Instantiate(_enemyYemmepPrefab, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
     }
 
     void Update()
     {
         if(!_isLevelStarted) { return; }
-        if(_isDefeated) { return; }
 
         _rigidbody2D.linearVelocity = new(_moveSpeed, _rigidbody2D.linearVelocityY);
 
@@ -59,16 +50,6 @@ public class Pemming : MonoBehaviour
         {
             _animator.SetBool(MOVE_HASH, false);
         }
-    }
-
-    void HandleDefeat()
-    {
-        if(_isDefeated) { return; }
-
-        _isDefeated = true;
-        OnPemmingDefeat?.Invoke(transform.position);
-        _rigidbody2D.linearVelocity = Vector2.zero;
-        _animator.SetBool(MOVE_HASH, false);
     }
 
     void SetLevelStarted()

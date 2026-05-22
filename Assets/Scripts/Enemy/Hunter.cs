@@ -35,6 +35,9 @@ public class Hunter : MonoBehaviour
     {
         if(_isFinished) { return; }
 
+        if(!collision.CompareTag("Obstacle")) { return; }
+
+
         Vector2 point = collision.ClosestPoint(transform.position);
         Vector2 normal = ((Vector2)transform.position - point).normalized;
         if(normal == Vector2.zero) { return; }
