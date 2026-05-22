@@ -43,6 +43,8 @@ public class Switch : MonoBehaviour, IElectrifiable
     public void Delectrify()
     {
         if(!gameObject.activeInHierarchy) { return; }
+        if(!_isElectrified) { return; }
+
         _isElectrified = false;
 
         if(_wiresParent)

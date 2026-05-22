@@ -138,6 +138,7 @@ public class EelController : MonoBehaviour, IElectrifiable
         {
             if(eelHome != _currentHome)
             {
+                _currentHome.Delectrify();
                 _isRelocating = true;
                 _currentHome = eelHome;
                 transform.position = _currentHome.transform.position;
