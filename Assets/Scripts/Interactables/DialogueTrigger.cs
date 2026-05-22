@@ -3,9 +3,15 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     [SerializeField] StoryTeller _storyTeller;
-    [SerializeField] TextAsset _story;
+    [SerializeField] TextAsset _story, _yemmepBitStory, _yemmepZapStory;
 
     bool _storyPlayed;
+
+    void Awake()
+    {
+        Enemy.OnYemmepBit += OnYemmepBit;
+        Enemy.OnYemmepZapped += OnYemmepZapped;
+    }
 
     void Start()
     {
@@ -30,6 +36,26 @@ public class DialogueTrigger : MonoBehaviour
             {
                 _storyTeller.BeginStory(true);
             }
+        }
+    }
+
+    void OnYemmepBit()
+    {
+        if(!_storyTeller) { return; }
+
+        if(_yemmepBitStory)
+        {
+            _storyTeller.StartSideStory(_yemmepBitStory);
+        }
+    }
+
+    void OnYemmepZapped()
+    {
+        if(!_storyTeller) { return; }
+
+        if(_yemmepZapStory)
+        {
+            _storyTeller.StartSideStory(_yemmepZapStory);
         }
     }
 }

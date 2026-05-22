@@ -5,8 +5,10 @@ public class Enemy : MonoBehaviour
 {
     public static event Action<Enemy> OnEnemyDestroyed;
     public static event Action OnEnemyBit, OnEnemyZapped;
+    public static event Action OnYemmepBit, OnYemmepZapped;
 
     [field:SerializeField] public int ScoreValue { get; private set; } = 100;
+    [field:SerializeField] public bool IsYemmep { get; private set; } = false;
     [SerializeField] FloatingText _floatingTextPrefab;
 
     void OnEnable()
@@ -27,12 +29,21 @@ public class Enemy : MonoBehaviour
     public void Zap()
     {
         OnEnemyZapped?.Invoke();
+        if(IsYemmep)
+        {
+            OnYemmepZapped?.Invoke();
+        }
+
         HandleDeath();
     }
 
     public void Bite()
     {
         OnEnemyBit?.Invoke();
+        if(IsYemmep)
+        {
+            OnYemmepBit?.Invoke();
+        }
         HandleDeath();
     }
 
@@ -40,7 +51,14 @@ public class Enemy : MonoBehaviour
     {
         OnEnemyDestroyed?.Invoke(this);
         FloatingText floatingText = Instantiate(_floatingTextPrefab, transform.position, Quaternion.identity);
-        floatingText.SetTextFromInt(ScoreValue);
+        if(IsYemmep)
+        {
+            floatingText.SetText("YEMMEP!");
+        }
+        else
+        {
+            floatingText.SetTextFromInt(ScoreValue);
+        }
 
         Destroy(gameObject);
     }

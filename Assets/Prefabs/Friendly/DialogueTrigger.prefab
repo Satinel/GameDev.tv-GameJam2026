@@ -93,6 +93,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
   _storyTeller: {fileID: 0}
+  _story: {fileID: 0}
+  _yemmepBitStory: {fileID: 4900000, guid: 14b5e1bb558a5bf4fa5b05c4c96fb988, type: 3}
+  _yemmepZapStory: {fileID: 4900000, guid: 9de3ad0fc64715046993c9675bc7552b, type: 3}
 --- !u!1 &7249279732497021473
 GameObject:
   m_ObjectHideFlags: 0
