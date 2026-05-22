@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1232208474550702247, guid: 94ac9cbd76c97444395f1cfd3faf5c14, type: 3}
       propertyPath: m_fontSize
-      value: 3.3
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 1232208474550702247, guid: 94ac9cbd76c97444395f1cfd3faf5c14, type: 3}
       propertyPath: m_margin.w
@@ -27,6 +27,22 @@ PrefabInstance:
     - target: {fileID: 1232208474550702247, guid: 94ac9cbd76c97444395f1cfd3faf5c14, type: 3}
       propertyPath: m_margin.z
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232208474550702247, guid: 94ac9cbd76c97444395f1cfd3faf5c14, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 88487550c7e3827439143a0ffdbaacd5, type: 2}
+    - target: {fileID: 1232208474550702247, guid: 94ac9cbd76c97444395f1cfd3faf5c14, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3672402858556711165, guid: 88487550c7e3827439143a0ffdbaacd5, type: 2}
+    - target: {fileID: 1232208474550702247, guid: 94ac9cbd76c97444395f1cfd3faf5c14, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278216703
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232208474550702247, guid: 94ac9cbd76c97444395f1cfd3faf5c14, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2660276963859648424, guid: 94ac9cbd76c97444395f1cfd3faf5c14, type: 3}
       propertyPath: m_Type
