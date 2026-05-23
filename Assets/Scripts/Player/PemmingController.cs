@@ -19,6 +19,7 @@ public class PemmingController : MonoBehaviour
 
     bool _isLevelStarted, _isGamePaused, _isDefeated, _isInvincible;
     float _timer;
+    float _gravity = 1f;
 
     static readonly int MOVE_HASH = Animator.StringToHash("IsMoving");
 
@@ -42,6 +43,12 @@ public class PemmingController : MonoBehaviour
 
         LevelManager.OnLevelStarted -= SetLevelStarted;
         LevelManager.OnLevelFinished -= SetLevelFinished;
+    }
+
+    void Start()
+    {
+        _gravity = _rigidBody.gravityScale;
+        _rigidBody.gravityScale = 0;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -76,6 +83,7 @@ public class PemmingController : MonoBehaviour
         if(!_isLevelStarted || _isGamePaused || _isDefeated) { return; }
 
         Move();
+        Rotate();
 
         if(_isInvincible)
         {
@@ -128,7 +136,7 @@ public class PemmingController : MonoBehaviour
         OnDefeat?.Invoke();
 
         Instantiate(_defeatMarkerPrefab, transform);
-        OnDefeat?.Invoke();
+        _rigidBody.gravityScale = 0;
     }
 
     void GetMoveValue(Vector2 input)
@@ -144,7 +152,6 @@ public class PemmingController : MonoBehaviour
         else
         {
             _animator.SetBool(MOVE_HASH, true);
-            Rotate();
         }
     }
 
@@ -167,6 +174,7 @@ public class PemmingController : MonoBehaviour
     void SetLevelStarted()
     {
         _isLevelStarted = true;
+        _rigidBody.gravityScale = _gravity;
     }
 
     void SetLevelFinished()

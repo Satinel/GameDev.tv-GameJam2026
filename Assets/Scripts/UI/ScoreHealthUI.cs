@@ -1,17 +1,22 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ScoreHealthUI : MonoBehaviour
 {
     [SerializeField] IntReferenceSO _scoreReference;
     [SerializeField] TextMeshProUGUI _scoreText;
     [SerializeField] GameObject[] _hearts;
+    [SerializeField] Slider _timerSlider;
 
     void Awake()
     {
         ScoreKeeper.OnScoreChanged += UpdateScore;
         EelController.OnEelHealthChange += UpdateHealth;
         PemmingController.OnHealthChange += UpdateHealth;
+
+        LevelTimer.OnTimerStarted += SetSliderMaxValue;
+        LevelTimer.ReportCurrentTime += ChangeSliderValue;
     }
 
     void OnDestroy()
@@ -19,6 +24,9 @@ public class ScoreHealthUI : MonoBehaviour
         ScoreKeeper.OnScoreChanged -= UpdateScore;
         EelController.OnEelHealthChange -= UpdateHealth;
         PemmingController.OnHealthChange -= UpdateHealth;
+
+        LevelTimer.OnTimerStarted -= SetSliderMaxValue;
+        LevelTimer.ReportCurrentTime -= ChangeSliderValue;
     }
 
     void Start()
@@ -39,5 +47,21 @@ public class ScoreHealthUI : MonoBehaviour
         {
             _hearts[newHealth].SetActive(false);
         }
+    }
+
+    void SetSliderMaxValue(float value)
+    {
+        if(!_timerSlider) { return; }
+
+        _timerSlider.gameObject.SetActive(true);
+        _timerSlider.maxValue = value;
+        _timerSlider.value = 0;
+    }
+
+    void ChangeSliderValue(float value)
+    {
+        if(!_timerSlider) { return; }
+
+        _timerSlider.value = value;
     }
 }
