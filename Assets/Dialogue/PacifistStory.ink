@@ -1,6 +1,10 @@
 I'm Bitey, one of the fish Electra ate.~My preferences have~not been respected! #layout:right #character:Fish #opposite:false
-This is awful!~I wanted to make a friend,~instead I was made a meal. #layout:left #character:Pemming #opposite:true
-I promise it was an accident!~You ARE vaguely fish-shaped though. #layout:right #character:Eel #opposite:true
+Excuse me?~I haven't eaten a single fish! #layout:left #character:Eel #opposite:true
+Really?^~That must have made things difficult. #layout:right #character:Fish #opposite:true
+I'm doing a pacifist run. #layout:left #character:Eel #opposite:true
+You still ate me!#layout:left #character:Pemming #opposite:true
+I promise it was an accident!~Plus it was in a cutscene.~Where's my player agency? #layout:right #character:Eel #opposite:true
+Anyway...^ #layout:right #character:Fish #opposite:true
 We should find Electra's funny bone~and give it a tickle. #layout:right #character:Fish #opposite:true
 Then we'll be laughed right out of here. #layout:right #character:Fish #opposite:true
 That sounds crazy,^~but I don't have~any better ideas. #layout:left #character:Pemming #opposite:true

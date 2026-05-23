@@ -528,7 +528,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 924787095
-  m_SortingOrder: 250
+  m_SortingOrder: 2500
   m_TargetDisplay: 0
 --- !u!114 &5609259967584236307
 MonoBehaviour:
@@ -942,6 +942,8 @@ MonoBehaviour:
   _pitchChange: 0.1
   _linebreakSymbol: 126
   _pauseSymbol: 94
+  _totalFishtEaten: {fileID: 11400000, guid: 9467892ebe0969e46aec52b93bd451b7, type: 2}
+  _pacifistStory: {fileID: 0}
   _emptyChar: {fileID: 11400000, guid: 5ce5d865d65fb9d4ea7c1eca055df8c4, type: 2}
   _pemmingChar: {fileID: 11400000, guid: 5fab30efd8721524b9c587062482a261, type: 2}
   _eelChar: {fileID: 11400000, guid: a33244db0fcf79840bb5b9ec7950bf62, type: 2}
@@ -1247,6 +1249,7 @@ MonoBehaviour:
   - {fileID: 1673262571172601982}
   - {fileID: 4398426974826900433}
   - {fileID: 6216294594493834096}
+  _timerSlider: {fileID: 0}
 --- !u!1 &1321165638702415857
 GameObject:
   m_ObjectHideFlags: 0
@@ -2712,7 +2715,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 924787095
-  m_SortingOrder: 1000
+  m_SortingOrder: 2001
   m_TargetDisplay: 0
 --- !u!114 &8666904499923324315
 MonoBehaviour:
@@ -2816,7 +2819,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 924787095
-  m_SortingOrder: 1000
+  m_SortingOrder: 2001
   m_TargetDisplay: 0
 --- !u!114 &3468210800954766868
 MonoBehaviour:
@@ -3208,7 +3211,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 924787095
-  m_SortingOrder: 1000
+  m_SortingOrder: 2001
   m_TargetDisplay: 0
 --- !u!114 &565686924394978597
 MonoBehaviour:

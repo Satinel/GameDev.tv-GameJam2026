@@ -1291,7 +1291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.296, g: 0, b: 0.296, a: 0.5019608}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -9809,7 +9809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.5019608, b: 1, a: 0.5019608}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -22741,6 +22741,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2195026495540515064, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: _pacifistStory
+      value: 
+      objectReference: {fileID: 4900000, guid: 892c89a84cd737c41afcebcb00f79bf2, type: 3}
     - target: {fileID: 2195026495540515064, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
       propertyPath: _dialogues.Array.size
       value: 1

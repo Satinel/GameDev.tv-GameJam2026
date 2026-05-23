@@ -21,7 +21,7 @@ public class PemmingController : MonoBehaviour
     float _timer;
     float _gravity = 1f;
 
-    static readonly int MOVE_HASH = Animator.StringToHash("IsMoving");
+    static readonly int MOVE_HASH = Animator.StringToHash("IsSwimming");
 
     void Awake()
     {

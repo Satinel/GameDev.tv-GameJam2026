@@ -22,6 +22,8 @@ public class StoryTeller : MonoBehaviour
     [SerializeField] AudioSource _audioSource;
     [SerializeField] float _textDelay = 0.25f, _pitchChange = 0.1f;
     [SerializeField] char _linebreakSymbol = '~', _pauseSymbol = '^';
+    [SerializeField] IntReferenceSO _totalFishtEaten;
+    [SerializeField] TextAsset _pacifistStory;
     WaitForSecondsRealtime _textDelayWait = new(0.05f), _textDelayDecaWait = new(0.5f);
     Story _story;
     string _fullLine;
@@ -82,24 +84,38 @@ public class StoryTeller : MonoBehaviour
 
     public bool CheckForStory() // There's some argument to be made to simply call BeginStory instead of returning a bool but I might want to refactor things in other ways
     {
-        if(IsStoryAlreadyViewed())  // AND THIS is the refactor which made my decision worthwhile!
+        int index = SceneManager.GetActiveScene().buildIndex;
+
+        if(IsStoryAlreadyViewed(index))  // AND THIS is the refactor which made my decision worthwhile!
         {
             return false;
         }
 
-        if(_dialogues.Length > _dialogueIndex)
+        if(index == 6 && _totalFishtEaten.Value < 1 && _pacifistStory)
+        {
+            _story = new(_pacifistStory.text);
+
+            if(_story.canContinue)
+            {
+                return true;
+            }
+        }
+        else if(_dialogues.Length > _dialogueIndex)
         {
             _story = new(_dialogues[_dialogueIndex].text);
+
             if(_story.canContinue)
-            return true;
+            {
+                return true;
+            }
         }
 
         return false;
     }
 
-    bool IsStoryAlreadyViewed()
+    bool IsStoryAlreadyViewed(int index)
     {
-        return _gameProgress.CheckStoryViewedByBuildIndex(SceneManager.GetActiveScene().buildIndex);
+        return _gameProgress.CheckStoryViewedByBuildIndex(index);
     }
 
     public void BeginStory(bool increaseIndex)
