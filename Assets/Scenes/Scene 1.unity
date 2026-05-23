@@ -15565,10 +15565,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goal
       objectReference: {fileID: 0}
-    - target: {fileID: 1119429735865850990, guid: fac0c2738968435429d1f77f73ae3a60, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 4188526044558592083, guid: fac0c2738968435429d1f77f73ae3a60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15
@@ -15608,10 +15604,6 @@ PrefabInstance:
     - target: {fileID: 4188526044558592083, guid: fac0c2738968435429d1f77f73ae3a60, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5672883447941376635, guid: fac0c2738968435429d1f77f73ae3a60, type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
