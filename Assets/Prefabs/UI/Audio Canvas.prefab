@@ -1881,7 +1881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VolumeControl
   _audioMixer: {fileID: 24100000, guid: 5e1c0a38a4db87d4f970a1af46a46770, type: 2}
-  _mainMenuButton: {fileID: 5758946594232138356}
+  _mainMenuButton: {fileID: 3780060172441189472}
   _quitPromptParent: {fileID: 6628864708451228626}
   _cancelQuitButton: {fileID: 2561445872235929175}
   _quitButton: {fileID: 7303964534465262283}
@@ -3616,17 +3616,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 55675588820357477, guid: 94ac9cbd76c97444395f1cfd3faf5c14, type: 3}
   m_PrefabInstance: {fileID: 2948076294947920335}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5758946594232138356}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &5758946594232138356 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7422575052429206459, guid: 94ac9cbd76c97444395f1cfd3faf5c14, type: 3}
-  m_PrefabInstance: {fileID: 2948076294947920335}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4939989041161141740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3898,12 +3893,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94ac9cbd76c97444395f1cfd3faf5c14, type: 3}
+--- !u!1 &3780060172441189472 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7422575052429206459, guid: 94ac9cbd76c97444395f1cfd3faf5c14, type: 3}
+  m_PrefabInstance: {fileID: 6014328732671369179}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6031160730403802814 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 55675588820357477, guid: 94ac9cbd76c97444395f1cfd3faf5c14, type: 3}
   m_PrefabInstance: {fileID: 6014328732671369179}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 3780060172441189472}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
