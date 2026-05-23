@@ -22743,8 +22743,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2195026495540515064, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
       propertyPath: _dialogues.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2195026495540515064, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: '_dialogues.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4900000, guid: 006b28b7e35f14c4aa70c369f6559db1, type: 3}
     - target: {fileID: 5662108834224875254, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
       propertyPath: _rendererParents.Array.size
       value: 0
@@ -22976,6 +22980,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 7178079256645580055}
   - {fileID: 619394802}
+  - {fileID: 1455183497}
   - {fileID: 6249393426634407624}
   - {fileID: 3721717379175844054}
   - {fileID: 1409986161}
@@ -22991,4 +22996,3 @@ SceneRoots:
   - {fileID: 5239017409271639067}
   - {fileID: 5675432623739209239}
   - {fileID: 1302202503098852970}
-  - {fileID: 1455183497}

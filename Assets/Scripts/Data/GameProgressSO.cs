@@ -8,6 +8,8 @@ public class GameProgressSO : ScriptableObject
     [field:SerializeField] public bool Scene3StoryViewed { get; private set; }
     [field:SerializeField] public bool Scene4StoryViewed { get; private set; }
     [field:SerializeField] public bool Scene5StoryViewed { get; private set; }
+    [field:SerializeField] public bool Scene6StoryViewed { get; private set; }
+    [field:SerializeField] public bool Scene7StoryViewed { get; private set; }
     [field:SerializeField] public bool YemmepEaten { get; private set; }
 
     public void SetStoryViewedByBuildIndex(int index)
@@ -29,6 +31,12 @@ public class GameProgressSO : ScriptableObject
             case 5:
                 Scene5StoryViewed = true;
                 break;
+            case 6:
+                Scene6StoryViewed = true;
+                break;
+            case 7:
+                Scene7StoryViewed = true;
+                break;
             default:
                 break;
         }
@@ -43,6 +51,8 @@ public class GameProgressSO : ScriptableObject
             3 => Scene3StoryViewed,
             4 => Scene4StoryViewed,
             5 => Scene5StoryViewed,
+            6 => Scene6StoryViewed,
+            7 => Scene7StoryViewed,
             _ => false,
         };
     }
@@ -59,6 +69,8 @@ public class GameProgressSO : ScriptableObject
         Scene3StoryViewed = false;
         Scene4StoryViewed = false;
         Scene5StoryViewed = false;
+        Scene6StoryViewed = false;
+        Scene7StoryViewed = false;
 
         YemmepEaten = false;
     }
