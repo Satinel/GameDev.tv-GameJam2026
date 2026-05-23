@@ -15,11 +15,13 @@ public class LevelTimer : MonoBehaviour
     void Awake()
     {
         LevelManager.OnLevelStarted += SetTimerStarted;
+        PemmingController.OnDefeat += StopTimer;
     }
 
     void OnDestroy()
     {
         LevelManager.OnLevelStarted -= SetTimerStarted;
+        PemmingController.OnDefeat -= StopTimer;
     }
 
     void Update()
@@ -41,5 +43,10 @@ public class LevelTimer : MonoBehaviour
     {
         _isTimerStarted = true;
         OnTimerStarted?.Invoke(_totalDuration);
+    }
+
+    void StopTimer()
+    {
+        _isTimerStarted = false;
     }
 }

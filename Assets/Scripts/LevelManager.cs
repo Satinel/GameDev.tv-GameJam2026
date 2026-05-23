@@ -33,6 +33,7 @@ public class LevelManager : MonoBehaviour
         EelController.OnEelDefeat += PlayerDefeat;
         PemmingController.OnDefeat += PlayerDefeat;
         StoryTeller.OnStoryCanvasClosed += OnStoryClosed;
+        LevelTimer.OnTimerCompleted += Goal_OnGoalAchieved;
     }
 
     void OnDisable()
@@ -43,6 +44,7 @@ public class LevelManager : MonoBehaviour
         EelController.OnEelDefeat -= PlayerDefeat;
         PemmingController.OnDefeat -= PlayerDefeat;
         StoryTeller.OnStoryCanvasClosed -= OnStoryClosed;
+        LevelTimer.OnTimerCompleted -= Goal_OnGoalAchieved;
     }
 
     IEnumerator Start()

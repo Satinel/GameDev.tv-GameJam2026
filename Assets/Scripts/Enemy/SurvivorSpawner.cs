@@ -5,6 +5,7 @@ public class SurvivorSpawner : MonoBehaviour
     [SerializeField] float _spawnRate =  7.5f;
     [SerializeField] float _maxRandomStart = 6.5f, _maxRandomRespawn = 12.5f;
     [SerializeField] Enemy[] _enemyPrefabs;
+    [SerializeField] Transform[] _spawnPoints;
 
     float _timer;
     bool _isTimerEnabled;
@@ -52,7 +53,7 @@ public class SurvivorSpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        Instantiate(_enemyPrefabs[Random.Range(0, _enemyPrefabs.Length)], transform.position, Quaternion.identity);
+        Instantiate(_enemyPrefabs[Random.Range(0, _enemyPrefabs.Length)], _spawnPoints[Random.Range(0, _spawnPoints.Length)].position, Quaternion.identity);
         _timer -= _spawnRate + Random.Range(0, _maxRandomRespawn);
     }
 
