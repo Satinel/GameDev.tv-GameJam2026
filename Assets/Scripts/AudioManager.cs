@@ -18,6 +18,9 @@ public class AudioManager : MonoBehaviour
         EelController.OnEelHurtSFX += PlaySound;
         EelController.OnEelElectrifiedSFX += PlaySound;
 
+        PemmingController.OnHurtSFX += PlaySound;
+        PemmingController.OnDefeat += PlayPemmingPlayerDefeat;
+
         Collectable.OnAnyCollectableCollected += PlayCollectableSFX;
         Enemy.OnEnemyBit += PlayEnemyBitSFX;
         Enemy.OnEnemyZapped += PlayEnemyZapSFX;
@@ -31,6 +34,9 @@ public class AudioManager : MonoBehaviour
 
         EelController.OnEelHurtSFX -= PlaySound;
         EelController.OnEelElectrifiedSFX -= PlaySound;
+
+        PemmingController.OnHurtSFX -= PlaySound;
+        PemmingController.OnDefeat -= PlayPemmingPlayerDefeat;
 
         Collectable.OnAnyCollectableCollected -= PlayCollectableSFX;
         Enemy.OnEnemyBit -= PlayEnemyBitSFX;
@@ -98,6 +104,11 @@ public class AudioManager : MonoBehaviour
     }
 
     void PlayPemmingDefeat(Vector2 _)
+    {
+        PlaySound(_pemmingDefeatSFX, _pemmingDefeatVol);
+    }
+
+    void PlayPemmingPlayerDefeat()
     {
         PlaySound(_pemmingDefeatSFX, _pemmingDefeatVol);
     }

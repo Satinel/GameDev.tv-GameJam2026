@@ -31,6 +31,7 @@ public class LevelManager : MonoBehaviour
         VolumeControl.OnPauseStateChanged += OnPauseStateChanged;
         Goal.OnGoalAchieved += Goal_OnGoalAchieved;
         EelController.OnEelDefeat += PlayerDefeat;
+        PemmingController.OnDefeat += PlayerDefeat;
         StoryTeller.OnStoryCanvasClosed += OnStoryClosed;
     }
 
@@ -40,6 +41,7 @@ public class LevelManager : MonoBehaviour
         VolumeControl.OnPauseStateChanged -= OnPauseStateChanged;
         Goal.OnGoalAchieved -= Goal_OnGoalAchieved;
         EelController.OnEelDefeat -= PlayerDefeat;
+        PemmingController.OnDefeat -= PlayerDefeat;
         StoryTeller.OnStoryCanvasClosed -= OnStoryClosed;
     }
 

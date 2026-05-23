@@ -30,6 +30,7 @@ public class EnemySpawner : MonoBehaviour
         Enemy.OnEnemyDestroyed += CheckCurrentEnemy;
         LevelManager.OnLevelFinished += DisableTimer;
         EelController.OnEelDefeat += DisableTimer;
+        PemmingController.OnDefeat += DisableTimer;
     }
 
     void OnDisable()
@@ -38,6 +39,7 @@ public class EnemySpawner : MonoBehaviour
         Enemy.OnEnemyDestroyed -= CheckCurrentEnemy;
         LevelManager.OnLevelFinished -= DisableTimer;
         EelController.OnEelDefeat -= DisableTimer;
+        PemmingController.OnDefeat -= DisableTimer;
     }
 
     void Update()

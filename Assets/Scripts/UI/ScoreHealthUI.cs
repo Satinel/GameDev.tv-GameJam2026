@@ -11,12 +11,14 @@ public class ScoreHealthUI : MonoBehaviour
     {
         ScoreKeeper.OnScoreChanged += UpdateScore;
         EelController.OnEelHealthChange += UpdateHealth;
+        PemmingController.OnHealthChange += UpdateHealth;
     }
 
     void OnDestroy()
     {
         ScoreKeeper.OnScoreChanged -= UpdateScore;
         EelController.OnEelHealthChange -= UpdateHealth;
+        PemmingController.OnHealthChange -= UpdateHealth;
     }
 
     void Start()

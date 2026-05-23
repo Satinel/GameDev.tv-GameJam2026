@@ -12,6 +12,7 @@ public class MusicPlayer : MonoBehaviour
         LevelManager.OnLevelStarted += PlayMusic;
         LevelManager.OnLevelFinished += PlayVictory;
         EelController.OnEelDefeat += PlayDefeat;
+        PemmingController.OnDefeat += PlayDefeat;
         VolumeControl.OnPauseStateChanged += OnPauseStateChanged;
     }
 
@@ -20,6 +21,7 @@ public class MusicPlayer : MonoBehaviour
         LevelManager.OnLevelStarted -= PlayMusic;
         LevelManager.OnLevelFinished -= PlayVictory;
         EelController.OnEelDefeat -= PlayDefeat;
+        PemmingController.OnDefeat -= PlayDefeat;
         VolumeControl.OnPauseStateChanged -= OnPauseStateChanged;
     }
 
