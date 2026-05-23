@@ -6,11 +6,13 @@ using TMPro;
 using Ink.Runtime;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class StoryTeller : MonoBehaviour
 {
-    public static event Action OnStoryCanvasClosed, OnStoryStarted;
+    public static event Action OnStoryCanvasClosed, OnStoryStarted, OnStoryCompleted;
 
+    [SerializeField] GameProgressSO _gameProgress;
     [SerializeField] Canvas _canvas;
     [SerializeField] GameObject _continueButton;
     [SerializeField] Image _leftCharacter, _rightCharacter;
@@ -80,6 +82,11 @@ public class StoryTeller : MonoBehaviour
 
     public bool CheckForStory() // There's some argument to be made to simply call BeginStory instead of returning a bool but I might want to refactor things in other ways
     {
+        if(IsStoryAlreadyViewed())  // AND THIS is the refactor which made my decision worthwhile!
+        {
+            return false;
+        }
+
         if(_dialogues.Length > _dialogueIndex)
         {
             _story = new(_dialogues[_dialogueIndex].text);
@@ -88,6 +95,11 @@ public class StoryTeller : MonoBehaviour
         }
 
         return false;
+    }
+
+    bool IsStoryAlreadyViewed()
+    {
+        return _gameProgress.CheckStoryViewedByBuildIndex(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void BeginStory(bool increaseIndex)
@@ -122,6 +134,7 @@ public class StoryTeller : MonoBehaviour
         else
         {
             _canvas.enabled = false;
+            OnStoryCompleted?.Invoke();
             OnStoryCanvasClosed?.Invoke();
             _text.text = string.Empty;
             return;

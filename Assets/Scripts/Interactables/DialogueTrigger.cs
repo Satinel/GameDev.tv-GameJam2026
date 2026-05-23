@@ -32,10 +32,6 @@ public class DialogueTrigger : MonoBehaviour
                 _storyPlayed = true;
                 _storyTeller.StartSideStory(_story);
             }
-            else if(_storyTeller.CheckForStory())
-            {
-                _storyTeller.BeginStory(true);
-            }
         }
     }
 

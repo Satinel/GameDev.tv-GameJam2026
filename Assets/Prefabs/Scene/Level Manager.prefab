@@ -926,6 +926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2985e959cf68f459c952ea43c16344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StoryTeller
+  _gameProgress: {fileID: 11400000, guid: bb8b618ce8b451b46b22878d6ccae6fd, type: 2}
   _canvas: {fileID: 168563259066451506}
   _continueButton: {fileID: 5477065726421364981}
   _leftCharacter: {fileID: 5029299632993122917}
