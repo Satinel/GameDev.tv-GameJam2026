@@ -8,6 +8,7 @@ public class VolumeControl : MonoBehaviour
 {
     public static event Action<bool> OnPauseStateChanged;
     public static event Action OnUnpausedWithStoryActive;
+    public static event Action OnRequestRestart;
 
     public AudioMixer _audioMixer;
     [SerializeField] GameObject _mainMenuButton, _quitPromptParent, _cancelQuitButton, _quitButton;
@@ -193,6 +194,13 @@ public class VolumeControl : MonoBehaviour
     void OnLevelReady()
     {
         _isLevelReady = true;
+    }
+
+    public void RequestRestart()
+    {
+        OnRequestRestart?.Invoke();
+        _audioCanvas.enabled = false;
+        Time.timeScale = 1;
     }
 
     public void PromptQuit()

@@ -60,7 +60,7 @@ public class StoryTeller : MonoBehaviour
         OnPauseStateChanged(true);
     }
 
-    void OnPauseStateChanged(bool isPaused)
+    void OnPauseStateChanged(bool isPaused) // TODO (someday but not during jam period) Pause coroutines when game paused and don't allow story to continue (such as via Jump input)
     {
         if(_canvas.isActiveAndEnabled)
         {

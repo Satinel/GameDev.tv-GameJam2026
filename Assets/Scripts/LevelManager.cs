@@ -27,6 +27,7 @@ public class LevelManager : MonoBehaviour
 
     void OnEnable()
     {
+        VolumeControl.OnRequestRestart += RestartLevel;
         VolumeControl.OnPauseStateChanged += OnPauseStateChanged;
         Goal.OnGoalAchieved += Goal_OnGoalAchieved;
         EelController.OnEelDefeat += PlayerDefeat;
@@ -35,6 +36,7 @@ public class LevelManager : MonoBehaviour
 
     void OnDisable()
     {
+        VolumeControl.OnRequestRestart -= RestartLevel;
         VolumeControl.OnPauseStateChanged -= OnPauseStateChanged;
         Goal.OnGoalAchieved -= Goal_OnGoalAchieved;
         EelController.OnEelDefeat -= PlayerDefeat;
