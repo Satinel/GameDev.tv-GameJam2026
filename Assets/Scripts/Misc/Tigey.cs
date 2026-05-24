@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Tigey : MonoBehaviour
 {
+    public static event Action OnShopOpened;
+
     [SerializeField] TextAsset _tigeyIntro;
     [SerializeField] StoryTeller _storyTeller;
     [SerializeField] Canvas _shopCanvas, _defeatCanvas;
@@ -41,6 +44,7 @@ public class Tigey : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         _defeatCanvas.enabled = false;
         _shopCanvas.enabled = true;
+        OnShopOpened?.Invoke();
         EventSystem.current.SetSelectedGameObject(_retryButton);
     }
 

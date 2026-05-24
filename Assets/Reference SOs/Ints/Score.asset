@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Score
   m_EditorClassIdentifier: Assembly-CSharp::IntReferenceSO
   <Value>k__BackingField: 0
+  <ShopCost>k__BackingField: 1000
+  _defaultValue: 0

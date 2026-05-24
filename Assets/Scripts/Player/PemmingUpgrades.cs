@@ -9,7 +9,25 @@ public class PemmingUpgrades : MonoBehaviour
     [SerializeField] float _noseFireRate, _otherFireRate;
     float _noseTimer, _otherTimer;
 
-    void Start()
+    bool _shouldAttack;
+
+    void Awake()
+    {
+        LevelManager.OnLevelReady += SetPemmingValues;
+        LevelManager.OnLevelStarted += SetShouldAttack;
+        LevelManager.OnLevelFinished += SetNoAttack;
+        PemmingController.OnDefeat += SetNoAttack;
+    }
+
+    void OnDestroy()
+    {
+        LevelManager.OnLevelReady -= SetPemmingValues;
+        LevelManager.OnLevelStarted -= SetShouldAttack;
+        LevelManager.OnLevelFinished -= SetNoAttack;
+        PemmingController.OnDefeat -= SetNoAttack;
+    }
+
+    void SetPemmingValues()
     {
         _pemming.SetHealth(_health.Value);
         _pemming.SetSpeed(_speed.Value);
@@ -17,6 +35,8 @@ public class PemmingUpgrades : MonoBehaviour
 
     void Update()
     {
+        if(!_shouldAttack) { return; }
+
         if(_noseWeapon.Value > 0)
         {
             _noseTimer += Time.deltaTime;
@@ -42,5 +62,15 @@ public class PemmingUpgrades : MonoBehaviour
                 }
             }
         }
+    }
+
+    void SetShouldAttack()
+    {
+        _shouldAttack = true;
+    }
+
+    void SetNoAttack()
+    {
+        _shouldAttack = false;
     }
 }

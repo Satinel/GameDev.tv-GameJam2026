@@ -12,6 +12,8 @@ public class ScoreHealthUI : MonoBehaviour
     void Awake()
     {
         ScoreKeeper.OnScoreChanged += UpdateScore;
+        UpgradeButton.OnAnyUpgradePurchased += UpdateScore;
+
         EelController.OnEelHealthChange += UpdateHealth;
         PemmingController.OnHealthChange += UpdatePemmingHealth;
 
@@ -22,6 +24,8 @@ public class ScoreHealthUI : MonoBehaviour
     void OnDestroy()
     {
         ScoreKeeper.OnScoreChanged -= UpdateScore;
+        UpgradeButton.OnAnyUpgradePurchased -= UpdateScore;
+
         EelController.OnEelHealthChange -= UpdateHealth;
         PemmingController.OnHealthChange -= UpdatePemmingHealth;
 
@@ -51,13 +55,25 @@ public class ScoreHealthUI : MonoBehaviour
 
     void UpdatePemmingHealth(int newHealth)
     {
-        if(newHealth < 0) { return; }
-
-        for(int i = newHealth; i > 0; i--)
+        if(newHealth <= 0)
         {
-            if(_hearts.Length > i)
+            foreach(GameObject heart in _hearts)
             {
-                _hearts[i].SetActive(true);
+                heart.SetActive(false);
+            }
+            return;
+        }
+
+        foreach(GameObject heart in _hearts)
+        {
+            heart.SetActive(true);
+        }
+
+        for(int i = _hearts.Length - 1; i >= 0; i--)
+        {
+            if(i > newHealth - 1)
+            {
+                _hearts[i].SetActive(false);
             }
         }
     }

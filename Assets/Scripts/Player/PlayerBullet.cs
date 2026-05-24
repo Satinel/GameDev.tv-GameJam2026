@@ -3,7 +3,8 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
     [SerializeField] float _moveSpeed = 3.5f;
-    [SerializeField] IntReferenceSO _damage;
+    [SerializeField] int _damage = 1;
+    [SerializeField] IntReferenceSO _damageRef;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,12 +15,12 @@ public class PlayerBullet : MonoBehaviour
 
         if(collision.TryGetComponent(out Enemy enemy))
         {
-            enemy.TakeDamage(_damage.Value);
+            enemy.TakeDamage(_damage + _damageRef.Value);
         }
     }
 
     void Update()
     {
-        transform.position = _moveSpeed * Time.deltaTime * transform.right;
+        transform.position += _moveSpeed * Time.deltaTime * transform.right;
     }
 }
