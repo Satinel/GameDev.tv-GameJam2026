@@ -6,9 +6,10 @@ public class Tigey : MonoBehaviour
     [SerializeField] TextAsset _tigeyIntro;
     [SerializeField] StoryTeller _storyTeller;
     [SerializeField] Canvas _shopCanvas, _defeatCanvas;
-    [SerializeField] GameProgressSO _gameProgress;
     [SerializeField] EnemySpawner _yemmepSpawner;
     [SerializeField] GameObject _retryButton;
+    [SerializeField] GameProgressSO _gameProgress;
+
 
     void Awake()
     {

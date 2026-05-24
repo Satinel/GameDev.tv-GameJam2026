@@ -13,7 +13,7 @@ public class ScoreHealthUI : MonoBehaviour
     {
         ScoreKeeper.OnScoreChanged += UpdateScore;
         EelController.OnEelHealthChange += UpdateHealth;
-        PemmingController.OnHealthChange += UpdateHealth;
+        PemmingController.OnHealthChange += UpdatePemmingHealth;
 
         LevelTimer.OnTimerStarted += SetSliderMaxValue;
         LevelTimer.ReportCurrentTime += ChangeSliderValue;
@@ -23,7 +23,7 @@ public class ScoreHealthUI : MonoBehaviour
     {
         ScoreKeeper.OnScoreChanged -= UpdateScore;
         EelController.OnEelHealthChange -= UpdateHealth;
-        PemmingController.OnHealthChange -= UpdateHealth;
+        PemmingController.OnHealthChange -= UpdatePemmingHealth;
 
         LevelTimer.OnTimerStarted -= SetSliderMaxValue;
         LevelTimer.ReportCurrentTime -= ChangeSliderValue;
@@ -46,6 +46,19 @@ public class ScoreHealthUI : MonoBehaviour
         if(_hearts.Length > newHealth)
         {
             _hearts[newHealth].SetActive(false);
+        }
+    }
+
+    void UpdatePemmingHealth(int newHealth)
+    {
+        if(newHealth < 0) { return; }
+
+        for(int i = newHealth; i > 0; i--)
+        {
+            if(_hearts.Length > i)
+            {
+                _hearts[i].SetActive(true);
+            }
         }
     }
 

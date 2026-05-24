@@ -123,8 +123,6 @@ public class PemmingController : MonoBehaviour
         }
     }
 
-
-
     void HandleDefeat()
     {
         if(_isDefeated) { return; }
@@ -183,5 +181,16 @@ public class PemmingController : MonoBehaviour
         _currentDirection = Vector2.zero;
         _rigidBody.linearVelocity = Vector2.zero;
         _animator.SetBool(MOVE_HASH, false);
+    }
+
+    public void SetHealth(int bonus)
+    {
+        _health += bonus;
+        OnHealthChange?.Invoke(_health);
+    }
+
+    public void SetSpeed(int bonus)
+    {
+        _moveSpeed += bonus * 0.5f;
     }
 }

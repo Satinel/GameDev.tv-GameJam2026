@@ -159,5 +159,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff4a5081dbb7a454098a49feb2c8fbf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SideMover
-  _moveSpeed: 0.5
+  _moveSpeed: 0.75
   _rigidBody: {fileID: 2300985940447918718}
