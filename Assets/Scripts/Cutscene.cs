@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Cutscene : MonoBehaviour
 {
+    public static event Action OnPemmeyEaten;
+
     [SerializeField] GameProgressSO _progressRef;
     [SerializeField] LevelManager _levelManager;
     [SerializeField] Animator _animator, _stuntPemmingAnimator, _stuntEelAnimator;
@@ -34,6 +37,7 @@ public class Cutscene : MonoBehaviour
     public void PemmeyEatenAnimationEvent()
     {
         _stuntPemmingAnimator.SetBool(PEMMINIG_MOVE_HASH, false);
+        OnPemmeyEaten?.Invoke();
     }
 
     public void EnableBubblesAnimationEvent()

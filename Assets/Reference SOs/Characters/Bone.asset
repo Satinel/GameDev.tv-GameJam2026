@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8a23eaf850d66428331cb6db01982b, type: 3}
+  m_Name: Bone
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterSO
+  <CharacterName>k__BackingField: Humerus
+  <LeftSprites>k__BackingField:
+  - {fileID: -7780676596574545334, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: -3304537467472969048, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: -7573718288149550800, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 5888708810067207547, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 993937887, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: -2094472834, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 344689030, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 970423773, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: -399367767, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 2068262804, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 75915868, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 1299731264, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 1959450316, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 1408060532, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: -407680035, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 1716402070, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: -3304537467472969048, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  <RightSprites>k__BackingField:
+  - {fileID: -7780676596574545334, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: -3304537467472969048, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: -7573718288149550800, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 5888708810067207547, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 993937887, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: -2094472834, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 344689030, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 970423773, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: -399367767, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 2068262804, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 75915868, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 1299731264, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 1959450316, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 1408060532, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: -407680035, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: 1716402070, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  - {fileID: -3304537467472969048, guid: 2486561b2bcec014baaaad167983250e, type: 3}
+  <SoundFX>k__BackingField: {fileID: 0}
+  <SoundVol>k__BackingField: 1

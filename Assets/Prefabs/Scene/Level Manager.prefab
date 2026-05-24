@@ -1027,6 +1027,7 @@ MonoBehaviour:
   _tigeyChar: {fileID: 11400000, guid: cf68d0bb8f50a2c49be8b7562d4fd8b6, type: 2}
   _redChar: {fileID: 11400000, guid: 6836f12808140a6469fe6dbbce3137db, type: 2}
   _claraChar: {fileID: 11400000, guid: 5826d550d492bf7478a4b1bc50523896, type: 2}
+  _boneChar: {fileID: 11400000, guid: 8291449d012df2544b5bf613c24a39f1, type: 2}
 --- !u!1 &1152634498493957184
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ public class AudioManager : MonoBehaviour
 
         PemmingController.OnHurtSFX += PlaySound;
         PemmingController.OnDefeat += PlayPemmingPlayerDefeat;
+        Cutscene.OnPemmeyEaten += PlayPemmingPlayerDefeat;
 
         Collectable.OnAnyCollectableCollected += PlayCollectableSFX;
         Enemy.OnEnemyBit += PlayEnemyBitSFX;
@@ -37,6 +38,7 @@ public class AudioManager : MonoBehaviour
 
         PemmingController.OnHurtSFX -= PlaySound;
         PemmingController.OnDefeat -= PlayPemmingPlayerDefeat;
+        Cutscene.OnPemmeyEaten += PlayPemmingPlayerDefeat;
 
         Collectable.OnAnyCollectableCollected -= PlayCollectableSFX;
         Enemy.OnEnemyBit -= PlayEnemyBitSFX;

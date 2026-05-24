@@ -30,13 +30,13 @@ public class StoryTeller : MonoBehaviour
     int _dialogueIndex;
     Coroutine _typingRoutine;
 
-    [SerializeField] CharacterSO _emptyChar, _pemmingChar, _eelChar, _fishChar, _swordChar, _tigeyChar, _redChar, _claraChar;
+    [SerializeField] CharacterSO _emptyChar, _pemmingChar, _eelChar, _fishChar, _swordChar, _tigeyChar, _redChar, _claraChar, _boneChar;
     CharacterSO _currentCharacter;
     bool _isLeftAligned;
     int _spriteIndex = 0;
 
     const string CHARACTER_TAG = "character", LAYOUT_TAG = "layout", OPPOSITE_TAG = "opposite";
-    const string PEMMING_NAME = "Pemming", EEL_NAME = "Eel", FISH_NAME = "Fish", SWORD_NAME = "Sword", TIGEY_NAME = "Tigey", RED_NAME = "Red", CLARA_NAME = "Clara";//, MOLE_NAME = "something..."
+    const string PEMMING_NAME = "Pemming", EEL_NAME = "Eel", FISH_NAME = "Fish", SWORD_NAME = "Sword", TIGEY_NAME = "Tigey", RED_NAME = "Red", CLARA_NAME = "Clara", BONE_NAME="Bone";//, MOLE_NAME = "something..."
 
     void OnEnable()
     {
@@ -282,6 +282,7 @@ public class StoryTeller : MonoBehaviour
                     TIGEY_NAME => _tigeyChar,
                     RED_NAME => _redChar,
                     CLARA_NAME => _claraChar,
+                    BONE_NAME => _boneChar,
                     _ => _emptyChar,
                 };
             }
