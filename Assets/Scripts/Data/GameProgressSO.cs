@@ -11,6 +11,7 @@ public class GameProgressSO : ScriptableObject
     [field:SerializeField] public bool Scene6StoryViewed { get; private set; }
     [field:SerializeField] public bool Scene7StoryViewed { get; private set; }
     [field:SerializeField] public bool YemmepEaten { get; private set; }
+    [field:SerializeField] public bool CutsceneViewed { get; private set; }
     [field:SerializeField] public bool TigeyMet { get; private set; }
 
     [SerializeField] IntReferenceSO _score, _fishEaten, _fishZapped, _health, _speed, _noseA, _noseD, _otherA, _otherD;
@@ -65,6 +66,11 @@ public class GameProgressSO : ScriptableObject
         YemmepEaten = true;
     }
 
+    public void SetCutsceneViewed()
+    {
+        CutsceneViewed = true;
+    }
+
     public void SetTigeyMet()
     {
         TigeyMet = true;
@@ -81,6 +87,7 @@ public class GameProgressSO : ScriptableObject
         Scene7StoryViewed = false;
 
         YemmepEaten = false;
+        CutsceneViewed = false;
         TigeyMet = false;
 
         _score.Reset();
