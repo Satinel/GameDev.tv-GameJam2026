@@ -6,4 +6,5 @@ It doesn't need to be funny 'ha-ha',~it can be funny weird. #layout:right #chara
 My ma wanted me to be a doctor,^~^but I didn't have the guts! #layout:right #character:Bone #opposite:true
 Ugh...^~What do we do now? #layout:left #character:Pemming #opposite:true
 You distract the other fish,~I'll take care of the rest. #layout:right #character:Fish #opposite:true
+Let's make this our last stand! #layout:right #character:Fish #opposite:true
 You're not gonna leave, are ya?~I'll be so bonely. #layout:right #character:Bone #opposite:false
