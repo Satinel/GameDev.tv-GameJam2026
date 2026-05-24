@@ -49,5 +49,5 @@ MonoBehaviour:
   - {fileID: -407680035, guid: 2486561b2bcec014baaaad167983250e, type: 3}
   - {fileID: 1716402070, guid: 2486561b2bcec014baaaad167983250e, type: 3}
   - {fileID: -3304537467472969048, guid: 2486561b2bcec014baaaad167983250e, type: 3}
-  <SoundFX>k__BackingField: {fileID: 0}
+  <SoundFX>k__BackingField: {fileID: 8300000, guid: f592a419e0c09b44da3affc497402c15, type: 3}
   <SoundVol>k__BackingField: 1
