@@ -146,7 +146,7 @@ MonoBehaviour:
   _victoryMusic: {fileID: 0}
   _defeatMusic: {fileID: 0}
   _victoryVol: 1
-  _defeatVol: 0
+  _defeatVol: 1
 --- !u!1 &7456259758628309311
 GameObject:
   m_ObjectHideFlags: 0

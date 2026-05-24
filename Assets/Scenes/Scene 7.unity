@@ -8062,6 +8062,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1548954859698908461, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.81960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548954859698908461, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.81960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548954859698908461, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.81960785
+      objectReference: {fileID: 0}
     - target: {fileID: 1671785385668943807, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
       propertyPath: m_Name
       value: Level Manager
@@ -8105,6 +8117,18 @@ PrefabInstance:
     - target: {fileID: 5186839128819606187, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
       propertyPath: m_fontSize
       value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186839128819606187, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.81960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186839128819606187, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.81960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186839128819606187, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.81960785
       objectReference: {fileID: 0}
     - target: {fileID: 5662108834224875254, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
       propertyPath: _rendererParents.Array.size

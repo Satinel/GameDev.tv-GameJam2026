@@ -14,6 +14,8 @@ public class MusicPlayer : MonoBehaviour
         EelController.OnEelDefeat += PlayDefeat;
         PemmingController.OnDefeat += PlayDefeat;
         VolumeControl.OnPauseStateChanged += OnPauseStateChanged;
+        StoryTeller.OnStoryStarted += HalveVolume;
+        StoryTeller.OnStoryCompleted += RestoreVolume;
     }
 
     void OnDisable()
@@ -23,6 +25,8 @@ public class MusicPlayer : MonoBehaviour
         EelController.OnEelDefeat -= PlayDefeat;
         PemmingController.OnDefeat -= PlayDefeat;
         VolumeControl.OnPauseStateChanged -= OnPauseStateChanged;
+        StoryTeller.OnStoryStarted -= HalveVolume;
+        StoryTeller.OnStoryCompleted -= RestoreVolume;
     }
 
     void PlayMusic()
@@ -60,5 +64,15 @@ public class MusicPlayer : MonoBehaviour
         {
             _audioSource.UnPause();
         }
+    }
+
+    void HalveVolume()
+    {
+        _audioSource.volume = 0.5f;
+    }
+
+    void RestoreVolume()
+    {
+        _audioSource.volume = 1f;
     }
 }
