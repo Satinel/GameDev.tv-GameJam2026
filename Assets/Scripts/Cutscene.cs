@@ -4,9 +4,13 @@ public class Cutscene : MonoBehaviour
 {
     [SerializeField] GameProgressSO _progressRef;
     [SerializeField] LevelManager _levelManager;
-    [SerializeField] Animator _animator;
+    [SerializeField] Animator _animator, _stuntPemmingAnimator, _stuntEelAnimator;
+    [SerializeField] GameObject _realPemming, _realBubbles;
+    [SerializeField] Canvas _healthCanvas;
 
     static readonly int CUTSCENE_HASH = Animator.StringToHash("Begin");
+    static readonly int PEMMINIG_MOVE_HASH = Animator.StringToHash("IsMoving");
+    static readonly int EEL_MOVE_HASH = Animator.StringToHash("Moving");
 
     void Awake()
     {
@@ -22,11 +26,26 @@ public class Cutscene : MonoBehaviour
         {
             _progressRef.SetCutsceneViewed();
             _animator.SetTrigger(CUTSCENE_HASH);
+            _stuntPemmingAnimator.SetBool(PEMMINIG_MOVE_HASH, true);
+            _stuntEelAnimator.SetBool(EEL_MOVE_HASH, true);
         }
+    }
+
+    public void PemmeyEatenAnimationEvent()
+    {
+        _stuntPemmingAnimator.SetBool(PEMMINIG_MOVE_HASH, false);
+    }
+
+    public void EnableBubblesAnimationEvent()
+    {
+        _realBubbles.SetActive(true);
     }
 
     public void EndCutsceneAnimationEvent()
     {
+        _realBubbles.SetActive(true);
+        _realPemming.SetActive(true);
+        _healthCanvas.enabled = true;
         _levelManager.enabled = true;
         gameObject.SetActive(false);
     }

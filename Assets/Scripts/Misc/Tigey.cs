@@ -13,14 +13,17 @@ public class Tigey : MonoBehaviour
     [SerializeField] GameObject _retryButton;
     [SerializeField] GameProgressSO _gameProgress;
 
+    bool _isTigeyStoryActive;
 
     void Awake()
     {
+        StoryTeller.OnStoryCanvasClosed += CheckTigeyStory;
         VolumeControl.OnPauseStateChanged += OnPauseStateChanged;
     }
 
     void OnDestroy()
     {
+        StoryTeller.OnStoryCanvasClosed -= CheckTigeyStory;
         VolumeControl.OnPauseStateChanged -= OnPauseStateChanged;
     }
 
@@ -36,6 +39,7 @@ public class Tigey : MonoBehaviour
     {
         if(!_gameProgress.TigeyMet)
         {
+            _isTigeyStoryActive = true;
             _storyTeller.StartSideStory(_tigeyIntro);
             _gameProgress.SetTigeyMet();
             return;
@@ -57,6 +61,20 @@ public class Tigey : MonoBehaviour
                 EventSystem.current.SetSelectedGameObject(null);
                 EventSystem.current.SetSelectedGameObject(_retryButton);
             }
+        }
+    }
+
+    void CheckTigeyStory()
+    {
+        if(_isTigeyStoryActive)
+        {
+            _isTigeyStoryActive = false;
+
+            EventSystem.current.SetSelectedGameObject(null);
+            _defeatCanvas.enabled = false;
+            _shopCanvas.enabled = true;
+            OnShopOpened?.Invoke();
+            EventSystem.current.SetSelectedGameObject(_retryButton);
         }
     }
 }
