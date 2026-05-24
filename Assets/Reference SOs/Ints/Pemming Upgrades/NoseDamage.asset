@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3176db0146d858a4092c8628241c2c84, type: 3}
   m_Name: NoseDamage
   m_EditorClassIdentifier: Assembly-CSharp::IntReferenceSO
-  <Value>k__BackingField: 0
+  <Value>k__BackingField: 2
+  <ShopCost>k__BackingField: 1000
+  _defaultValue: 2

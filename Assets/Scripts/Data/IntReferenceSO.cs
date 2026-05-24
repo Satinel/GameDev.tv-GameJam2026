@@ -6,6 +6,8 @@ public class IntReferenceSO : ScriptableObject
     [field:SerializeField] public int Value { get; private set; }
     [field:SerializeField] public int ShopCost { get; private set; } = 1000;
 
+    [SerializeField] int _defaultValue = 0;
+
     public void AddToValue(int amount)
     {
         Value += amount;
@@ -18,6 +20,6 @@ public class IntReferenceSO : ScriptableObject
 
     public void Reset()
     {
-        Value = 0;
+        Value = _defaultValue;
     }
 }

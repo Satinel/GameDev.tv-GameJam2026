@@ -21,3 +21,12 @@ MonoBehaviour:
   <Scene7StoryViewed>k__BackingField: 0
   <YemmepEaten>k__BackingField: 0
   <TigeyMet>k__BackingField: 0
+  _score: {fileID: 11400000, guid: bccb8a42b1a0529469fb291b9e3187ef, type: 2}
+  _fishEaten: {fileID: 11400000, guid: 9467892ebe0969e46aec52b93bd451b7, type: 2}
+  _fishZapped: {fileID: 11400000, guid: c123fa080269b4c4f882d4b3de8055ac, type: 2}
+  _health: {fileID: 11400000, guid: 280b82f661d785746bc978946a45cfab, type: 2}
+  _speed: {fileID: 11400000, guid: 465ce79aca066854d8e6f24b4a1997d1, type: 2}
+  _noseA: {fileID: 11400000, guid: 2834dd3253b7ad8448abe3ec567425bc, type: 2}
+  _noseD: {fileID: 11400000, guid: d6b75dc2342cc3c4f811fb9d6edd8e0d, type: 2}
+  _otherA: {fileID: 11400000, guid: 06b5e8d992bfb6f4cbded60c6cbd752c, type: 2}
+  _otherD: {fileID: 11400000, guid: b9aa15d74952c024dbebd52535135f11, type: 2}

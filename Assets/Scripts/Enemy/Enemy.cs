@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [field:SerializeField] public int ScoreValue { get; private set; } = 100;
     [field:SerializeField] public bool IsYemmep { get; private set; } = false;
     [SerializeField] FloatingText _floatingTextPrefab;
+    [SerializeField] int _health = 1;
 
     void OnEnable()
     {
@@ -61,5 +62,15 @@ public class Enemy : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        _health -= damage;
+
+        if(_health <= 0)
+        {
+            HandleDeath();
+        }
     }
 }

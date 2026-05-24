@@ -13,6 +13,8 @@ public class GameProgressSO : ScriptableObject
     [field:SerializeField] public bool YemmepEaten { get; private set; }
     [field:SerializeField] public bool TigeyMet { get; private set; }
 
+    [SerializeField] IntReferenceSO _score, _fishEaten, _fishZapped, _health, _speed, _noseA, _noseD, _otherA, _otherD;
+
     public void SetStoryViewedByBuildIndex(int index)
     {
         switch(index)
@@ -80,5 +82,15 @@ public class GameProgressSO : ScriptableObject
 
         YemmepEaten = false;
         TigeyMet = false;
+
+        _score.Reset();
+        _fishEaten.Reset();
+        _fishZapped.Reset();
+        _health.Reset();
+        _speed.Reset();
+        _noseA.Reset();
+        _noseD.Reset();
+        _otherA.Reset();
+        _otherD.Reset();
     }
 }

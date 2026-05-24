@@ -131,7 +131,7 @@ MonoBehaviour:
   - {fileID: 5980426549413291864}
   - {fileID: 6782412803350677538}
   _pemming: {fileID: 2723893107807769206}
-  _noseWeaponPrefab: {fileID: 0}
+  _noseWeaponPrefab: {fileID: 902200452165010568, guid: 19a9fb0bba789164a8ec163b7d11adf7, type: 3}
   _otherWeaponPrefab: {fileID: 0}
   _noseFireRate: 5
   _otherFireRate: 3

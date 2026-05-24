@@ -10479,10 +10479,6 @@ MonoBehaviour:
   _yemmepSpawner: {fileID: 780574579}
   _retryButton: {fileID: 1197629686}
   _gameProgress: {fileID: 11400000, guid: bb8b618ce8b451b46b22878d6ccae6fd, type: 2}
-  _scoreReference: {fileID: 0}
-  _healthRef: {fileID: 0}
-  _speedRef: {fileID: 0}
-  _noseWeaponRef: {fileID: 0}
 --- !u!1 &1178461699
 GameObject:
   m_ObjectHideFlags: 0
