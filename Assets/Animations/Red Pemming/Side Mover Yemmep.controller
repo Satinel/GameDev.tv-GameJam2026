@@ -50,7 +50,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 2c11ed2d4cd86ab4195223022247ca90, type: 2}
+  m_Motion: {fileID: 7400000, guid: be4fa156d3641c84786c5d249fbf3c34, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -62,7 +62,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Yemmep
+  m_Name: Side Mover Yemmep
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsMoving

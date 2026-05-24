@@ -9,11 +9,22 @@ public class Chaser : MonoBehaviour
     float _timer;
     bool _isDistracted;
 
+    void Awake()
+    {
+        EelController.OnEelDefeat += StopChasing;
+        PemmingController.OnDefeat += StopChasing;
+    }
+
+    void OnDestroy()
+    {
+        EelController.OnEelDefeat -= StopChasing;
+        PemmingController.OnDefeat -= StopChasing;
+    }
+
     void Start()
     {
         _player = FindFirstObjectByType<PemmingController>().transform;
     }
-
 
     void Update()
     {
@@ -48,5 +59,10 @@ public class Chaser : MonoBehaviour
         }
 
         transform.position += _moveSpeed * Time.deltaTime * transform.right;
+    }
+
+    void StopChasing()
+    {
+        _player = null;
     }
 }

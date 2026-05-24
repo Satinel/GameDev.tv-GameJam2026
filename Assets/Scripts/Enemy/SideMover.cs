@@ -10,11 +10,13 @@ public class SideMover : MonoBehaviour
     void Awake()
     {
         EelController.OnEelDefeat += StopMovement;
+        PemmingController.OnDefeat += StopMovement;
     }
 
     void OnDestroy()
     {
         EelController.OnEelDefeat -= StopMovement;
+        PemmingController.OnDefeat -= StopMovement;
     }
 
     void OnCollisionEnter2D(Collision2D collision)

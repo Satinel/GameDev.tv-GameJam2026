@@ -11,6 +11,7 @@ public class GameProgressSO : ScriptableObject
     [field:SerializeField] public bool Scene6StoryViewed { get; private set; }
     [field:SerializeField] public bool Scene7StoryViewed { get; private set; }
     [field:SerializeField] public bool YemmepEaten { get; private set; }
+    [field:SerializeField] public bool TigeyMet { get; private set; }
 
     public void SetStoryViewedByBuildIndex(int index)
     {
@@ -62,6 +63,11 @@ public class GameProgressSO : ScriptableObject
         YemmepEaten = true;
     }
 
+    public void SetTigeyMet()
+    {
+        TigeyMet = true;
+    }
+
     public void Reset()
     {
         Scene1StoryViewed = false;
@@ -73,5 +79,6 @@ public class GameProgressSO : ScriptableObject
         Scene7StoryViewed = false;
 
         YemmepEaten = false;
+        TigeyMet = false;
     }
 }
