@@ -64,6 +64,7 @@ public class MusicPlayer : MonoBehaviour
         _audioSource.Stop();
         if(_victoryMusic)
         {
+            _audioSource.volume = 1f;
             _audioSource.PlayOneShot(_victoryMusic, _victoryVol);
         }
     }

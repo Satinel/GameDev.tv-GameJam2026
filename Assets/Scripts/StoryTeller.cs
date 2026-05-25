@@ -133,6 +133,9 @@ public class StoryTeller : MonoBehaviour
 
     public void ContinueStory()
     {
+        if(!_canvas.isActiveAndEnabled) { return; }
+        if(!_story) { return; }
+
         if(_typingRoutine != null)
         {
             StopCoroutine(_typingRoutine);

@@ -38,7 +38,6 @@ public class UpgradeButton : MonoBehaviour
         {
             _score.RemoveFromValue(price);
             _upgrade.AddToValue(1);
-            SetNewPrice();
             OnAnyUpgradePurchased?.Invoke();
         }
         else
