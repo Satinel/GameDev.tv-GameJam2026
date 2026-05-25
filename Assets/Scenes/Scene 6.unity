@@ -9721,6 +9721,10 @@ PrefabInstance:
       value: 4291940817
       objectReference: {fileID: 0}
     - target: {fileID: 9117358376965011995, guid: 5c055c8642f31a34da87cd5078337225, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 372465654}
+    - target: {fileID: 9117358376965011995, guid: 5c055c8642f31a34da87cd5078337225, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
       objectReference: {fileID: 0}
@@ -42972,6 +42976,10 @@ PrefabInstance:
       propertyPath: '_hearts.Array.data[9]'
       value: 
       objectReference: {fileID: 7178079256645580056}
+    - target: {fileID: 8217317166864924068, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 65b080643507612418f7c5ef570a0be3, type: 3}
     - target: {fileID: 8301746798180820878, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
       propertyPath: m_SizeDelta.y
       value: -4

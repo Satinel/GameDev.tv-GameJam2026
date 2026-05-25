@@ -3671,6 +3671,10 @@ PrefabInstance:
       value: 4291940817
       objectReference: {fileID: 0}
     - target: {fileID: 9117358376965011995, guid: 5c055c8642f31a34da87cd5078337225, type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 372465654}
+    - target: {fileID: 9117358376965011995, guid: 5c055c8642f31a34da87cd5078337225, type: 3}
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
       objectReference: {fileID: 0}
@@ -7133,10 +7137,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1872489243}
-    - target: {fileID: 2217343201244003643, guid: 035011fa4d26a2b4980da960e1c3a546, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2685662505436914554, guid: 035011fa4d26a2b4980da960e1c3a546, type: 3}
       propertyPath: m_Name
       value: Game Ender
@@ -7149,6 +7149,10 @@ PrefabInstance:
       propertyPath: _storyTeller
       value: 
       objectReference: {fileID: 398789482}
+    - target: {fileID: 5911172636369121785, guid: 035011fa4d26a2b4980da960e1c3a546, type: 3}
+      propertyPath: _levelManager
+      value: 
+      objectReference: {fileID: 1173652516}
     - target: {fileID: 5911172636369121785, guid: 035011fa4d26a2b4980da960e1c3a546, type: 3}
       propertyPath: _pemmingController
       value: 
@@ -8257,6 +8261,10 @@ PrefabInstance:
       propertyPath: '_hearts.Array.data[9]'
       value: 
       objectReference: {fileID: 7178079256645580056}
+    - target: {fileID: 8217317166864924068, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 65b080643507612418f7c5ef570a0be3, type: 3}
     - target: {fileID: 8301746798180820878, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
       propertyPath: m_SizeDelta.y
       value: -4
