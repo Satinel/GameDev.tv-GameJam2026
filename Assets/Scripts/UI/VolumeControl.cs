@@ -33,6 +33,7 @@ public class VolumeControl : MonoBehaviour
         InputManager.OnOptionsAction += ToggleAudioCanvas;
 
         LevelManager.OnLevelReady += OnLevelReady;
+        MainTitle.OnGameReady += OnLevelReady;
 
         StoryTeller.OnStoryStarted += OnStoryStarted;
         StoryTeller.OnStoryCanvasClosed += OnStoryClosed;
@@ -43,6 +44,7 @@ public class VolumeControl : MonoBehaviour
         InputManager.OnOptionsAction -= ToggleAudioCanvas;
 
         LevelManager.OnLevelReady -= OnLevelReady;
+        MainTitle.OnGameReady -= OnLevelReady;
 
         StoryTeller.OnStoryStarted -= OnStoryStarted;
         StoryTeller.OnStoryCanvasClosed -= OnStoryClosed;
