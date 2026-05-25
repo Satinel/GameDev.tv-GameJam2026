@@ -180,6 +180,7 @@ public class PemmingController : MonoBehaviour
         _isLevelStarted = false;
         _currentDirection = Vector2.zero;
         _rigidBody.linearVelocity = Vector2.zero;
+        _rigidBody.gravityScale = 0;
         _animator.SetBool(MOVE_HASH, false);
     }
 

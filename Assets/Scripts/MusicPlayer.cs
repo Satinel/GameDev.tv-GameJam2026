@@ -3,9 +3,9 @@ using UnityEngine;
 public class MusicPlayer : MonoBehaviour
 {
     [SerializeField] AudioSource _audioSource;
-    [SerializeField] AudioClip _victoryMusic, _defeatMusic;
+    [SerializeField] AudioClip _victoryMusic, _defeatMusic, _finalMusic;
     [Range(0, 1)]
-    [SerializeField] float _victoryVol = 1f, _defeatVol = 1f;
+    [SerializeField] float _victoryVol = 1f, _defeatVol = 1f, _finalVolume = 1f;
     [SerializeField] bool _playOnLevelReady;
     float _startingVolume, _halfVolume;
 
@@ -20,6 +20,7 @@ public class MusicPlayer : MonoBehaviour
         VolumeControl.OnDisableAudioCanvas += OnDisableAudioCanvas;
         StoryTeller.OnStoryStarted += HalveVolume;
         StoryTeller.OnStoryCompleted += RestoreVolume;
+        GameEnder.OnFinalPlayed += GameEnder_OnFinalPlayed;
     }
 
     void OnDisable()
@@ -33,6 +34,7 @@ public class MusicPlayer : MonoBehaviour
         VolumeControl.OnDisableAudioCanvas -= OnDisableAudioCanvas;
         StoryTeller.OnStoryStarted -= HalveVolume;
         StoryTeller.OnStoryCompleted -= RestoreVolume;
+        GameEnder.OnFinalPlayed -= GameEnder_OnFinalPlayed;
     }
 
     void Start()
@@ -59,10 +61,9 @@ public class MusicPlayer : MonoBehaviour
 
     void PlayVictory()
     {
-
+        _audioSource.Stop();
         if(_victoryMusic)
         {
-            _audioSource.Stop();
             _audioSource.PlayOneShot(_victoryMusic, _victoryVol);
         }
     }
@@ -95,5 +96,15 @@ public class MusicPlayer : MonoBehaviour
     void RestoreVolume()
     {
         _audioSource.volume = _startingVolume;
+    }
+
+    void GameEnder_OnFinalPlayed()
+    {
+        if(_finalMusic)
+        {
+            _audioSource.volume = _finalVolume;
+            _audioSource.clip = _finalMusic;
+            _audioSource.Play();
+        }
     }
 }

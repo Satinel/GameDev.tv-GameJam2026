@@ -4,4 +4,4 @@ I can even poke an eel~in the face without trouble! #layout:right #character:Swo
 That's good to know. #layout:left #character:Eel #opposite:true
 Unless they're electrified, of course! #layout:right #character:Fish #opposite:true
 Yes,^ okay,^^ thanks for that Bitey. #layout:left #character:Eel #opposite:true
-Excuse me, can we please concentrate~on walking to the right? #layout:right #character:Pemming #opposite:true
+Excuse me, can we please concentrate~on walking to the right? #layout:left #character:Pemming #opposite:false

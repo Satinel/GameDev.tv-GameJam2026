@@ -10267,7 +10267,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 65b080643507612418f7c5ef570a0be3, type: 3}
     - target: {fileID: 8024075950435089369, guid: 5c055c8642f31a34da87cd5078337225, type: 3}
       propertyPath: m_text
-      value: Pellet Damage
+      value: Pellet Speed
       objectReference: {fileID: 0}
     - target: {fileID: 8024075950435089369, guid: 5c055c8642f31a34da87cd5078337225, type: 3}
       propertyPath: m_fontSize
@@ -15979,7 +15979,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 65b080643507612418f7c5ef570a0be3, type: 3}
     - target: {fileID: 8024075950435089369, guid: 5c055c8642f31a34da87cd5078337225, type: 3}
       propertyPath: m_text
-      value: SWORDLY DAMAGE
+      value: SWORDLY SPEED
       objectReference: {fileID: 0}
     - target: {fileID: 8024075950435089369, guid: 5c055c8642f31a34da87cd5078337225, type: 3}
       propertyPath: m_fontSize

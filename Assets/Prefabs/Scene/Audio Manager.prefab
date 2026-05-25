@@ -143,10 +143,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicPlayer
   _audioSource: {fileID: 6357461022403281717}
-  _victoryMusic: {fileID: 0}
+  _victoryMusic: {fileID: 8300000, guid: ccc1cc47527558a49aee8811472fa270, type: 3}
   _defeatMusic: {fileID: 8300000, guid: 3d4a9c184a4fc424f834e360e4892001, type: 3}
-  _victoryVol: 1
-  _defeatVol: 1
+  _finalMusic: {fileID: 0}
+  _victoryVol: 0.5
+  _defeatVol: 0.75
+  _finalVolume: 0.36
+  _playOnLevelReady: 0
 --- !u!1 &7456259758628309311
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,10 +300,14 @@ MonoBehaviour:
   _enemyBitSFX: {fileID: 8300000, guid: cf8be8d98ab87a743a351c72d84a538c, type: 3}
   _enemyZapSFX: {fileID: 8300000, guid: fc09e7073095e5b47b59039a18520077, type: 3}
   _pemmingDefeatSFX: {fileID: 8300000, guid: 1690fc8e9404b8742960637bf58a5c5c, type: 3}
+  _noseSFX: {fileID: 8300000, guid: 475cedca1e19e664babdc3e33453ebb0, type: 3}
+  _pelletSFX: {fileID: 8300000, guid: 5bd59bee49be8f24fab205d21588038c, type: 3}
   _collectableVol: 1
   _enemyBitVol: 1
   _enemyZapVol: 1
   _pemmingDefeatVol: 1
+  _noseVol: 1
+  _pelletVol: 1
   _collectableBasePitch: 0.9
   _collectablePitchIncrease: 0.02
   _collectableMaxPitch: 3

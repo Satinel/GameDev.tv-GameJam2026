@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class PemmingUpgrades : MonoBehaviour
 {
+    public static event Action OnNoseFired, OnPelletFired;
+
     [SerializeField] IntReferenceSO _health, _speed, _noseWeapon, _noseDamage, _otherWeapon, _otherDamage;
     [SerializeField] Transform[] _noseSpawnPoints, _otherSpawnPoints;
     [SerializeField] PemmingController _pemming;
@@ -31,6 +34,8 @@ public class PemmingUpgrades : MonoBehaviour
     {
         _pemming.SetHealth(_health.Value);
         _pemming.SetSpeed(_speed.Value);
+        _noseFireRate -= _noseDamage.Value * 0.25f;
+        _otherFireRate -= _otherDamage.Value * 0.25f;
     }
 
     void Update()
@@ -47,6 +52,7 @@ public class PemmingUpgrades : MonoBehaviour
                 {
                    Instantiate(_noseWeaponPrefab, _noseSpawnPoints[i].position, _noseSpawnPoints[i].rotation);
                 }
+                OnNoseFired?.Invoke();
             }
         }
 
@@ -60,6 +66,7 @@ public class PemmingUpgrades : MonoBehaviour
                 {
                    Instantiate(_otherWeaponPrefab, _otherSpawnPoints[i].position, _otherSpawnPoints[i].rotation);
                 }
+                OnPelletFired?.Invoke();
             }
         }
     }

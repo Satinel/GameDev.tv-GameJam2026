@@ -162,7 +162,7 @@ public class StoryTeller : MonoBehaviour
         _text.text = string.Empty;
         _spriteIndex = 0;
 
-        HandleCharacterTalking(false);
+        HandleCharacterTalking(true);  // TODO change this false if issues persist
 
         foreach(char letter in _fullLine.ToCharArray())
         {

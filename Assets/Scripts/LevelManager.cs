@@ -151,10 +151,10 @@ public class LevelManager : MonoBehaviour
     void Goal_OnGoalAchieved()
     {
         _isLevelFinished = true;
-        OnLevelFinished?.Invoke();
-        _winCanvas.enabled = true;
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(_nextLevelButton);
+        OnLevelFinished?.Invoke();
+        _winCanvas.enabled = true;
     }
 
     void PlayerDefeat()

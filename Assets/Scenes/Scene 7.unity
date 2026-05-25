@@ -3191,6 +3191,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6266816154127147792, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
   m_PrefabInstance: {fileID: 7178079256645580055}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1090464134 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2723893107807769206, guid: 10409bf567dc4fe4db1b78de0955264c, type: 3}
+  m_PrefabInstance: {fileID: 820993812}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16efc346569972a4cb04a3ef7dbd9d6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PemmingController
 --- !u!1001 &1093410426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3886,7 +3897,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 65b080643507612418f7c5ef570a0be3, type: 3}
     - target: {fileID: 8024075950435089369, guid: 5c055c8642f31a34da87cd5078337225, type: 3}
       propertyPath: m_text
-      value: Pellet Damage
+      value: Pellet Speed
       objectReference: {fileID: 0}
     - target: {fileID: 8024075950435089369, guid: 5c055c8642f31a34da87cd5078337225, type: 3}
       propertyPath: m_fontSize
@@ -4682,7 +4693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad9605b6997af114bab2708f1114c43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelTimer
-  _totalDuration: 240
+  _totalDuration: 256
 --- !u!4 &1455183497
 Transform:
   m_ObjectHideFlags: 0
@@ -6587,7 +6598,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 65b080643507612418f7c5ef570a0be3, type: 3}
     - target: {fileID: 8024075950435089369, guid: 5c055c8642f31a34da87cd5078337225, type: 3}
       propertyPath: m_text
-      value: SWORDLY DAMAGE
+      value: SWORDLY SPEED
       objectReference: {fileID: 0}
     - target: {fileID: 8024075950435089369, guid: 5c055c8642f31a34da87cd5078337225, type: 3}
       propertyPath: m_fontSize
@@ -7118,14 +7129,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2217343201244003643, guid: 035011fa4d26a2b4980da960e1c3a546, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1872489243}
+    - target: {fileID: 2217343201244003643, guid: 035011fa4d26a2b4980da960e1c3a546, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2685662505436914554, guid: 035011fa4d26a2b4980da960e1c3a546, type: 3}
       propertyPath: m_Name
       value: Game Ender
       objectReference: {fileID: 0}
+    - target: {fileID: 4287194009600268558, guid: 035011fa4d26a2b4980da960e1c3a546, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1872489243}
     - target: {fileID: 5911172636369121785, guid: 035011fa4d26a2b4980da960e1c3a546, type: 3}
       propertyPath: _storyTeller
       value: 
       objectReference: {fileID: 398789482}
+    - target: {fileID: 5911172636369121785, guid: 035011fa4d26a2b4980da960e1c3a546, type: 3}
+      propertyPath: _pemmingController
+      value: 
+      objectReference: {fileID: 1090464134}
+    - target: {fileID: 6148101430359674430, guid: 035011fa4d26a2b4980da960e1c3a546, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1173652516}
     - target: {fileID: 7475479526871211920, guid: 035011fa4d26a2b4980da960e1c3a546, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8026,6 +8057,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9026769264370362368, guid: eb2a8a2ef1ee37746bb269a93d9e16f9, type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8109,6 +8144,10 @@ PrefabInstance:
     - target: {fileID: 4583014071064862818, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
       propertyPath: m_Color.r
       value: 0.44705886
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583014071064862818, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5186839128819606187, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
       propertyPath: m_text
@@ -8235,6 +8274,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9217816955816917578, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217816955816917578, guid: d6fa133ede9409647b470aa85e53a496, type: 3}
       propertyPath: m_fontSize
       value: 36
       objectReference: {fileID: 0}
@@ -8296,8 +8339,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4999232413671548872, guid: 718228f3ed2120e4995039066c03fa24, type: 3}
-      propertyPath: _defeatVol
-      value: 0.85
+      propertyPath: _finalMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: bcd008a7c3fa974458938823d87d421d, type: 3}
+    - target: {fileID: 4999232413671548872, guid: 718228f3ed2120e4995039066c03fa24, type: 3}
+      propertyPath: _victoryMusic
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5805627952735663946, guid: 718228f3ed2120e4995039066c03fa24, type: 3}
       propertyPath: m_LocalPosition.x

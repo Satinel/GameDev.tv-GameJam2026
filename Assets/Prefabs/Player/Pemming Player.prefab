@@ -133,7 +133,7 @@ MonoBehaviour:
   _pemming: {fileID: 2723893107807769206}
   _noseWeaponPrefab: {fileID: 902200452165010568, guid: 19a9fb0bba789164a8ec163b7d11adf7, type: 3}
   _otherWeaponPrefab: {fileID: 902200452165010568, guid: b342f517d304a2744ba88a69b17ad27d, type: 3}
-  _noseFireRate: 4
+  _noseFireRate: 3
   _otherFireRate: 2.5
 --- !u!1 &956865889830026361
 GameObject:
