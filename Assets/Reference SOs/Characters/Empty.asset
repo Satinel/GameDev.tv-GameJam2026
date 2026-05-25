@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8a23eaf850d66428331cb6db01982b, type: 3}
   m_Name: Empty
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSO
-  <CharacterName>k__BackingField: ???
+  <CharacterName>k__BackingField: 
   <LeftSprites>k__BackingField:
   - {fileID: 21300000, guid: 0e3b36fe76dd3de4c9c3572b5cc9ffd4, type: 3}
   <RightSprites>k__BackingField:

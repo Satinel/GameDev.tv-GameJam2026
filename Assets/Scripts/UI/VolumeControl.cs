@@ -8,6 +8,7 @@ public class VolumeControl : MonoBehaviour
 {
     public static event Action<bool> OnPauseStateChanged;
     public static event Action OnUnpausedWithStoryActive;
+    public static event Action OnEnableAudioCanvas, OnDisableAudioCanvas;
     public static event Action OnRequestRestart;
 
     public AudioMixer _audioMixer;
@@ -152,10 +153,12 @@ public class VolumeControl : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         _audioCanvas.enabled = false;
         UnpauseGame();
+        OnDisableAudioCanvas?.Invoke();
     }
 
     void EnableAudioCanvas() // TODO? Setting Time.timeScale here (and in DisableAudioCanvas) isn't ideal
     {
+        OnEnableAudioCanvas?.Invoke();
         PauseGame();
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(_mainMenuButton);

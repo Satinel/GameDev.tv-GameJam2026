@@ -162,14 +162,14 @@ public class StoryTeller : MonoBehaviour
         _text.text = string.Empty;
         _spriteIndex = 0;
 
-        HandleCharacterTalking();
+        HandleCharacterTalking(false);
 
         foreach(char letter in _fullLine.ToCharArray())
         {
             if(letter == _linebreakSymbol)
             {
                 _text.text += "\n";
-                HandleCharacterTalking();
+                HandleCharacterTalking(false);
             }
             else if(letter == _pauseSymbol)
             {
@@ -180,7 +180,7 @@ public class StoryTeller : MonoBehaviour
                 _text.text += letter;
                 if(letter == ' ')
                 {
-                    HandleCharacterTalking();
+                    HandleCharacterTalking(true);
                 }
                 yield return _textDelayWait;
             }
@@ -198,7 +198,7 @@ public class StoryTeller : MonoBehaviour
         }
     }
 
-    void HandleCharacterTalking()
+    void HandleCharacterTalking(bool playSound)
     {
         if(_isLeftAligned)
         {
@@ -211,7 +211,7 @@ public class StoryTeller : MonoBehaviour
             _rightCharacter.sprite = _currentCharacter.RightSprites[_spriteIndex];
         }
 
-        if(!_audioSource.isPlaying)
+        if(playSound && !_audioSource.isPlaying)
         {
             if(_currentCharacter.SoundFX)
             {

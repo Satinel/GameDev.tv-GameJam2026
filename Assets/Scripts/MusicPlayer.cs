@@ -5,41 +5,64 @@ public class MusicPlayer : MonoBehaviour
     [SerializeField] AudioSource _audioSource;
     [SerializeField] AudioClip _victoryMusic, _defeatMusic;
     [Range(0, 1)]
-    [SerializeField] float _victoryVol = 1, _defeatVol;
+    [SerializeField] float _victoryVol = 1f, _defeatVol = 1f;
+    [SerializeField] bool _playOnLevelReady;
+    float _startingVolume, _halfVolume;
 
     void OnEnable()
     {
+        LevelManager.OnLevelReady += MaybePlayMusic;
         LevelManager.OnLevelStarted += PlayMusic;
         LevelManager.OnLevelFinished += PlayVictory;
         EelController.OnEelDefeat += PlayDefeat;
         PemmingController.OnDefeat += PlayDefeat;
-        VolumeControl.OnPauseStateChanged += OnPauseStateChanged;
+        VolumeControl.OnEnableAudioCanvas += OnEnableAudioCanvas;
+        VolumeControl.OnDisableAudioCanvas += OnDisableAudioCanvas;
         StoryTeller.OnStoryStarted += HalveVolume;
         StoryTeller.OnStoryCompleted += RestoreVolume;
     }
 
     void OnDisable()
     {
+        LevelManager.OnLevelReady -= MaybePlayMusic;
         LevelManager.OnLevelStarted -= PlayMusic;
         LevelManager.OnLevelFinished -= PlayVictory;
         EelController.OnEelDefeat -= PlayDefeat;
         PemmingController.OnDefeat -= PlayDefeat;
-        VolumeControl.OnPauseStateChanged -= OnPauseStateChanged;
+        VolumeControl.OnEnableAudioCanvas -= OnEnableAudioCanvas;
+        VolumeControl.OnDisableAudioCanvas -= OnDisableAudioCanvas;
         StoryTeller.OnStoryStarted -= HalveVolume;
         StoryTeller.OnStoryCompleted -= RestoreVolume;
     }
 
+    void Start()
+    {
+        _startingVolume = _audioSource.volume;
+        _halfVolume = _startingVolume * 0.5f;
+    }
+
+    void MaybePlayMusic()
+    {
+        if(_playOnLevelReady)
+        {
+            PlayMusic();
+        }
+    }
+
     void PlayMusic()
     {
-        _audioSource.Play();
+        if(!_audioSource.isPlaying)
+        {
+            _audioSource.Play();
+        }
     }
 
     void PlayVictory()
     {
-        _audioSource.Stop();
 
         if(_victoryMusic)
         {
+            _audioSource.Stop();
             _audioSource.PlayOneShot(_victoryMusic, _victoryVol);
         }
     }
@@ -54,25 +77,23 @@ public class MusicPlayer : MonoBehaviour
         }
     }
 
-    void OnPauseStateChanged(bool isPaused)
+    void OnEnableAudioCanvas()
     {
-        if(isPaused)
-        {
-            _audioSource.Pause();
-        }
-        else
-        {
-            _audioSource.UnPause();
-        }
+        _audioSource.Pause();
+    }
+
+    void OnDisableAudioCanvas()
+    {
+        _audioSource.UnPause();
     }
 
     void HalveVolume()
     {
-        _audioSource.volume = 0.5f;
+        _audioSource.volume = _halfVolume;
     }
 
     void RestoreVolume()
     {
-        _audioSource.volume = 1f;
+        _audioSource.volume = _startingVolume;
     }
 }

@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicPlayer
   _audioSource: {fileID: 6357461022403281717}
   _victoryMusic: {fileID: 0}
-  _defeatMusic: {fileID: 0}
+  _defeatMusic: {fileID: 8300000, guid: 3d4a9c184a4fc424f834e360e4892001, type: 3}
   _victoryVol: 1
   _defeatVol: 1
 --- !u!1 &7456259758628309311
