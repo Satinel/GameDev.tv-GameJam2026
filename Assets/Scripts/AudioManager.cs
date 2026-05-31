@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     bool _isGamePaused, _isTimerStarted;
     float _pitchTimer;
 
-    void OnEnable()
+    void Awake()
     {
         VolumeControl.OnPauseStateChanged += TogglePausedState;
 
@@ -32,7 +32,7 @@ public class AudioManager : MonoBehaviour
         PemmingUpgrades.OnPelletFired += PlayPelletSound;
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
         VolumeControl.OnPauseStateChanged -= TogglePausedState;
 

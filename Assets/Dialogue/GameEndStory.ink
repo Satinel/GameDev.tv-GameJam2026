@@ -1,12 +1,12 @@
 Ah-ha...^ ha... ^^ha... #layout:right #character:Eel #opposite:false
-Pemmy, are you alright? #layout:right #character:Eel #opposite:false
+Pemmey, are you alright? #layout:right #character:Eel #opposite:false
 Somehow, yes. #layout:left #character:Pemming #opposite:true
 I'm alright too! #layout:right #character:Fish #opposite:true
 No one asked you. #layout:left #character:Eel #opposite:true
 I am also doing quite fine. #layout:right #character:Red #opposite:true
 I'm Clara.~I don't know how I got~into Electra's stomach. #layout:left #character:Clara #opposite:true
 I'm supposed to be inedible. #layout:left #character:Clara #opposite:true
-Quiet everyone!~^^I want to have a moment with Pemmy. #layout:right #character:Eel #opposite:true
+Quiet everyone!~^^I want to have a moment with Pemmey. #layout:right #character:Eel #opposite:true
 Electra, I have something to say~to you as well. #layout:left #character:Pemming #opposite:true
 I've always felt it's what's on the inside that counts. #layout:left #character:Pemming #opposite:true
 And inside you I found a heartless void^~with a poor sense of humor. #layout:left #character:Pemming #opposite:true

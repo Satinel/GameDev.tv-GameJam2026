@@ -38,14 +38,14 @@ public class StoryTeller : MonoBehaviour
     const string CHARACTER_TAG = "character", LAYOUT_TAG = "layout", OPPOSITE_TAG = "opposite";
     const string PEMMING_NAME = "Pemming", EEL_NAME = "Eel", FISH_NAME = "Fish", SWORD_NAME = "Sword", TIGEY_NAME = "Tigey", RED_NAME = "Red", CLARA_NAME = "Clara", BONE_NAME="Bone";//, MOLE_NAME = "something..."
 
-    void OnEnable()
+    void Awake()
     {
         InputManager.OnJumpAction += ContinueStory;
         VolumeControl.OnPauseStateChanged += OnPauseStateChanged;
         VolumeControl.OnUnpausedWithStoryActive += OnUnpausedWithStoryActive;
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
         InputManager.OnJumpAction -= ContinueStory;
         VolumeControl.OnPauseStateChanged -= OnPauseStateChanged;

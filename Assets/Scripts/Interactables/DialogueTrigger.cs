@@ -13,6 +13,12 @@ public class DialogueTrigger : MonoBehaviour
         Enemy.OnYemmepZapped += OnYemmepZapped;
     }
 
+    void OnDestroy()
+    {
+        Enemy.OnYemmepBit -= OnYemmepBit;
+        Enemy.OnYemmepZapped -= OnYemmepZapped;
+    }
+
     void Start()
     {
         if(!_storyTeller)
