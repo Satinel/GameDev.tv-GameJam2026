@@ -501,6 +501,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawner (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 7874479186489437621, guid: 29b9290d193f8f441bef2e09d8c90025, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5317,6 +5321,10 @@ PrefabInstance:
     - target: {fileID: 7874479186489437621, guid: 29b9290d193f8f441bef2e09d8c90025, type: 3}
       propertyPath: m_Name
       value: Enemy Spawner (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874479186489437621, guid: 29b9290d193f8f441bef2e09d8c90025, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11827,6 +11835,10 @@ PrefabInstance:
     - target: {fileID: 7874479186489437621, guid: 29b9290d193f8f441bef2e09d8c90025, type: 3}
       propertyPath: m_Name
       value: Enemy Spawner (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874479186489437621, guid: 29b9290d193f8f441bef2e09d8c90025, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19009,6 +19021,10 @@ PrefabInstance:
     - target: {fileID: 7874479186489437621, guid: 29b9290d193f8f441bef2e09d8c90025, type: 3}
       propertyPath: m_Name
       value: Enemy Spawner (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874479186489437621, guid: 29b9290d193f8f441bef2e09d8c90025, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
