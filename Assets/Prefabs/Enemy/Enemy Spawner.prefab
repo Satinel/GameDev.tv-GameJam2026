@@ -40,7 +40,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7443897389484565485}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   _spawnRate: 10
   _maxRandomStart: 8
+  _staticStartDelay: 0
   _maxRandomRespawn: 15
   _enemyPrefabs:
   - {fileID: 6410769440352627663, guid: 95d31d9b41981254daed6edaf708c813, type: 3}
