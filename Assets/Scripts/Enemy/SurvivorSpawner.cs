@@ -3,7 +3,7 @@ using UnityEngine;
 public class SurvivorSpawner : MonoBehaviour
 {
     [SerializeField] float _spawnRate =  7.5f;
-    [SerializeField] float _maxRandomStart = 6.5f, _maxRandomRespawn = 12.5f;
+    [SerializeField] float _maxRandomStart = 6.5f, _staticStartDelay = 1.5f, _maxRandomRespawn = 12.5f;
     [SerializeField] Enemy[] _enemyPrefabs;
     [SerializeField] Transform[] _spawnPoints;
 
@@ -20,7 +20,7 @@ public class SurvivorSpawner : MonoBehaviour
 
     void Start()
     {
-        _timer -= Random.Range(-_maxRandomStart, 0);
+        _timer -= Random.Range(-_maxRandomStart, 0) + _staticStartDelay;
     }
 
     void OnEnable()
