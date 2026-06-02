@@ -14,8 +14,8 @@ public class GameEnder : MonoBehaviour
     [SerializeField] GameObject _finalScene, _mainMenuButton;
     [SerializeField] PemmingController _pemmingController;
     [SerializeField] LevelManager _levelManager;
-    [SerializeField] IntReferenceSO _totalFishEaten;
-    [SerializeField] TextMeshProUGUI _fishText;
+    [SerializeField] IntReferenceSO _totalFishEaten, _totalFishZapped;
+    [SerializeField] TextMeshProUGUI _fishText, _zapText;
 
     bool _hasStartedPenultimateStory, _hasStartedLastStory;
     static readonly int END_HASH = Animator.StringToHash("End");
@@ -35,6 +35,7 @@ public class GameEnder : MonoBehaviour
     void Start()
     {
         _fishText.text = $"Total Fish Eaten: {_totalFishEaten.Value}";
+        _zapText.text = $"Total Fish Zapped: {_totalFishZapped.Value}";
     }
 
     void EndGame()

@@ -1053,15 +1053,15 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -4195896666139037166, guid: c2230b8d9cbd5da489f809e0a823f8a8, type: 3}
+      value: {fileID: -4980897198937975620, guid: 1c202854980ac924389a2f7cdcd0077d, type: 3}
     - time: 0.6
-      value: {fileID: -4195896666139037166, guid: c2230b8d9cbd5da489f809e0a823f8a8, type: 3}
+      value: {fileID: -4980897198937975620, guid: 1c202854980ac924389a2f7cdcd0077d, type: 3}
     - time: 0.6166667
-      value: {fileID: 3063874503936854840, guid: c2230b8d9cbd5da489f809e0a823f8a8, type: 3}
+      value: {fileID: -4624841528457308918, guid: 1c202854980ac924389a2f7cdcd0077d, type: 3}
     - time: 1.5
-      value: {fileID: -4195896666139037166, guid: c2230b8d9cbd5da489f809e0a823f8a8, type: 3}
+      value: {fileID: -4980897198937975620, guid: 1c202854980ac924389a2f7cdcd0077d, type: 3}
     - time: 1.8333334
-      value: {fileID: 3063874503936854840, guid: c2230b8d9cbd5da489f809e0a823f8a8, type: 3}
+      value: {fileID: -4624841528457308918, guid: 1c202854980ac924389a2f7cdcd0077d, type: 3}
     attribute: m_Sprite
     path: Canvas/Eel Image
     classID: 114
@@ -1286,11 +1286,11 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -4195896666139037166, guid: c2230b8d9cbd5da489f809e0a823f8a8, type: 3}
-    - {fileID: -4195896666139037166, guid: c2230b8d9cbd5da489f809e0a823f8a8, type: 3}
-    - {fileID: 3063874503936854840, guid: c2230b8d9cbd5da489f809e0a823f8a8, type: 3}
-    - {fileID: -4195896666139037166, guid: c2230b8d9cbd5da489f809e0a823f8a8, type: 3}
-    - {fileID: 3063874503936854840, guid: c2230b8d9cbd5da489f809e0a823f8a8, type: 3}
+    - {fileID: -4980897198937975620, guid: 1c202854980ac924389a2f7cdcd0077d, type: 3}
+    - {fileID: -4980897198937975620, guid: 1c202854980ac924389a2f7cdcd0077d, type: 3}
+    - {fileID: -4624841528457308918, guid: 1c202854980ac924389a2f7cdcd0077d, type: 3}
+    - {fileID: -4980897198937975620, guid: 1c202854980ac924389a2f7cdcd0077d, type: 3}
+    - {fileID: -4624841528457308918, guid: 1c202854980ac924389a2f7cdcd0077d, type: 3}
     - {fileID: -198790487217846445, guid: cfa39f5383e9d594b964a12dee6569ff, type: 3}
     - {fileID: -198790487217846445, guid: cfa39f5383e9d594b964a12dee6569ff, type: 3}
     - {fileID: 6881055417954741004, guid: cfa39f5383e9d594b964a12dee6569ff, type: 3}

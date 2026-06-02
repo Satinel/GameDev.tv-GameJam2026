@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSO
   <CharacterName>k__BackingField: Electra
   <LeftSprites>k__BackingField:
-  - {fileID: -4195896666139037166, guid: c2230b8d9cbd5da489f809e0a823f8a8, type: 3}
-  - {fileID: 3063874503936854840, guid: c2230b8d9cbd5da489f809e0a823f8a8, type: 3}
+  - {fileID: -4980897198937975620, guid: 1c202854980ac924389a2f7cdcd0077d, type: 3}
+  - {fileID: -4624841528457308918, guid: 1c202854980ac924389a2f7cdcd0077d, type: 3}
   <RightSprites>k__BackingField:
-  - {fileID: 1979739625, guid: 3f495d90cf3098d4485c1cd558eabc72, type: 3}
-  - {fileID: -1307746047, guid: 3f495d90cf3098d4485c1cd558eabc72, type: 3}
+  - {fileID: 792026906, guid: d7d44abfa7c475a48b615c217db36867, type: 3}
+  - {fileID: 1911495139, guid: d7d44abfa7c475a48b615c217db36867, type: 3}
   <SoundFX>k__BackingField: {fileID: 8300000, guid: 99db675bb1f871248916f3565460a907, type: 3}
   <SoundVol>k__BackingField: 1
