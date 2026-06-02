@@ -61,9 +61,9 @@ public class MusicPlayer : MonoBehaviour
 
     void PlayVictory()
     {
-        _audioSource.Stop();
         if(_victoryMusic)
         {
+            _audioSource.Stop();
             _audioSource.volume = 1f;
             _audioSource.PlayOneShot(_victoryMusic, _victoryVol);
         }
