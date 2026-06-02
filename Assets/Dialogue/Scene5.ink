@@ -4,5 +4,5 @@ But how??!~^We just passed each other,~this should be impossible. #layout:left #
 It's a tiny world! #layout:right #character:Red #opposite:true
 Electra, I'll need your~help again please. #layout:left #character:Pemming #opposite:false
 No problem. #layout:right #character:Eel #opposite:false
-Howdy, I'm Clara.~^.^.^.^^~Hello? #layout:left #character:Clara #opposite:false
+Howdy, I'm Clara.~^.^.^.^^ ~Hello? #layout:left #character:Clara #opposite:false
 Fine,^ figure out my mechanics~on your own then! #layout:left #character:Clara #opposite:false

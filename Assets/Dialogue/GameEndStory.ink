@@ -8,7 +8,7 @@ I'm Clara.~I don't know how I got~into Electra's stomach. #layout:left #characte
 I'm supposed to be inedible. #layout:left #character:Clara #opposite:true
 Quiet everyone!~^^I want to have a moment with Pemmey. #layout:right #character:Eel #opposite:true
 Electra, I have something to say~to you as well. #layout:left #character:Pemming #opposite:true
-I've always felt it's what's on the inside that counts. #layout:left #character:Pemming #opposite:true
+I've always felt it's what's on the inside ~that counts. #layout:left #character:Pemming #opposite:true
 And inside you I found a heartless void^~with a poor sense of humor. #layout:left #character:Pemming #opposite:true
 .^.^. #layout:right #character:Eel #opposite:true
 But I still think we can be friends.~As long as you learn not to eat me. #layout:left #character:Pemming #opposite:true

@@ -101,7 +101,11 @@ public class EelController : MonoBehaviour, IElectrifiable
         if(collision.gameObject.TryGetComponent(out Enemy enemy))
         {
             enemy.Bite();
-            _totalFishEaten.AddToValue(1);
+
+            if(!enemy.IsYemmep)
+            {
+                _totalFishEaten.AddToValue(1);
+            }
         }
     }
 
