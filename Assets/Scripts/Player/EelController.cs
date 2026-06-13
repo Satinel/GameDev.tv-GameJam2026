@@ -311,6 +311,13 @@ public class EelController : MonoBehaviour, IElectrifiable
         }
 
         _fullRetract = true;
+
+        _tail.Delectrify(); // I don't like how this works on principle but given the likelihood no one ever plays this game again, it's fine (am I even going to upload these fixes?)
+        if(_currentHome)
+        {
+            _currentHome.Delectrify();
+        }
+
         if(_hunter)
         {
             _hunter.Untangle();
