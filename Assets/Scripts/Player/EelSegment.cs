@@ -5,6 +5,7 @@ public class EelSegment : MonoBehaviour
 {
     public static event Action<Vector2> OnEelSegmentAttacked;
     public static event Action<Hunter, EelSegment> OnHunterContacted;
+    public static event Action OnEnemyZapped;
 
     [SerializeField] Collider2D _collider;
     [SerializeField] Animator _animator;
@@ -23,7 +24,7 @@ public class EelSegment : MonoBehaviour
             if(_isElectrified)
             {
                 enemy.Zap();
-                _totalFishElectrified.AddToValue(1);
+                OnEnemyZapped?.Invoke();
             }
             else
             {

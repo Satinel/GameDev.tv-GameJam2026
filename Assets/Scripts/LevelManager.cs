@@ -16,9 +16,13 @@ public class LevelManager : MonoBehaviour
     [SerializeField] AudioSource _audioSource;
     [SerializeField] float _minPitch = 0.5f, _pitchIncrease = 0.1f;
     [SerializeField] StoryTeller _storyTeller;
+    [SerializeField] IntReferenceSO _totalFishEaten;
+    [SerializeField] IntReferenceSO _totalFishElectrified;
+
+    int _fishEatenThisSession, _fishZappedThisSession;
 
     WaitForSeconds _startWaitDelay = new(0.1f);
-    bool _isLevelStarted, _isLevelFinished;
+    bool _isLevelStarted, _isLevelFinished, _isTransitionRequested;
 
     void Awake()
     {
@@ -30,6 +34,9 @@ public class LevelManager : MonoBehaviour
         VolumeControl.OnRequestRestart += RestartLevel;
         VolumeControl.OnPauseStateChanged += OnPauseStateChanged;
         Goal.OnGoalAchieved += Goal_OnGoalAchieved;
+        EelController.OnFishBit += AddToFishEaten;
+        EelController.OnFishZapped += AddToFishZapped;
+        EelSegment.OnEnemyZapped += AddToFishZapped;
         EelController.OnEelDefeat += PlayerDefeat;
         PemmingController.OnDefeat += PlayerDefeat;
         StoryTeller.OnStoryCanvasClosed += OnStoryClosed;
@@ -41,6 +48,9 @@ public class LevelManager : MonoBehaviour
         VolumeControl.OnRequestRestart -= RestartLevel;
         VolumeControl.OnPauseStateChanged -= OnPauseStateChanged;
         Goal.OnGoalAchieved -= Goal_OnGoalAchieved;
+        EelController.OnFishBit -= AddToFishEaten;
+        EelController.OnFishZapped -= AddToFishZapped;
+        EelSegment.OnEnemyZapped -= AddToFishZapped;
         EelController.OnEelDefeat -= PlayerDefeat;
         PemmingController.OnDefeat -= PlayerDefeat;
         StoryTeller.OnStoryCanvasClosed -= OnStoryClosed;
@@ -157,6 +167,16 @@ public class LevelManager : MonoBehaviour
         _winCanvas.enabled = true;
     }
 
+    void AddToFishEaten()
+    {
+        _fishEatenThisSession++;
+    }
+
+    void AddToFishZapped()
+    {
+        _fishZappedThisSession++;
+    }
+
     void PlayerDefeat()
     {
         Invoke(nameof(DisplayDefeat), _defeatDisplayDelay);
@@ -197,12 +217,20 @@ public class LevelManager : MonoBehaviour
 
     public void NextLevel()
     {
+        if(!_isTransitionRequested)
+        {
+            _totalFishEaten.AddToValue(_fishEatenThisSession);
+            _totalFishElectrified.AddToValue(_fishZappedThisSession);
+        }
+
+        _isTransitionRequested = true;
         _winCanvas.enabled = false;
         _sceneTransitions.RequestNextLevel();
     }
 
     public void RestartLevel()
     {
+        _isTransitionRequested = true;
         _winCanvas.enabled = false;
         _sceneTransitions.RequestRestartLevel();
     }

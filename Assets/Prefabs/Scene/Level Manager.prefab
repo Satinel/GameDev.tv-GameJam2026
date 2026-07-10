@@ -1724,6 +1724,8 @@ MonoBehaviour:
   _minPitch: 0.5
   _pitchIncrease: 0.02
   _storyTeller: {fileID: 2195026495540515064}
+  _totalFishEaten: {fileID: 11400000, guid: 9467892ebe0969e46aec52b93bd451b7, type: 2}
+  _totalFishElectrified: {fileID: 11400000, guid: c123fa080269b4c4f882d4b3de8055ac, type: 2}
 --- !u!1 &1673262571172601982
 GameObject:
   m_ObjectHideFlags: 0

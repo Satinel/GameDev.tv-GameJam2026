@@ -8,7 +8,7 @@ public class EelController : MonoBehaviour, IElectrifiable
     public static event Action<AudioClip, float> OnEelHurtSFX;
     public static event Action<AudioClip, float> OnEelElectrifiedSFX;
     public static event Action<int> OnEelHealthChange;
-    public static event Action OnEelDefeat;
+    public static event Action OnEelDefeat, OnFishBit, OnFishZapped;
 
     [SerializeField] int _health = 3;
     [SerializeField] float _moveSpeed = 5f, _retractSpeed = 7.5f;
@@ -104,7 +104,7 @@ public class EelController : MonoBehaviour, IElectrifiable
 
             if(!enemy.IsYemmep)
             {
-                _totalFishEaten.AddToValue(1);
+                OnFishBit?.Invoke();
             }
         }
     }
@@ -118,7 +118,7 @@ public class EelController : MonoBehaviour, IElectrifiable
             if(_isElectrified)
             {
                 hunter.Zap();
-                _totalFishElectrified.AddToValue(1);
+                OnFishZapped?.Invoke();
             }
             else
             {
@@ -257,7 +257,7 @@ public class EelController : MonoBehaviour, IElectrifiable
         if(_isElectrified)
         {
             newHunter.Zap();
-            _totalFishElectrified.AddToValue(1);
+            OnFishZapped?.Invoke();
             return;
         }
 
@@ -481,7 +481,7 @@ public class EelController : MonoBehaviour, IElectrifiable
         if(_hunter)
         {
             _hunter.Zap();
-            _totalFishElectrified.AddToValue(1);
+            OnFishZapped?.Invoke();
         }
     }
 
